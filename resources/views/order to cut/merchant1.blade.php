@@ -39,16 +39,35 @@
                 <h4 align="center"><i>Input field will create or update the data </i></h4>
                 <div class="col-sm-3"></div>
                 <div class="col-sm-6">
-                    <form>
+
+                    <!--first input -->
+                    <form class="form-horizontal">
                         <div class="form-group">
-                            <input type="text" class="form-control" id="input"
-                                   placeholder="Fabric need">
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="input"
+                                       placeholder="Increased Consumption  (%)">
+                            </div>
+                            <div class="col-sm-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Save
+                                </button>
+                            </div>
                         </div>
+                    </form>
+
+                    <!--second input -->
+                    <form class="form-horizontal">
                         <div class="form-group">
-                            <input type="text" class="form-control" id="mock up"
-                                   placeholder="Mock up">
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="input"
+                                       placeholder="Fabric Fault (%)">
+                            </div>
+                            <div class="col-sm-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Save
+                                </button>
+                            </div>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block">Save</button>
                     </form>
                 </div>
                 <div class="col-sm-3"></div>
