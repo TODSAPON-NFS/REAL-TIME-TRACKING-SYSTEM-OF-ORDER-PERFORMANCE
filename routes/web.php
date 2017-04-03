@@ -19,3 +19,8 @@ Route::get('/', function () {
 Route::get('/input/merchant', function () {
     return view('order to cut.merchant1');
 });
+
+//CAD input
+Route::get('/input/CAD', function () {
+    return view('order to cut.cad');
+});
