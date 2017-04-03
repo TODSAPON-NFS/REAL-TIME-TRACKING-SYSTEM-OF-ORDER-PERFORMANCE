@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+//merchant1 input
+Route::get('/input/merchant', function () {
+    return view('order to cut.merchant1');
+});
