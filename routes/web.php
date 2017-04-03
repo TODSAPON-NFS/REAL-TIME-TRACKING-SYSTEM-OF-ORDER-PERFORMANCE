@@ -24,3 +24,8 @@ Route::get('/input/merchant', function () {
 Route::get('/input/CAD', function () {
     return view('order to cut.cad');
 });
+
+//store input
+Route::get('/input/store', function () {
+    return view('order to cut.store');
+});
