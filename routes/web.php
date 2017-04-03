@@ -29,3 +29,8 @@ Route::get('/input/CAD', function () {
 Route::get('/input/store', function () {
     return view('order to cut.store');
 });
+
+//MU input
+Route::get('/input/mu', function () {
+    return view('order to cut.mu');
+});
