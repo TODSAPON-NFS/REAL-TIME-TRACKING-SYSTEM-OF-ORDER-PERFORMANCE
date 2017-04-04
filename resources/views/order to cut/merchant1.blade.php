@@ -45,7 +45,7 @@
                         <div class="form-group">
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" id="input"
-                                       placeholder="Increased Consumption  (%)">
+                                       placeholder="Order Quantity">
                             </div>
                             <div class="col-sm-4">
                                 <button type="submit" class="btn btn-primary">
@@ -60,7 +60,22 @@
                         <div class="form-group">
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" id="input"
-                                       placeholder="Fabric Fault (%)">
+                                       placeholder="Fabric Need">
+                            </div>
+                            <div class="col-sm-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Save
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!--third input -->
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="input"
+                                       placeholder="Mock Up">
                             </div>
                             <div class="col-sm-4">
                                 <button type="submit" class="btn btn-primary">
