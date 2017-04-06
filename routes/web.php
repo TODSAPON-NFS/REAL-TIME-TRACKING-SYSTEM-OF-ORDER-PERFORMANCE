@@ -12,7 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
+});
+
+Route::get('/root', function () {
+    return view('root_inputs');
+});
+Route::get('/cover', function () {
+    return view('cover');
 });
 
 //merchant1 input
