@@ -47,3 +47,15 @@ Route::get('/recheck/cad', function () {
 Route::get('/recheck/fabric', function () {
     return view('Recheck with extra booking.fabric');
 });
+
+//order to ship
+
+//marchant input
+Route::get('/order-to-ship/marchant', function () {
+    return view('Order to ship.marchant');
+});
+
+//cad input
+Route::get('/order-to-ship/cad', function () {
+    return view('Order to ship.cad');
+});

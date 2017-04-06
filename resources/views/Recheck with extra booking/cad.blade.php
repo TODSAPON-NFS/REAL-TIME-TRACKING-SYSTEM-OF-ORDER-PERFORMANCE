@@ -110,7 +110,8 @@
                             </div>
 
 
-                            <button type="submit" class="btn btn-primary btn-block">Save</button>
+                            <button type="submit" class="btn btn-primary btn-block">Add</button>
+                            <button type="submit" class="btn btn-primary btn-block">View / Edit</button>
                         </form>
                     </div>
                     <div class="col-sm-3"></div>
@@ -136,7 +137,8 @@
                             </div>
 
 
-                            <button type="submit" class="btn btn-primary btn-block">Save</button>
+                            <button type="submit" class="btn btn-primary btn-block">Add</button>
+                            <button type="submit" class="btn btn-primary btn-block">View / Edit</button>
                         </form>
                     </div>
                     <div class="col-sm-3"></div>
@@ -169,6 +171,98 @@
                             </tr>
                             <tr>
                                 <td>500</td>
+                                <td><input type="text" class="form-control" id="mock up"
+                                           placeholder=""></td>
+                                <td>
+                                    <button type="submit" class="btn btn-default">Update</button>
+                                </td>
+                                <td>
+                                    <button type="submit" class="btn btn-default">Delete</button>
+                                </td>
+
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-sm-3"></div>
+                </div>
+
+                <!-- edit option for marker length in meter -->
+                <div class="row">
+                    <h4 align="center">Edit Marker length in meter</h4>
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-6">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>Marker pcs</th>
+                                <th>Marker length in meter</th>
+                                <th>Update Value</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>500</td>
+                                <td>10</td>
+                                <td><input type="text" class="form-control" id="mock up"
+                                           placeholder=""></td>
+                                <td>
+                                    <button type="submit" class="btn btn-default">Update</button>
+                                </td>
+                                <td>
+                                    <button type="submit" class="btn btn-default">Delete</button>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>500</td>
+                                <td>10</td>
+                                <td><input type="text" class="form-control" id="mock up"
+                                           placeholder=""></td>
+                                <td>
+                                    <button type="submit" class="btn btn-default">Update</button>
+                                </td>
+                                <td>
+                                    <button type="submit" class="btn btn-default">Delete</button>
+                                </td>
+
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-sm-3"></div>
+                </div>
+
+                <!-- edit option for Piles -->
+                <div class="row">
+                    <h4 align="center">Edit Piles</h4>
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-6">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>Marker pcs</th>
+                                <th>pilesph</th>
+                                <th>Update Value</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>500</td>
+                                <td>10</td>
+                                <td><input type="text" class="form-control" id="mock up"
+                                           placeholder=""></td>
+                                <td>
+                                    <button type="submit" class="btn btn-default">Update</button>
+                                </td>
+                                <td>
+                                    <button type="submit" class="btn btn-default">Delete</button>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>500</td>
+                                <td>10</td>
                                 <td><input type="text" class="form-control" id="mock up"
                                            placeholder=""></td>
                                 <td>
