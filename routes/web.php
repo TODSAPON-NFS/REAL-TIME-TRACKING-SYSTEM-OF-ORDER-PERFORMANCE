@@ -69,7 +69,16 @@ Route::get('/order-to-ship/sew', function () {
     return view('Order to ship.sew');
 });
 
-//cut input
+//finishing input
 Route::get('/order-to-ship/finishing', function () {
     return view('Order to ship.finishing');
+});
+
+//rejection input
+Route::get('/order-to-ship/rejection', function () {
+    return view('Order to ship.rejection');
+});
+//packing input
+Route::get('/order-to-ship/packing', function () {
+    return view('Order to ship.packing');
 });
