@@ -34,3 +34,12 @@ Route::get('/input/store', function () {
 Route::get('/input/mu', function () {
     return view('order to cut.mu');
 });
+
+
+//recheck with extra booking
+
+//cad input
+//MU input
+Route::get('/recheck/cad', function () {
+    return view('Recheck with extra booking.cad');
+});
