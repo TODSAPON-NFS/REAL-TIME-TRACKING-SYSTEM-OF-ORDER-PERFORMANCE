@@ -59,3 +59,7 @@ Route::get('/order-to-ship/marchant', function () {
 Route::get('/order-to-ship/cad', function () {
     return view('Order to ship.cad');
 });
+//cut input
+Route::get('/order-to-ship/cut', function () {
+    return view('Order to ship.cut');
+});
