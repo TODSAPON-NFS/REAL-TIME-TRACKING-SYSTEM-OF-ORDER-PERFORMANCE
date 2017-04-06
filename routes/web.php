@@ -63,3 +63,13 @@ Route::get('/order-to-ship/cad', function () {
 Route::get('/order-to-ship/cut', function () {
     return view('Order to ship.cut');
 });
+
+//sew input
+Route::get('/order-to-ship/sew', function () {
+    return view('Order to ship.sew');
+});
+
+//cut input
+Route::get('/order-to-ship/finishing', function () {
+    return view('Order to ship.finishing');
+});
