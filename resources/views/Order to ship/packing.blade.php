@@ -104,6 +104,21 @@
             <!-- Country data input -->
             <div class="row">
                 <h3 align="center">Country : China</h3>
+                <h4 align="center">Shipment Date : 11/11/2017</h4>
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="date" name="date" id="date" placeholder="Enter Date">
+                        </div>
+                        <div class="col-sm-3">
+                            <button type="button" class="btn btn-primary">
+                                ADD / Update
+                            </button>
+                        </div>
+                        <div class="col-sm-2"></div>
+                    </div>
+                </form>
                 <div class="col-sm-3"></div>
                 <div class="col-sm-6">
                     <table class="table table-striped">
@@ -121,10 +136,10 @@
                             <td><input type="text" class="form-control" id="mock up"
                                        placeholder=""></td>
                             <td>
-                                <button type="submit" class="btn btn-default">Update</button>
+                                <button type="submit" class="btn btn-primary">Update</button>
                             </td>
                             <td>
-                                <button type="submit" class="btn btn-default">Delete</button>
+                                <button type="submit" class="btn btn-primary">Delete</button>
                             </td>
 
                         </tr>
@@ -134,10 +149,10 @@
                             <td><input type="text" class="form-control" id="mock up"
                                        placeholder=""></td>
                             <td>
-                                <button type="submit" class="btn btn-default">Update</button>
+                                <button type="submit" class="btn btn-primary">Update</button>
                             </td>
                             <td>
-                                <button type="submit" class="btn btn-default">Delete</button>
+                                <button type="submit" class="btn btn-primary">Delete</button>
                             </td>
 
                         </tr>
@@ -150,6 +165,21 @@
             <!-- Country data input -->
             <div class="row">
                 <h3 align="center">Country : United Kingdom</h3>
+                <h4 align="center">Shipment Date : 11/11/2017</h4>
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="date" name="date" id="date" placeholder="Enter Date">
+                        </div>
+                        <div class="col-sm-3">
+                            <button type="button" class="btn btn-primary">
+                                ADD / Update
+                            </button>
+                        </div>
+                        <div class="col-sm-2"></div>
+                    </div>
+                </form>
                 <div class="col-sm-3"></div>
                 <div class="col-sm-6">
                     <table class="table table-striped">
@@ -167,10 +197,10 @@
                             <td><input type="text" class="form-control" id="mock up"
                                        placeholder=""></td>
                             <td>
-                                <button type="submit" class="btn btn-default">Update</button>
+                                <button type="submit" class="btn btn-primary">Update</button>
                             </td>
                             <td>
-                                <button type="submit" class="btn btn-default">Delete</button>
+                                <button type="submit" class="btn btn-primary">Delete</button>
                             </td>
 
                         </tr>
@@ -180,10 +210,10 @@
                             <td><input type="text" class="form-control" id="mock up"
                                        placeholder=""></td>
                             <td>
-                                <button type="submit" class="btn btn-default">Update</button>
+                                <button type="submit" class="btn btn-primary">Update</button>
                             </td>
                             <td>
-                                <button type="submit" class="btn btn-default">Delete</button>
+                                <button type="submit" class="btn btn-primary">Delete</button>
                             </td>
 
                         </tr>

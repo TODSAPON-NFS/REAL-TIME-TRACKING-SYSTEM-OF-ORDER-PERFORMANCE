@@ -24,11 +24,10 @@
                         </tr>
                         <tr>
                             <td>Color : White</td>
-                            <td></td>
+                            <td>Output : 1</td>
                         </tr>
                         <tr>
                             <td>Item : 12</td>
-                            <td></td>
                         </tr>
                         </tbody>
                     </table>

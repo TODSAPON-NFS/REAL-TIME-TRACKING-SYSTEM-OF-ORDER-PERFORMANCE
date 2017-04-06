@@ -31,12 +31,8 @@
                             <td>Production Damage</td>
                         </tr>
                         <tr>
-                            <td></td>
-                            <td>Unusable Cut Pcs</td>
-                        </tr>
-                        <tr>
-                            <td></td>
                             <td>Cutting Mistake</td>
+                            <td>Unusable Cut Pcs</td>
                         </tr>
                         </tbody>
                     </table>
@@ -51,13 +47,16 @@
                     <form class="form-horizontal">
                         <div class="form-group">
                             <div class="col-sm-8">
-                            <input type="text" class="form-control" id="input"
-                                   placeholder="Increased Consumption  (%)">
+                                <input type="text" class="form-control" id="input"
+                                       placeholder="Increased Consumption  (%)">
                             </div>
                             <div class="col-sm-4">
-                            <button type="button" class="btn btn-primary">
-                                <span class="glyphicon glyphicon-plus"></span> ADD
-                            </button>
+                                <button type="button" class="btn btn-primary">
+                                    <span class="glyphicon glyphicon-plus"></span> ADD
+                                </button>
+                                <button type="button" class="btn btn-primary">
+                                    <span class="glyphicon glyphicon-minus"></span> SUB
+                                </button>
                             </div>
                         </div>
                     </form>
@@ -72,6 +71,9 @@
                             <div class="col-sm-4">
                                 <button type="button" class="btn btn-primary">
                                     <span class="glyphicon glyphicon-plus"></span> ADD
+                                </button>
+                                <button type="button" class="btn btn-primary">
+                                    <span class="glyphicon glyphicon-minus"></span> SUB
                                 </button>
                             </div>
                         </div>
@@ -88,6 +90,9 @@
                                 <button type="button" class="btn btn-primary">
                                     <span class="glyphicon glyphicon-plus"></span> ADD
                                 </button>
+                                <button type="button" class="btn btn-primary">
+                                    <span class="glyphicon glyphicon-minus"></span> SUB
+                                </button>
                             </div>
                         </div>
                     </form>
@@ -102,6 +107,9 @@
                             <div class="col-sm-4">
                                 <button type="button" class="btn btn-primary">
                                     <span class="glyphicon glyphicon-plus"></span> ADD
+                                </button>
+                                <button type="button" class="btn btn-primary">
+                                    <span class="glyphicon glyphicon-minus"></span> SUB
                                 </button>
                             </div>
                         </div>
@@ -118,6 +126,9 @@
                                 <button type="button" class="btn btn-primary">
                                     <span class="glyphicon glyphicon-plus"></span> ADD
                                 </button>
+                                <button type="button" class="btn btn-primary">
+                                    <span class="glyphicon glyphicon-minus"></span> SUB
+                                </button>
                             </div>
                         </div>
                     </form>
@@ -132,6 +143,9 @@
                             <div class="col-sm-4">
                                 <button type="button" class="btn btn-primary">
                                     <span class="glyphicon glyphicon-plus"></span> ADD
+                                </button>
+                                <button type="button" class="btn btn-primary">
+                                    <span class="glyphicon glyphicon-minus"></span> SUB
                                 </button>
                             </div>
                         </div>
