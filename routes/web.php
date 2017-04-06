@@ -39,7 +39,11 @@ Route::get('/input/mu', function () {
 //recheck with extra booking
 
 //cad input
-//MU input
 Route::get('/recheck/cad', function () {
     return view('Recheck with extra booking.cad');
+});
+
+//fabric input
+Route::get('/recheck/fabric', function () {
+    return view('Recheck with extra booking.fabric');
 });
