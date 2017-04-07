@@ -15,6 +15,11 @@ class CreateOrdertocutCadTable extends Migration
     {
         Schema::create('ordertocut_cads', function (Blueprint $table) {
             $table->increments('id');
+            $table->double('CuttingWastage', 15, 8)->default(0.0);
+            $table->double('ExtraLoading', 15, 8)->default(0.0);
+            $table->double('RelaxingShrinkage', 15, 8)->default(0.0);
+            $table->double('WashingWastage', 15, 8)->default(0.0);
+            $table->double('Output', 15, 8)->default(0.0);
             $table->timestamps();
         });
     }

@@ -15,6 +15,13 @@ class CreateOrdertocutMuTable extends Migration
     {
         Schema::create('ordertocut_mus', function (Blueprint $table) {
             $table->increments('id');
+            $table->double('IncreasedConsumption', 15, 8)->default(0.0);
+            $table->double('FabricFault', 15, 8)->default(0.0);
+            $table->double('RollShortage', 15, 8)->default(0.0);
+            $table->double('ProductionDamage', 15, 8)->default(0.0);
+            $table->double('UnusableCutPcs', 15, 8)->default(0.0);
+            $table->double('CuttingMistake', 15, 8)->default(0.0);
+            $table->double('Output', 15, 8)->default(0.0);
             $table->timestamps();
         });
     }
