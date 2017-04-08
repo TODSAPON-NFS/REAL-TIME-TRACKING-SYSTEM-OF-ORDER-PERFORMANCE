@@ -22,10 +22,18 @@ Route::get('/cover', function () {
     return view('cover');
 });
 
-//merchant1 input
-Route::get('/input/merchant', function () {
-    return view('order to cut.merchant1');
-});
+// *****
+//Order to cut merchant inputs
+//******
+Route::get('/order-to-cut/merchant',  'orderToCutMarchantController@view');
+//merchant quantity input
+Route::post('/order-to-cut/merchant-quantity',  'orderToCutMarchantController@insertOrderQuantity');
+// Fabric need
+Route::post('/order-to-cut/fabric-need',  'orderToCutMarchantController@insertFabricNeed');
+// Fabric need
+Route::post('/order-to-cut/mockup-input',  'orderToCutMarchantController@insertMockUpInput');
+
+
 
 //CAD input
 Route::get('/input/CAD', function () {
@@ -33,7 +41,7 @@ Route::get('/input/CAD', function () {
 });
 
 //store input
-Route::get('/input/store', function () {
+Route::get('/order-to-cut/store', function () {
     return view('order to cut.store');
 });
 
