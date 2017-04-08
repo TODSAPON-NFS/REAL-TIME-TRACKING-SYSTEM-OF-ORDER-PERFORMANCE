@@ -38,9 +38,8 @@ Route::get('/input/store', function () {
 });
 
 //MU input
-Route::get('/input/mu', function () {
-    return view('order to cut.mu');
-});
+Route::get('/input/mu', 'muController@showMu');
+Route::post('/input/mu', 'muController@postMuConsumption');
 
 
 //recheck with extra booking

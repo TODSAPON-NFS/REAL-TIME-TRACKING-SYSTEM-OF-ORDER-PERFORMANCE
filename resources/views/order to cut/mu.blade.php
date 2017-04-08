@@ -44,11 +44,11 @@
                 <div class="col-sm-3"></div>
                 <div class="col-sm-6">
                     <!--first input -->
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" action='/input/mu'>
                         <div class="form-group">
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" id="input"
-                                       placeholder="Increased Consumption  (%)">
+                                       placeholder="Increased Consumption  (%)" name="inputText">
                             </div>
                             <div class="col-sm-4">
                                 <button type="button" class="btn btn-primary">
@@ -66,7 +66,7 @@
                         <div class="form-group">
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" id="input"
-                                       placeholder="Fabric Fault (%)">
+                                       placeholder="Fabric Fault (%)" name="inputText">
                             </div>
                             <div class="col-sm-4">
                                 <button type="button" class="btn btn-primary">
@@ -84,7 +84,7 @@
                         <div class="form-group">
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" id="input"
-                                       placeholder="Roll Shortage (%)">
+                                       placeholder="Roll Shortage (%)" name="inputText">
                             </div>
                             <div class="col-sm-4">
                                 <button type="button" class="btn btn-primary">
@@ -102,7 +102,7 @@
                         <div class="form-group">
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" id="input"
-                                       placeholder="Production Damage (%)">
+                                       placeholder="Production Damage (%)" name="inputText">
                             </div>
                             <div class="col-sm-4">
                                 <button type="button" class="btn btn-primary">
@@ -120,7 +120,7 @@
                         <div class="form-group">
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" id="input"
-                                       placeholder="Unusable Cut Pcs (%)">
+                                       placeholder="Unusable Cut Pcs (%)" name="inputText">
                             </div>
                             <div class="col-sm-4">
                                 <button type="button" class="btn btn-primary">
@@ -138,7 +138,7 @@
                         <div class="form-group">
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" id="input"
-                                       placeholder="Cutting Mistake  (%)">
+                                       placeholder="Cutting Mistake  (%)" name="inputText">
                             </div>
                             <div class="col-sm-4">
                                 <button type="button" class="btn btn-primary">
