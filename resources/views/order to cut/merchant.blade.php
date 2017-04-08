@@ -36,15 +36,17 @@
                 <div class="col-sm-3"></div>
             </div>
             <div class="row">
+                <h5 align="center">{{$error}}</h5>
                 <h4 align="center"><i>Input field will create or update the data </i></h4>
                 <div class="col-sm-3"></div>
                 <div class="col-sm-6">
 
                     <!--first input -->
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" action="/order-to-cut/merchant-quantity" method="post">
+                        <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group">
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="input"
+                                <input type="text" class="form-control" name="orderQuantity"
                                        placeholder="Order Quantity">
                             </div>
                             <div class="col-sm-4">
@@ -56,10 +58,11 @@
                     </form>
 
                     <!--second input -->
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" method="post" action="/order-to-cut/fabric-need">
+                        <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group">
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="input"
+                                <input type="text" class="form-control" name="fabricNeed"
                                        placeholder="Fabric Need">
                             </div>
                             <div class="col-sm-4">
@@ -71,10 +74,11 @@
                     </form>
 
                     <!--third input -->
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" method="post" action="/order-to-cut/mockup-input">
+                        <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group">
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="input"
+                                <input type="text" class="form-control" name="mockUpInput"
                                        placeholder="Mock Up">
                             </div>
                             <div class="col-sm-4">
