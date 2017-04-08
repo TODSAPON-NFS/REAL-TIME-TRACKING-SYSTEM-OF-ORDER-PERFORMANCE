@@ -46,8 +46,13 @@ Route::get('/order-to-cut/store', function () {
 });
 
 //MU input
-Route::get('/input/mu', 'muController@showMu');
-Route::post('/input/mu', 'muController@postMuConsumption');
+Route::get('/mu', 'muController@showMu');
+Route::post('/mu/Consumption', 'muController@postMuConsumption');
+Route::post('/mu/FabricFault', 'muController@postMuFabricFault');
+Route::post('/mu/RollShortage', 'muController@postMuRollShortage');
+Route::post('/mu/ProductionDamage', 'muController@postProductionDamage');
+Route::post('/mu/UnstableCut', 'muController@postUnstableCut');
+Route::post('/mu/CuttingMistake', 'muController@postCuttingMistake');
 
 
 //recheck with extra booking

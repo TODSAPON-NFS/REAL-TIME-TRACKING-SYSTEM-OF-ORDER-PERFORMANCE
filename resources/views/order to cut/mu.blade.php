@@ -44,17 +44,18 @@
                 <div class="col-sm-3"></div>
                 <div class="col-sm-6">
                     <!--first input -->
-                    <form class="form-horizontal" action='/input/mu'>
+                    <form class="form-horizontal" action='/mu/Consumption' method="post">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group">
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="input"
-                                       placeholder="Increased Consumption  (%)" name="inputText">
+                               <input type="text" class="form-control" id="input"
+                                       placeholder="Increased Consumption  (%)" name="Consumption">
                             </div>
                             <div class="col-sm-4">
-                                <button type="button" class="btn btn-primary">
+                                <button type="submit" name="submit" value="1" class="btn btn-primary">
                                     <span class="glyphicon glyphicon-plus"></span> ADD
                                 </button>
-                                <button type="button" class="btn btn-primary">
+                                <button type="submit" name="submit" value="2" class="btn btn-primary">
                                     <span class="glyphicon glyphicon-minus"></span> SUB
                                 </button>
                             </div>
@@ -62,17 +63,18 @@
                     </form>
 
                     <!--second input -->
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" action='/mu/FabricFault' method="post">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group">
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" id="input"
-                                       placeholder="Fabric Fault (%)" name="inputText">
+                                       placeholder="Fabric Fault (%)" name="FabricFault">
                             </div>
                             <div class="col-sm-4">
-                                <button type="button" class="btn btn-primary">
+                                <button type="submit" name="submit" value="1" class="btn btn-primary">
                                     <span class="glyphicon glyphicon-plus"></span> ADD
                                 </button>
-                                <button type="button" class="btn btn-primary">
+                                <button type="submit" name="submit" value="2" class="btn btn-primary">
                                     <span class="glyphicon glyphicon-minus"></span> SUB
                                 </button>
                             </div>
@@ -80,17 +82,18 @@
                     </form>
 
                     <!--third input -->
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" action='/mu/RollShortage' method="post">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group">
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" id="input"
-                                       placeholder="Roll Shortage (%)" name="inputText">
+                                       placeholder="Roll Shortage (%)" name="RollShortage">
                             </div>
                             <div class="col-sm-4">
-                                <button type="button" class="btn btn-primary">
+                                <button type="submit" name="submit" value="1" class="btn btn-primary">
                                     <span class="glyphicon glyphicon-plus"></span> ADD
                                 </button>
-                                <button type="button" class="btn btn-primary">
+                                <button type="submit" name="submit" value="2" class="btn btn-primary">
                                     <span class="glyphicon glyphicon-minus"></span> SUB
                                 </button>
                             </div>
@@ -98,17 +101,18 @@
                     </form>
 
                     <!--fourth input -->
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" action='/mu/ProductionDamage' method="post">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group">
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" id="input"
-                                       placeholder="Production Damage (%)" name="inputText">
+                                       placeholder="Production Damage (%)" name="ProductionDamage">
                             </div>
-                            <div class="col-sm-4">
-                                <button type="button" class="btn btn-primary">
+                           <div class="col-sm-4">
+                                <button type="submit" name="submit" value="1" class="btn btn-primary">
                                     <span class="glyphicon glyphicon-plus"></span> ADD
                                 </button>
-                                <button type="button" class="btn btn-primary">
+                                <button type="submit" name="submit" value="2" class="btn btn-primary">
                                     <span class="glyphicon glyphicon-minus"></span> SUB
                                 </button>
                             </div>
@@ -116,17 +120,18 @@
                     </form>
 
                     <!--fifth input -->
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" action='/mu/UnstableCut' method="post">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group">
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" id="input"
-                                       placeholder="Unusable Cut Pcs (%)" name="inputText">
+                                       placeholder="Unusable Cut Pcs (%)" name="UnstableCut">
                             </div>
                             <div class="col-sm-4">
-                                <button type="button" class="btn btn-primary">
+                                <button type="submit" name="submit" value="1" class="btn btn-primary">
                                     <span class="glyphicon glyphicon-plus"></span> ADD
                                 </button>
-                                <button type="button" class="btn btn-primary">
+                                <button type="submit" name="submit" value="2" class="btn btn-primary">
                                     <span class="glyphicon glyphicon-minus"></span> SUB
                                 </button>
                             </div>
@@ -134,17 +139,18 @@
                     </form>
 
                     <!--sixth input -->
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" action='/mu/CuttingMistake' method="post">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group">
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" id="input"
-                                       placeholder="Cutting Mistake  (%)" name="inputText">
+                                       placeholder="Cutting Mistake  (%)" name="CuttingMistake">
                             </div>
-                            <div class="col-sm-4">
-                                <button type="button" class="btn btn-primary">
+                           <div class="col-sm-4">
+                                <button type="submit" name="submit" value="1" class="btn btn-primary">
                                     <span class="glyphicon glyphicon-plus"></span> ADD
                                 </button>
-                                <button type="button" class="btn btn-primary">
+                                <button type="submit" name="submit" value="2" class="btn btn-primary">
                                     <span class="glyphicon glyphicon-minus"></span> SUB
                                 </button>
                             </div>
