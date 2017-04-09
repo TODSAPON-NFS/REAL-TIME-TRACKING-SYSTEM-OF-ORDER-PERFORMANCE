@@ -14,7 +14,7 @@ class CreateOrdertocutMuTable extends Migration
     public function up()
     {
         Schema::create('ordertocut_mus', function (Blueprint $table) {
-            $table->unsignedInteger('id');
+            $table->unsignedInteger('id')->primary();
             $table->double('IncreasedConsumption', 15, 8)->default(0.0);
             $table->double('FabricFault', 15, 8)->default(0.0);
             $table->double('RollShortage', 15, 8)->default(0.0);

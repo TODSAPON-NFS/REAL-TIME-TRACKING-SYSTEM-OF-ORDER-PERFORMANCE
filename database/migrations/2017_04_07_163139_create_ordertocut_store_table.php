@@ -14,7 +14,7 @@ class CreateOrdertocutStoreTable extends Migration
     public function up()
     {
         Schema::create('ordertocut_stores', function (Blueprint $table) {
-            $table->unsignedInteger('id');
+            $table->unsignedInteger('id')->primary();
             $table->double('AvailableFabricYards', 15, 8)->default(0.0);
             $table->double('AvailableFabricRolls', 15, 8)->default(0.0);
             $table->double('Output', 15, 8)->default(0.0);

@@ -14,7 +14,7 @@ class CreateOrdertocutMarchantTable extends Migration
     public function up()
     {
         Schema::create('ordertocut_marchants', function (Blueprint $table) {
-            $table->unsignedInteger('id');
+            $table->unsignedInteger('id')->primary();
             $table->double('OrderQuantity', 15, 8)->default(0.0);
             $table->double('FabricNeed', 15, 8)->default(0.0);
             $table->double('MockUpInput', 15, 8)->default(0.0);
