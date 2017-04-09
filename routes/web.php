@@ -36,9 +36,8 @@ Route::post('/order-to-cut/mockup-input',  'orderToCutMarchantController@insertM
 
 
 //CAD input
-Route::get('/input/CAD', function () {
-    return view('order to cut.cad');
-});
+Route::get('/input/CAD','orderToCutCadController@showCad');
+Route::post('/input/CAD/update', 'orderToCutCadController@UpdateCad');
 
 //store input
 Route::get('/order-to-cut/store', function () {
