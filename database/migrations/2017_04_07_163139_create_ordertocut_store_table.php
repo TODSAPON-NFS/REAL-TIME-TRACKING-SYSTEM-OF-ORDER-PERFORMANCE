@@ -14,11 +14,12 @@ class CreateOrdertocutStoreTable extends Migration
     public function up()
     {
         Schema::create('ordertocut_stores', function (Blueprint $table) {
-            $table->increments('id');
+            $table->unsignedInteger('id');
             $table->double('AvailableFabricYards', 15, 8)->default(0.0);
             $table->double('AvailableFabricRolls', 15, 8)->default(0.0);
             $table->double('Output', 15, 8)->default(0.0);
             $table->timestamps();
+            $table->foreign('id')->references('id')->on('ordertocuts');
         });
     }
 

@@ -14,12 +14,13 @@ class CreateOrdertocutMarchantTable extends Migration
     public function up()
     {
         Schema::create('ordertocut_marchants', function (Blueprint $table) {
-            $table->increments('id');
+            $table->unsignedInteger('id');
             $table->double('OrderQuantity', 15, 8)->default(0.0);
             $table->double('FabricNeed', 15, 8)->default(0.0);
             $table->double('MockUpInput', 15, 8)->default(0.0);
             $table->double('MockUpOutput', 15, 8)->default(0.0);
             $table->timestamps();
+            $table->foreign('id')->references('id')->on('ordertocuts');
         });
     }
 
