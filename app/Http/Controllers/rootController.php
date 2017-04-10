@@ -35,10 +35,10 @@ class rootController extends Controller
            $dbvar->Item = $request["item"];
            $dbvar->save();
 
-           $db = ordertocut::where('Buyer','=',$request["buyer"])->where('OrderNo','=',$request["order"])
-                        ->where('Color','=',$request["color"])->where('Item','=',$request["item"])->get();
+           // $db = ordertocut::where('Buyer','=',$request["buyer"])->where('OrderNo','=',$request["order"])
+           //              ->where('Color','=',$request["color"])->where('Item','=',$request["item"])->get();
 
-           $key = $db[0]->id;
+           $key = $dbvar->id;
            
 
            //create row with the same id in every other table
