@@ -19,7 +19,7 @@ class rootController extends Controller
     public function postCreateDb(Request $request)
     {
         if(empty($request["buyer"]) || empty($request["order"]) || empty($request["color"]) || empty($request["item"]))
-            return redirect()->action('rootController@showRoot');
+            return view('root_inputs')->with('invalid','Please Enter All Fields');
         
     
         $db = ordertocut::where('Buyer','=',$request["buyer"])->where('OrderNo','=',$request["order"])
