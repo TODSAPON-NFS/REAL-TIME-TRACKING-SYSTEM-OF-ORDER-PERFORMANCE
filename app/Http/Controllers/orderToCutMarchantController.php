@@ -17,8 +17,6 @@ class orderToCutMarchantController extends Controller
     {
         $amount = $request -> input('orderQuantity');
 
-        DB::insert('insert into ordertocut_marchants (OrderQuantity) values(?)',[$amount]);
-
         return view('order to cut.merchant') ->with('error','error');
     }
 
