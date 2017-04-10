@@ -36,13 +36,12 @@
                 <div class="col-sm-3"></div>
             </div>
             <div class="row">
-                <h5 align="center">{{$error}}</h5>
                 <h4 align="center"><i>Input field will create or update the data </i></h4>
                 <div class="col-sm-3"></div>
                 <div class="col-sm-6">
 
                     <!--first input -->
-                    <form class="form-horizontal" action="/order-to-cut/merchant-quantity" method="post">
+                    <form class="form-horizontal" action="/order-to-cut/merchant/update" method="post">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group">
                             <div class="col-sm-8">
@@ -58,7 +57,7 @@
                     </form>
 
                     <!--second input -->
-                    <form class="form-horizontal" method="post" action="/order-to-cut/fabric-need">
+                    <form class="form-horizontal" method="post" action="/order-to-cut/merchant/update">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group">
                             <div class="col-sm-8">
@@ -74,7 +73,7 @@
                     </form>
 
                     <!--third input -->
-                    <form class="form-horizontal" method="post" action="/order-to-cut/mockup-input">
+                    <form class="form-horizontal" method="post" action="/order-to-cut/merchant/update">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group">
                             <div class="col-sm-8">

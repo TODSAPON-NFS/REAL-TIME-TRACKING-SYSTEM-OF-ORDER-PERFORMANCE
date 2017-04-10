@@ -27,11 +27,7 @@ Route::get('/cover', function () {
 //******
 Route::get('/order-to-cut/merchant',  'orderToCutMarchantController@view');
 //merchant quantity input
-Route::post('/order-to-cut/merchant-quantity',  'orderToCutMarchantController@insertOrderQuantity');
-// Fabric need
-Route::post('/order-to-cut/fabric-need',  'orderToCutMarchantController@insertFabricNeed');
-// Fabric need
-Route::post('/order-to-cut/mockup-input',  'orderToCutMarchantController@insertMockUpInput');
+Route::post('/order-to-cut/merchant/update',  'orderToCutMarchantController@updateData');
 
 
 
