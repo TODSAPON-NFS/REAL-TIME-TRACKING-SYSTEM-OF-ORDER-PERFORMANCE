@@ -19,7 +19,7 @@ class orderToCutMarchantController extends Controller
 
         DB::insert('insert into ordertocut_marchants (OrderQuantity) values(?)',[$amount]);
 
-        return redirect()->action('orderToCutMarchantController@view') ->with('error', 'error');
+        return view('order to cut.merchant') ->with('error','error');
     }
 
     public function insertFabricNeed(Request $request)
