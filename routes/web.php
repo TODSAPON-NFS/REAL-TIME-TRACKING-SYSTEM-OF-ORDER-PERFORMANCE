@@ -15,12 +15,15 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/root', function () {
-    return view('root_inputs');
-});
-Route::get('/cover', function () {
-    return view('cover');
-});
+// *****
+//This is root of the webapplication
+//******
+Route::get('/root', 'rootController@showRoot');
+Route::post('/root/postCreateDb', 'rootController@postCreateDb');
+
+// Route::get('/cover', function () {
+//     return view('cover');
+// });
 
 // *****
 //Order to cut merchant inputs
