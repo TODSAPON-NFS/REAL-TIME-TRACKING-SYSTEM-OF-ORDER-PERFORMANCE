@@ -11,15 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/','HomeController@home');
+Route::post('/login', 'HomeController@check');
 
 // *****
 //This is root of the webapplication
 //******
-Route::get('/root', 'rootController@showRoot');
+//Route::get('/root', 'rootController@showRoot');
 Route::post('/root/postCreateDb', 'rootController@postCreateDb');
+
+Route::post('root/cover/validate', 'CoverController@redirect');
 
 // Route::get('/cover', function () {
 //     return view('cover');

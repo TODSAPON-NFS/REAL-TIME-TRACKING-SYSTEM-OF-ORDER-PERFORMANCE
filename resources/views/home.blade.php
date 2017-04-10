@@ -15,16 +15,19 @@
         <div class="row">
             <div class="col-sm-4"></div>
             <div class="col-sm-4">
-                <form>
+                <form action="/login" method="post">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="form-group">
-                        <select class="form-control" id="sel1">
+                        <select class="form-control" name="department">
                             <option selected disabled>Select a Department</option>
                             <option>Merchandising</option>
                             <option>CAD</option>
+                            <option>Store</option>
+                            <option>MU</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" id="input"
+                        <input type="password" class="form-control" name="password"
                                placeholder="Enter Password">
                     </div>
                     <button type="submit" class="btn btn-primary btn-block">

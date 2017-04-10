@@ -10,7 +10,7 @@
 
 @section('ContentOfBody')
     <div class="container">
-        <h1 align="center">Welcome</h1>
+        <h1 align="center">Welcome Department of {{Session::get('dept')}}</h1>
 
         <div class="row">
             <div class="col-sm-4"></div>

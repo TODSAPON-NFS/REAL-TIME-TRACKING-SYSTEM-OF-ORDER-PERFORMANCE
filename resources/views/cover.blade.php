@@ -10,7 +10,7 @@
 
 @section('ContentOfBody')
     <div class="container">
-        <h1 align="center">Welcome</h1>
+        <h1 align="center">Welcome Department of {{Session::get('dept')}}</h1>
 
         <div class="row">
             <div class="col-sm-4"></div>
@@ -44,8 +44,9 @@
         <div class="row margin" >
             <div class="col-sm-4"></div>
             <div class="col-sm-4">
-                <form>
-                    <button type="submit" class="btn btn-primary btn-block">
+                <form action="cover/validate" method="post">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                    <button type="submit" class="btn btn-primary btn-block" name="orderToCut" value="orderToCut">
                         Order To Cut
                     </button>
                     <button type="submit" class="btn btn-primary btn-block">
@@ -54,7 +55,9 @@
                     <button type="submit" class="btn btn-primary btn-block">
                         Order To Ship
                     </button>
+
                 </form>
+
             </div>
         </div>
 
