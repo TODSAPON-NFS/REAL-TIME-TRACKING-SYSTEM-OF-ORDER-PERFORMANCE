@@ -15,6 +15,7 @@
         <div class="row">
             <div class="col-sm-4"></div>
             <div class="col-sm-4">
+                <p>{{$invalid}}</p> 
                 <form action='/root/postCreateDb' method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="form-group">
