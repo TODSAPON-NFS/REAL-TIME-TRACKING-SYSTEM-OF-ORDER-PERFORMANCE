@@ -6,17 +6,22 @@ use Illuminate\Http\Request;
 
 class CoverController extends Controller
 {
+    public function viewCover()
+    {
+        //return view('cover')->with(array('inputs'=>$request));
+    }
+
     public function redirect(Request $request)
     {
         $dept = $request->session()->get('dept');
 
         if ($request["orderToCut"]) {
             if ($dept == 'Merchandising')
-                return view('order to cut.merchant');
+                return redirect()->action('orderToCutMarchantController@view') ;
             else if ($dept == 'CAD')
-                return view('order to cut.cad');
+                return redirect()->action('orderToCutCadController@showCad') ;
             else if ($dept == 'MU')
-                return view('order to cut.mu');
+                return redirect()->action('orderToCutMuController@showMu') ;
         }
 
         //echo $request["orderToCut"];

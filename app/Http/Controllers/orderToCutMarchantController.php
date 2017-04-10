@@ -37,4 +37,32 @@ class orderToCutMarchantController extends Controller
         return view('order to cut.merchant');
     }
 
+
+    public function insertOrderQuantity(Request $request)
+    {
+        $amount = $request -> input('orderQuantity');
+
+        return view('order to cut.merchant') ->with('error','error');
+    }
+
+    public function insertFabricNeed(Request $request)
+    {
+        $amount = $request -> input('fabricNeed');
+
+        DB::insert('insert into ordertocut_marchants (FabricNeed) values(?)',[$amount]);
+
+        return redirect()->action('orderToCutMarchantController@view') ->with('error', 'error');
+    }
+
+    public function insertMockUpInput(Request $request)
+    {
+        $amount = $request -> input('mockUpInput');
+        $id = 1;
+
+        DB::table('ordertocut_marchants')
+            ->where('id', 1)
+            ->update(array('MockUpInput' => 1));
+
+        return redirect()->action('orderToCutMarchantController@view') ->with('error', 'error');
+    }
 }
