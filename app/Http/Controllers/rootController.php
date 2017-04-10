@@ -14,7 +14,7 @@ class rootController extends Controller
 {
     public function showRoot()
     {
-         return view('root_inputs');
+         return view('root_inputs')->with('invalid','');
     }
     public function postCreateDb(Request $request)
     {
@@ -60,6 +60,6 @@ class rootController extends Controller
        }
       
       
-        return view('cover')->with(array('inputs'=>$request));;
+        return view('cover')->with(array('inputs'=>$request));
     }
 }
