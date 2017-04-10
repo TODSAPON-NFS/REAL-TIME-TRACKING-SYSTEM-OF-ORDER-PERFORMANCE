@@ -18,21 +18,21 @@
                 <table class="table table-striped">
                     <tbody>
                     <tr>
-                        <td>Buyer : a</td>
+                        <td>Buyer : {{$inputs->buyer}}</td>
                         <td>Short / Excess monitoring : 10%</td>
 
                     </tr>
                     <tr>
 
-                        <td>Item : 12</td>
+                        <td>Item : {{$inputs->item}}</td>
                         <td>Extra booking : 20%</td>
                     </tr>
                     <tr>
-                        <td>Color : White</td>
+                        <td>Color : {{$inputs->color}}</td>
                         <td>Order to ship ratio : 10%</td>
                     </tr>
                     <tr>
-                        <td>Order No. : 2</td>
+                        <td>Order No. : {{$inputs->order}}</td>
                         <td></td>
                     </tr>
                     </tbody>
