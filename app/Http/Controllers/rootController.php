@@ -35,9 +35,6 @@ class rootController extends Controller
             $dbvar->Item = $request["item"];
             $dbvar->save();
 
-            // $db = ordertocut::where('Buyer','=',$request["buyer"])->where('OrderNo','=',$request["order"])
-            //              ->where('Color','=',$request["color"])->where('Item','=',$request["item"])->get();
-
             $key = $dbvar->id;
 
 

@@ -15,24 +15,24 @@
                     <table class="table table-striped">
                         <tbody>
                         <tr>
-                            <td>Buyer : a</td>
-                            <td>Increased Consumption: 2</td>
+                            <td>Buyer : {{$items["buyer"]}}</td>
+                            <td>Increased Consumption: {{$items["IncreasedConsumption"]}}</td>
                         </tr>
                         <tr>
-                            <td>Order No. : 2</td>
-                            <td>Fabric Fault : 100</td>
+                            <td>Order No. : {{$items["orderNo"]}}</td>
+                            <td>Fabric Fault : {{$items["FabricFault"]}}</td>
                         </tr>
                         <tr>
-                            <td>Color : White</td>
-                            <td> Roll Shortage</td>
+                            <td>Color : {{$items["color"]}}</td>
+                            <td> Roll Shortage : {{$items["RollShortage"]}}</td>
                         </tr>
                         <tr>
-                            <td>Item : 12</td>
-                            <td>Production Damage</td>
+                            <td>Item : {{$items["item"]}}</td>
+                            <td>Production Damage : {{$items["ProductionDamage"]}}</td>
                         </tr>
                         <tr>
-                            <td>Cutting Mistake</td>
-                            <td>Unusable Cut Pcs</td>
+                            <td>Cutting Mistake : {{$items["UnstableCut"]}}</td>
+                            <td>Unusable Cut Pcs : {{$items["CuttingMistake"]}}</td>
                         </tr>
                         </tbody>
                     </table>
