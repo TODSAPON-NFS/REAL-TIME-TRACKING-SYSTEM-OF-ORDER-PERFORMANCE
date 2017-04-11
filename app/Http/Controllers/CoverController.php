@@ -17,7 +17,7 @@ class CoverController extends Controller
 
         if ($request["orderToCut"]) {
             if ($dept == 'Merchandising')
-                return redirect()->action('orderToCutMarchantController@view') ;
+                return redirect()->action('orderToCutMarchantController@view');
             else if ($dept == 'CAD')
                 return redirect()->action('orderToCutCadController@showCad') ;
             else if ($dept == 'MU')

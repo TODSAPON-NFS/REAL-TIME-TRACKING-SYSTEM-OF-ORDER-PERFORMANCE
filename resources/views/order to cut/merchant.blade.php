@@ -15,20 +15,20 @@
                     <table class="table table-striped">
                         <tbody>
                         <tr>
-                            <td>Buyer : 100</td>
-                            <td>Order Quantity : 2</td>
+                            <td>Buyer : {{$items["buyer"]}}</td>
+                            <td>Order Quantity : {{$items["OrderQuantity"]}}</td>
                         </tr>
                         <tr>
-                            <td>Order No. : 2</td>
-                            <td>Fabric Need : 100</td>
+                            <td>Order No. : {{$items["orderNo"]}}</td>
+                            <td>Fabric Need : {{$items["fabricNeed"]}}</td>
                         </tr>
                         <tr>
-                            <td>Color : White</td>
-                            <td>Mock up : 100</td>
+                            <td>Color : {{$items["color"]}}</td>
+                            <td>Mock up : {{$items["mockUpInput"]}}</td>
                         </tr>
                         <tr>
-                            <td>Item : 12</td>
-                            <td></td>
+                            <td>Item : {{$items["item"]}}</td>
+                            <td>Output(v) : {{$items["mockUpOutput"]}} </td>
                         </tr>
                         </tbody>
                     </table>
@@ -49,7 +49,8 @@
                                        placeholder="Order Quantity">
                             </div>
                             <div class="col-sm-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary" name="submit"
+                                        value="updateOrderQuantity">
                                     Save
                                 </button>
                             </div>
@@ -65,7 +66,8 @@
                                        placeholder="Fabric Need">
                             </div>
                             <div class="col-sm-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary" name="submit"
+                                        value="updateFabricNeed">
                                     Save
                                 </button>
                             </div>
@@ -81,7 +83,8 @@
                                        placeholder="Mock Up">
                             </div>
                             <div class="col-sm-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary" name="submit"
+                                        value="updateMockUpInput">
                                     Save
                                 </button>
                             </div>
@@ -91,7 +94,5 @@
                 <div class="col-sm-3"></div>
             </div>
         </div>
-
-
     </div>
 @endsection
