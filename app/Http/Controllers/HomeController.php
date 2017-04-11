@@ -21,4 +21,11 @@ class HomeController extends Controller
 
        return view('root_inputs')->with('invalid','');
     }
+
+    public function logout(Request $request)
+    {
+        $request->session()->flush();
+
+        return redirect()->action('HomeController@home');
+    }
 }

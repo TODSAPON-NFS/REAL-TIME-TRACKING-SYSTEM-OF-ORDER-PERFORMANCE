@@ -12,6 +12,7 @@
 */
 
 Route::get('/','HomeController@home');
+Route::get('/logout','HomeController@logout');
 Route::post('/login', 'HomeController@check');
 
 // *****
