@@ -15,19 +15,19 @@
                     <table class="table table-striped">
                         <tbody>
                         <tr>
-                            <td>Buyer : a</td>
-                            <td>Available Fabric Yards: 2</td>
+                            <td>Buyer : {{$items["buyer"]}}</td>
+                            <td>Available Fabric Yards: {{$items["AvailableFabricYards"]}}</td>
                         </tr>
                         <tr>
-                            <td>Order No. : 2</td>
-                            <td>Available Fabric Rolls : 100</td>
+                            <td>Order No. : {{$items["orderNo"]}}</td>
+                            <td>Available Fabric Rolls : {{$items["AvailableFabricRolls"]}}</td>
                         </tr>
                         <tr>
-                            <td>Color : White</td>
-                            <td>Output : 1</td>
+                            <td>Color : {{$items["color"]}}</td>
+                            <td>Output : {{$items["output"]}}</td>
                         </tr>
                         <tr>
-                            <td>Item : 12</td>
+                            <td>Item : {{$items["item"]}}</td>
                         </tr>
                         </tbody>
                     </table>
@@ -38,17 +38,18 @@
                 <h4 align="center"><i>Input fields will create or update the data </i></h4>
                 <div class="col-sm-3"></div>
                 <div class="col-sm-6">
-                    <form>
+                    <form action="/order-to-cut/store/update" method="post">
+                        <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group">
-                            <input type="text" class="form-control" id="input"
+                            <input type="text" class="form-control" name="AvailableFabricYards"
                                    placeholder="Available Fabric Yards">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="mock up"
+                            <input type="text" class="form-control" name="AvailableFabricRolls"
                                    placeholder="Available Fabric Rolls">
                         </div>
                         <div class="form-group">
-                            <select class="form-control" id="sel1">
+                            <select class="form-control" name="option">
                                 <option selected disabled>Select a option</option>
                                 <option>Non Wash</option>
                                 <option>Wash</option>

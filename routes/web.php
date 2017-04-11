@@ -19,7 +19,6 @@ Route::post('/login', 'HomeController@check');
 //******
 //Route::get('/root', 'rootController@showRoot');
 Route::post('/root/postCreateDb', 'rootController@postCreateDb');
-
 Route::post('root/cover/validate', 'CoverController@redirect');
 
 // Route::get('/cover', function () {
@@ -30,19 +29,15 @@ Route::post('root/cover/validate', 'CoverController@redirect');
 //Order to cut merchant inputs
 //******
 Route::get('/order-to-cut/merchant',  'orderToCutMarchantController@view');
-//merchant quantity input
 Route::post('/order-to-cut/merchant/update',  'orderToCutMarchantController@updateData');
-
-
 
 //CAD input
 Route::get('/input/CAD','orderToCutCadController@showCad');
 Route::post('/input/CAD/update', 'orderToCutCadController@UpdateCad');
 
 //store input
-Route::get('/order-to-cut/store', function () {
-    return view('order to cut.store');
-});
+Route::get('/order-to-cut/store', 'orderToCutStoreController@view');
+Route::post('/order-to-cut/store/update', 'orderToCutStoreController@updateData');
 
 //MU input
 Route::get('/mu', 'orderToCutMuController@showMu');
