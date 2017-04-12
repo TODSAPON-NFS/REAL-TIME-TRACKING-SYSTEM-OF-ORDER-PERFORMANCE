@@ -30,8 +30,7 @@ class CoverController extends Controller
                 return redirect()->action('RecheckCadController@show');
             else if ($dept == 'Fabric')
                     return redirect()->action('RecheckFabricController@show') ;
-            /*else if ($dept == 'MU')
-                return redirect()->action('orderToCutMuController@showMu') ;*/
+
         }
 
         //echo $request["orderToCut"];
