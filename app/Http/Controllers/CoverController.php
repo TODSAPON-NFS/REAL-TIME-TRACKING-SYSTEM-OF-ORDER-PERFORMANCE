@@ -22,6 +22,8 @@ class CoverController extends Controller
                 return redirect()->action('orderToCutCadController@showCad') ;
             else if ($dept == 'MU')
                 return redirect()->action('orderToCutMuController@showMu') ;
+            else if ($dept == 'Store')
+                return redirect()->action('orderToCutStoreController@view') ;
         }
 
         else if($request["recheck"] == "recheck"){
