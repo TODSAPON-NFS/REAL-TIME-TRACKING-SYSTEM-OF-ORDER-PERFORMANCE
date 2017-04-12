@@ -28,11 +28,11 @@
                     </tr>
                     <tr>
                         <td>Color : {{$inputs->color}}</td>
-                        <td>Order to ship ratio : 10%</td>
+                        <td>Order to ship ratio : </td>
                     </tr>
                     <tr>
                         <td>Order No. : {{$inputs->order}}</td>
-                        <td></td>
+                        <td>Extra Fabric : </td>
                     </tr>
                     </tbody>
                 </table>
