@@ -88,8 +88,12 @@ class RecheckCadController extends Controller
         if ($sel1!="" && $request->hasFile('userFile')  && $request->file('userFile')->isValid() ) {
             # code...
             $fileName=$sel1.'.'.$file->getClientOriginalExtension();
-            $file->move($destinationPath,$fileName);
-            return "Uploaded";
+            $uploadSuccess=$file->move($destinationPath,$fileName);
+             if($uploadSuccess){
+                //Make DB query Here.. file name $filename
+                return "Uploaded".$uploadSuccess;
+            }
+            
         }
         return "Fail";
         //return redirect()->action('RecheckCadController@show');
