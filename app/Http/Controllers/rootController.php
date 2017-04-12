@@ -114,17 +114,26 @@ class rootController extends Controller
         //endcalculating
         
         //for calculating and saving result in recheck
-        $db = recheck::find($key);
+        $db1 = recheck::find($key);
         $cad = recheck_cad::find($key);
         $fabric = recheck_fabric::find($key);
 
-        $db->MarkerLengthInYard = $db->markerLengthInMeter*1.09361;
-        $db->FabricRequired = $db->LayLength * $cad->Piles;
-        $db->Totalfabric =  $db->FabricRequired + $fabric->FabricFaultOutput;
+        
 
+        $db1->MarkerLengthInYard = $db->markerLengthInMeter*1.09361;
+        $db1->FabricRequired = $db->LayLength * $cad->Piles;
+        $db1->Totalfabric =  $db->FabricRequired + $fabric->FabricFaultOutput;
+
+        $extraBooking = 0;
+
+        if($merchant->FabricNeed > 0)
+            $extraBooking = (($merchant->FabricNeed - $db->Totalfabric)*100)/$merchant->FabricNeed;
+
+        $db1->ExtraBooking = $extraBooking;
         //endcalculating
 
         $request["excessMonitor"] = $db->ExcessMonitoring;
+        $request["extraBooking"] = $db->ExcessMonitoring;
 
          return view('cover')->with(array('inputs' => $request));
     }
