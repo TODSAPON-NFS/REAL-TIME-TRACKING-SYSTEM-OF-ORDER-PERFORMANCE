@@ -7,6 +7,9 @@ use App\ordertocut_store;
 use App\ordertocut_mu;
 use App\ordertocut_marchant;
 use App\ordertocut_cad;
+use App\recheck;
+use App\recheck_cad;
+use App\recheck_fabric;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -56,8 +59,6 @@ class rootController extends Controller
             $dbstore = new ordertocut_cad;
             $dbstore->id = $key;
             $dbstore->save();
-
-            //For recheck department
 
              //storing to session to access in every page
             $request->session()->put('id', $dbvar -> id);
