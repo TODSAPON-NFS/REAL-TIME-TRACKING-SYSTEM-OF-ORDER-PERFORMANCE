@@ -36,18 +36,15 @@ class RecheckFabricController extends Controller
         $shrinkage = $request["shrinkage"];
         if($request["submit"] == 1)
         {
-<<<<<<< HEAD
-            $dbvar->Shrinkage = $dbvar->Shrinkage + $shrinkage;
-            //$dbvar->ShrinkageOutput = 
-=======
             $dbvar->Shrinkage = $shrinkage;
             $dbvar->ShrinkageOutput = -(100*$shrinkage)/($mainDb->MarkerLengthInYard);
             $mainDb->LayLength = $mainDb->MarkerLengthInYard+$dbvar->ShrinkageOutput+$dbvar->Bowling+0.0218723;
->>>>>>> monmoy
+
         }
         else{
             $dbvar->Shrinkage = $shrinkage;
             $dbvar->ShrinkageOutput = (100*$shrinkage)/($mainDb->MarkerLengthInYard);
+            $mainDb->LayLength = $mainDb->MarkerLengthInYard-$dbvar->ShrinkageOutput+$dbvar->Bowling+0.0218723;
         } 
 
         if($dbvar->Shrinkage <= 0)

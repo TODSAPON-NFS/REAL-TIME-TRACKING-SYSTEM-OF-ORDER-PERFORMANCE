@@ -108,6 +108,17 @@ class rootController extends Controller
             $db->ExcessMonitoring = $shortExcess;
         }
         //endcalculating
+        
+        //for calculating and saving result in recheck
+         $db = recheck::find($key);
+        $cad = recheck_cad::find($key);
+        $fabric = recheck_fabric::find($key);
+
+        $db->MarkerLengthInYard = $db->markerLengthInMeter+1.09361;
+        $db->FabricRequired = $db->LayLength * $cad->Piles;
+        $db->Totalfabric =  $db->FabricRequired + $fabric->FabricFault;
+
+        //endcalculating
 
         $request["excessMonitor"] = $db->ExcessMonitoring;
 
