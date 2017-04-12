@@ -18,7 +18,7 @@ class CreateRecheckCadTable extends Migration
             $table->double('MarkerPcs', 15, 8)->default(0.0);
             $table->double('markerLengthInMeter', 15, 8)->default(0.0);
             $table->double('Piles', 15, 8)->default(0.0);
-            $table->string('file',20)-nullable(true);
+            $table->string('file',20)->nullable(true);
             $table->timestamps();
         });
     }
