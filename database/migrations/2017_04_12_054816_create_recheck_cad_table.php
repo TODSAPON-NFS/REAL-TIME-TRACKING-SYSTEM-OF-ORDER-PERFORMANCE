@@ -15,7 +15,7 @@ class CreateRecheckCadTable extends Migration
     {
         Schema::create('recheck_cads', function (Blueprint $table) {
             $table->unsignedInteger('id');
-            $table->double('MarkerPcs', 15, 8);
+            $table->double('MarkerPcs', 15, 8)->default(0.0);
             $table->double('markerLengthInMeter', 15, 8)->default(0.0);
             $table->double('Piles', 15, 8)->default(0.0);
             $table->timestamps();
