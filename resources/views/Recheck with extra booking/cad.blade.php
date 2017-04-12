@@ -96,7 +96,42 @@
                 </div>
 
 
-                <!-- cad 5 input -->
+            {{-- <!-- CAD 1 input -->
+             <div class="row">
+                 <h4 align="center"><i>Marker Length (in meters) input : </i></h4>
+                 <div class="col-sm-4"></div>
+                 <div class="col-sm-4">
+                     <form action="/recheck/cad/updateMarkerLength" method="post">
+                         <input type="hidden" name="_token" value="{{csrf_token()}}">
+                         <div class="form-group">
+                             <select class="form-control" name="selectedMarkerPcs">
+                                 <option selected disabled>Select a Marker pcs</option>
+                                 --}}{{--showing marker pcs from database--}}{{--
+                                 @foreach($db  as $markerPcs)
+                                     <option>{{$markerPcs["MarkerPcs"]}}</option>
+                                 @endforeach
+                             </select>
+                         </div>
+                         <div class="form-group">
+                             <input type="text" class="form-control" name="updateMarkerLength"
+                                    placeholder=""></td>
+                         </div>
+                             <button type="submit" class="btn btn-primary btn-block" name="update" value="update">
+                                 Update
+                             </button>
+                         <button type="submit" class="btn btn-primary btn-block" name="update" value="update">
+                             View All inputs
+                         </button>
+                     </form>
+                 </div>
+             </div>
+         </div>
+         <div class="col-sm-4"></div>
+     </div>
+     </form>
+ </div>--}}
+
+            <!-- cad 5 input -->
                 <div class="row">
                     <h4 align="center">Marker Length (in meters) input :</h4>
                     <div class="col-sm-3"></div>
@@ -111,12 +146,11 @@
                             </thead>
                             <tbody>
 
-                            {{--showing marker pcs and marker length from database to update--}}
-                              
+                            showing marker pcs and marker length from database to update
                             @foreach($db  as $markerPcs)
                                 <form action="/recheck/cad/updateMarkerLength" method="post">
                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                    
+
                                     <tr>
                                         <td>{{$markerPcs["MarkerPcs"]}}</td>
                                         <td>{{$markerPcs["markerLengthInMeter"]}}</td>
@@ -126,18 +160,17 @@
                                         <td><input type="text" class="form-control" name="updateMarkerLength"
                                                    placeholder=""></td>
                                         <td>
-                                            <button type="submit" name = "submit" class="btn btn-primary" value = {{$markerPcs["MarkerPcs"]}}>Update</button>
+                                            <button type="submit" class="btn btn-primary" name="update" value="update">
+                                                Update
+                                            </button>
                                         </td>
                                         <td>
                                             <button type="submit" class="btn btn-primary">Delete</button>
                                         </td>
                                     </tr>
-                                    
+
                                 </form>
-                           @endforeach
-                       
-
-
+                            @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -161,18 +194,26 @@
 
                             {{--showing marker pcs and piles from database to update--}}
                             @foreach($db  as $markerPcs)
-                                <tr>
-                                    <td>{{$markerPcs["MarkerPcs"]}}</td>
-                                    <td>{{$markerPcs["Piles"]}}</td>
-                                    <td><input type="text" class="form-control" id="mock up"
-                                               placeholder=""></td>
-                                    <td>
-                                        <button type="submit" class="btn btn-primary">Update</button>
-                                    </td>
-                                    <td>
-                                        <button type="submit" class="btn btn-primary">Delete</button>
-                                    </td>
-                                </tr>
+                                <form action="/recheck/cad/updatePiles" method="post">
+                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                    <tr>
+                                        <td>{{$markerPcs["MarkerPcs"]}}</td>
+                                        <td>{{$markerPcs["Piles"]}}</td>
+
+                                        <input type="hidden" name="pilesHiddenMarkerPcs" value={{$markerPcs["MarkerPcs"]}}>
+                                        <input type="hidden" name="hiddenMarkerpiles"
+                                               value={{$markerPcs["Piles"]}}>
+
+                                        <td><input type="text" class="form-control" name="updatePiles"
+                                                   placeholder=""></td>
+                                        <td>
+                                            <button type="submit" class="btn btn-primary">Update</button>
+                                        </td>
+                                        <td>
+                                            <button type="submit" class="btn btn-primary">Delete</button>
+                                        </td>
+                                    </tr>
+                                </form>
                             @endforeach
 
                             </tbody>
@@ -198,9 +239,12 @@
 
                             {{--showing marker pcs and marker length from database to update--}}
                             @foreach($db  as $markerPcs)
+                                <form action="/recheck/cad/updateMarkerPcs" method="post">
+                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
                                 <tr>
                                     <td>{{$markerPcs["MarkerPcs"]}}</td>
-                                    <td><input type="text" class="form-control" id="mock up"
+                                    <input type="hidden" name="updateHiddenMarkerPcs" value={{$markerPcs["MarkerPcs"]}}>
+                                    <td><input type="text" class="form-control" name="updateMarkerPcs"
                                                placeholder=""></td>
                                     <td>
                                         <button type="submit" class="btn btn-primary">Update</button>
@@ -209,6 +253,7 @@
                                         <button type="submit" class="btn btn-primary">Delete</button>
                                     </td>
                                 </tr>
+                                </form>
                             @endforeach
 
                             </tbody>

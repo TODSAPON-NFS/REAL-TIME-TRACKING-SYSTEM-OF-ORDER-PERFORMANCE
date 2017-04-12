@@ -40,36 +40,44 @@ class RecheckCadController extends Controller
 
     public function updateMarkerLength(Request $request)
     {
+
         $id = $request->session()->get('id');
-          
-        if ($request["hiddenMarkerPcs"] && $request['hiddenMarkerLength'] && $request['updateMarkerLength']) {
-    
-            $db = recheck_cad::where('id', '=', $id)->where('MarkerPcs', '=', $request["hiddenMarkerPcs"])->first();
-            if($request["submit"] == $db->MarkerPcs)
-            {
-                $db->markerLengthInMeter = $request['updateMarkerLength'];
-                $db->save();
-            }
-           
-            
-           
-            // $db = recheck_cad::all();
-            // foreach($db as $s)
-            // {
-            //     echo $s->MarkerPcs." ".$s->markerLengthInMeter."<br>";
-            // }
-            // return "yes";
-            // echo $request["hiddenMarkerPcs"] . " ";
-            // echo $request["hiddenMarkerLength"]. " ";
-            // echo $request["updateMarkerLength"];
-            
+
+        if ($request["hiddenMarkerLength"] != "" && $request["hiddenMarkerPcs"] != "" && $request["updateMarkerLength"] != "") {
+            recheck_cad::where('id', '=', $id)->where('MarkerPcs', '=', $request["hiddenMarkerPcs"])->update(['markerLengthInMeter' => $request["updateMarkerLength"]]);
+
+        }
+        //echo $request["markerLengthInMeter"] . " " . $request["MarkerPcs"] . " " . $request["updateMarkerLength"];
+        return redirect()->action('RecheckCadController@show');
+    }
+
+    public function updatePiles(Request $request)
+    {
+        $id = $request->session()->get('id');
+
+        if ($request["pilesHiddenMarkerPcs"] != "" && $request["hiddenMarkerpiles"] != "" && $request["updatePiles"] != "") {
+            recheck_cad::where('id', '=', $id)->where('MarkerPcs', '=', $request["pilesHiddenMarkerPcs"])->update(['Piles' => $request["updatePiles"]]);
 
         }
 
-        // echo $request["hiddenMarkerPcs"] . " ";
-        // echo $request["hiddenMarkerLength"] . " ";
-        // echo $request["updateMarkerLength"] . " ";
+       // echo $request["pilesHiddenMarkerPcs"] . " " . $request["hiddenMarkerpiles"] . " " . $request["updatePiles"];
 
         return redirect()->action('RecheckCadController@show');
     }
+
+    public function updatemarkerPcs(Request $request)
+    {
+        $id = $request->session()->get('id');
+
+        if ($request["updateHiddenMarkerPcs"] != "" && $request["updateMarkerPcs"] != "" ) {
+            recheck_cad::where('id', '=', $id)->where('MarkerPcs', '=', $request["updateHiddenMarkerPcs"])->update(['MarkerPcs' => $request["updateMarkerPcs"]]);
+
+        }
+
+        // echo $request["updateHiddenMarkerPcs"] . " " . $request["updateMarkerPcs"];
+
+        return redirect()->action('RecheckCadController@show');
+    }
+
+
 }
