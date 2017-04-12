@@ -67,8 +67,33 @@ class rootController extends Controller
         $request->session()->put('color', $db[0] -> Color);
         $request->session()->put('item', $db[0] -> Item);
        // echo $key;
+        
+        //For calculating getting and saving result
+        $db = ordertocut::find($key);
+        $cad = ordertocut_cad::find($key);
+        $merchant = ordertocut_marchant::find($key);
+        $store = ordertocut_store::find($key);
+        $mu = ordertocut_mu::find($key);
 
+        $extraFabric = $cad->Output - $merchant->MockUpOutput - $store->Output;
+        $shortExcess = $mu->Output - $extraFabric;
+        $db->ExtraFabric = $extraFabric;
+        
+        if($extraFabric > 0.0 &&  $shortExcess > 0.0)
+        {
+            $db->ExtraFabric = $extraFabric;
+            $db->ExcessMonitoring = $shortExcess;
+        }
+      
+        //endcalculating
+
+        $request["excessMonitor"] = $db->ExcessMonitoring;
 
         return view('cover')->with(array('inputs' => $request));
+    }
+
+    function calculate($key)
+    {
+        
     }
 }

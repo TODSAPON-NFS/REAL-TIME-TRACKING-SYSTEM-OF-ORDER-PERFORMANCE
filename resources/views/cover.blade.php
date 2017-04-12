@@ -19,8 +19,7 @@
                     <tbody>
                     <tr>
                         <td>Buyer : {{$inputs->buyer}}</td>
-                        <td>Short / Excess monitoring : 10%</td>
-
+                        <td>Short / Excess monitoring : {{$inputs->excessMonitor}}</td>
                     </tr>
                     <tr>
 
