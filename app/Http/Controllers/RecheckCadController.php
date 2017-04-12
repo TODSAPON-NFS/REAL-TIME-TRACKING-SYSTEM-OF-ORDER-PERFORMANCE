@@ -50,4 +50,18 @@ class RecheckCadController extends Controller
         //echo $request["markerLengthInMeter"] . " " . $request["MarkerPcs"] . " " . $request["updateMarkerLength"];
         return redirect()->action('RecheckCadController@show');
     }
+
+    public function updatePiles(Request $request)
+    {
+        $id = $request->session()->get('id');
+
+        if ($request["pilesHiddenMarkerPcs"] != "" && $request["hiddenMarkerpiles"] != "" && $request["updatePiles"] != "") {
+            recheck_cad::where('id', '=', $id)->where('MarkerPcs', '=', $request["pilesHiddenMarkerPcs"])->update(['Piles' => $request["updatePiles"]]);
+
+        }
+
+       // echo $request["pilesHiddenMarkerPcs"] . " " . $request["hiddenMarkerpiles"] . " " . $request["updatePiles"];
+
+        return redirect()->action('RecheckCadController@show');
+    }
 }
