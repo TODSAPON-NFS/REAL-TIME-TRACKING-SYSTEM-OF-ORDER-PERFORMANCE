@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\recheck_fabric;
+use App\recheck;
 use Illuminate\Http\Request;
 
 class RecheckFabricController extends Controller
@@ -30,21 +31,27 @@ class RecheckFabricController extends Controller
     {
         $id = $request->session()->get('id');
         $dbvar = recheck_fabric::find($id);
+        $mainDb = recheck::find($id);
 
         $shrinkage = $request["shrinkage"];
         if($request["submit"] == 1)
         {
+<<<<<<< HEAD
             $dbvar->Shrinkage = $dbvar->Shrinkage + $shrinkage;
             //$dbvar->ShrinkageOutput = 
+=======
+            $dbvar->Shrinkage = $shrinkage;
+            $dbvar->ShrinkageOutput = -(100*$shrinkage)/($mainDb->MarkerLengthInYard);
+            $mainDb->LayLength = $mainDb->MarkerLengthInYard+$dbvar->ShrinkageOutput+$dbvar->Bowling+0.0218723;
+>>>>>>> monmoy
         }
         else{
-            $dbvar->Shrinkage = $dbvar->Shrinkage - $shrinkage;
+            $dbvar->Shrinkage = $shrinkage;
+            $dbvar->ShrinkageOutput = (100*$shrinkage)/($mainDb->MarkerLengthInYard);
         } 
 
         if($dbvar->Shrinkage <= 0)
             $dbvar->Shrinkage = 0;
-
-        
 
         $dbvar->save();
 
@@ -66,10 +73,12 @@ class RecheckFabricController extends Controller
     {
         $id = $request->session()->get('id');
         $dbvar = recheck_fabric::find($id);
+          $mainDb = recheck::find($id);
 
         $bowling = $request["bowling"];
        
-        $dbvar->Bowling = $dbvar->Bowling + $bowling;
+        $dbvar->Bowling = $bowling;
+        $dbvar->BowlingOutput = (100*$bowling)/($mainDb->MarkerLengthInYard*5);
 
         $dbvar->save();
 
