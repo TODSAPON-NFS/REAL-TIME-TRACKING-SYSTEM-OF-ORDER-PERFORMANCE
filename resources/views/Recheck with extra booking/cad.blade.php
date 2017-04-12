@@ -46,7 +46,7 @@
                                    placeholder="Marker pcs">
                         </div>
                         <div class="col-sm-4">
-                            <button type="submit" class="btn btn-primary" >
+                            <button type="submit" class="btn btn-primary">
                                 ADD
                             </button>
                             <button type="button" class="btn btn-primary">
@@ -113,19 +113,28 @@
 
                             {{--showing marker pcs and marker length from database to update--}}
                             @foreach($db  as $markerPcs)
-                                <tr>
-                                    <td>{{$markerPcs["MarkerPcs"]}}</td>
-                                    <td>{{$markerPcs["markerLengthInMeter"]}}</td>
-                                    <td><input type="text" class="form-control" id="mock up"
-                                               placeholder=""></td>
-                                    <td>
-                                        <button type="submit" class="btn btn-primary">Update</button>
-                                    </td>
-                                    <td>
-                                        <button type="submit" class="btn btn-primary">Delete</button>
-                                    </td>
-                                </tr>
+                                <form action="/recheck/cad/updateMarkerLength" method="post">
+                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+
+                                    <tr>
+                                        <td>{{$markerPcs["MarkerPcs"]}}</td>
+                                        <td>{{$markerPcs["markerLengthInMeter"]}}</td>
+                                        <input type="hidden" name="hiddenMarkerPcs" value={{$markerPcs["MarkerPcs"]}}>
+                                        <input type="hidden" name="hiddenMarkerLength"
+                                               value={{$markerPcs["markerLengthInMeter"]}}>
+                                        <td><input type="text" class="form-control" name="updateMarkerLength"
+                                                   placeholder=""></td>
+                                        <td>
+                                            <button type="submit" class="btn btn-primary">Update</button>
+                                        </td>
+                                        <td>
+                                            <button type="submit" class="btn btn-primary">Delete</button>
+                                        </td>
+                                    </tr>
+
+                                </form>
                             @endforeach
+
 
                             </tbody>
                         </table>

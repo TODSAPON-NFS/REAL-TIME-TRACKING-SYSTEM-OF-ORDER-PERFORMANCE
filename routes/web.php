@@ -53,6 +53,7 @@ Route::post('/mu/CuttingMistake', 'orderToCutMuController@postCuttingMistake');
 //cad input
 Route::get('/recheck/cad', 'RecheckCadController@show');
 Route::post('/recheck/cad/addMarker', 'RecheckCadController@addMarker');
+Route::post('/recheck/cad/updateMarkerLength', 'RecheckCadController@updateMarkerLength');
 
 //fabric input
 Route::get('/recheck/fabric', function () {

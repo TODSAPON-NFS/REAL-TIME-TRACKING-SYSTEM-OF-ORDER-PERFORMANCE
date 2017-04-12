@@ -16,7 +16,9 @@ class CreateRecheckFabricTable extends Migration
         Schema::create('recheck_fabrics', function (Blueprint $table) {
             $table->unsignedInteger('id')->primary();
             $table->double('Shrinkage', 15, 8)->default(0.0);
+            $table->double('ShrinkageOutput', 15, 8)->default(0.0);
             $table->double('Bowling', 15, 8)->default(0.0);
+            $table->double('BowlingOutput', 15, 8)->default(0.0);
             $table->double('FabricFault', 15, 8)->default(0.0);
             $table->timestamps();
             $table->foreign('id')->references('id')->on('rechecks');
