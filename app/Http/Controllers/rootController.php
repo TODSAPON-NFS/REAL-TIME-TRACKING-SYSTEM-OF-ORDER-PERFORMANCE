@@ -75,6 +75,10 @@ class rootController extends Controller
             $dbstore->id = $key;
             $dbstore->save();
 
+            $dbstore = new recheck_cad;
+            $dbstore->id = $key;
+            $dbstore->save();
+
              //storing to session to access in every page
             $request->session()->put('id', $dbvar -> id);
             $request->session()->put('buyer', $dbvar -> Buyer);
@@ -107,6 +111,17 @@ class rootController extends Controller
             $db->ExtraFabric = $extraFabric;
             $db->ExcessMonitoring = $shortExcess;
         }
+        //endcalculating
+        
+        //for calculating and saving result in recheck
+        $db = recheck::find($key);
+        $cad = recheck_cad::find($key);
+        $fabric = recheck_fabric::find($key);
+
+        $db->MarkerLengthInYard = $db->markerLengthInMeter*1.09361;
+        $db->FabricRequired = $db->LayLength * $cad->Piles;
+        $db->Totalfabric =  $db->FabricRequired + $fabric->FabricFaultOutput;
+
         //endcalculating
 
         $request["excessMonitor"] = $db->ExcessMonitoring;

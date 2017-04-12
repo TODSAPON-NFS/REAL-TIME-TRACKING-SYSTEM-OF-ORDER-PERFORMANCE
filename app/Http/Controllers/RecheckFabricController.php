@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\recheck_fabric;
+use App\recheck;
 use Illuminate\Http\Request;
 
 class RecheckFabricController extends Controller
@@ -30,21 +31,31 @@ class RecheckFabricController extends Controller
     {
         $id = $request->session()->get('id');
         $dbvar = recheck_fabric::find($id);
+        $mainDb = recheck::find($id);
 
         $shrinkage = $request["shrinkage"];
         if($request["submit"] == 1)
         {
-            $dbvar->Shrinkage = $dbvar->Shrinkage + $shrinkage;
-            $dbvar->ShrinkageOutput = 
+            $dbvar->Shrinkage = $shrinkage;
+            if($mainDb->MarkerLengthInYard != 0)
+            {
+                $dbvar->ShrinkageOutput = -(100*$shrinkage)/($mainDb->MarkerLengthInYard);
+                $mainDb->LayLength = $mainDb->MarkerLengthInYard+$dbvar->ShrinkageOutput+$dbvar->BowlingOutput+0.0218723;
+            }
+          
+
         }
         else{
-            $dbvar->Shrinkage = $dbvar->Shrinkage - $shrinkage;
+            $dbvar->Shrinkage = $shrinkage;
+             if($mainDb->MarkerLengthInYard != 0)
+            {
+                $dbvar->ShrinkageOutput = (100*$shrinkage)/($mainDb->MarkerLengthInYard);
+                $mainDb->LayLength = $mainDb->MarkerLengthInYard+$dbvar->ShrinkageOutput+$dbvar->BowlingOutput+0.0218723;
+            }
         } 
 
         if($dbvar->Shrinkage <= 0)
             $dbvar->Shrinkage = 0;
-
-        
 
         $dbvar->save();
 
@@ -66,10 +77,13 @@ class RecheckFabricController extends Controller
     {
         $id = $request->session()->get('id');
         $dbvar = recheck_fabric::find($id);
+          $mainDb = recheck::find($id);
 
         $bowling = $request["bowling"];
        
-        $dbvar->Bowling = $dbvar->Bowling + $bowling;
+        $dbvar->Bowling = $bowling;
+        if($mainDb->MarkerLengthInYard != 0)
+        $dbvar->BowlingOutput = (100*$bowling)/($mainDb->MarkerLengthInYard*5);
 
         $dbvar->save();
 
@@ -92,10 +106,14 @@ class RecheckFabricController extends Controller
    
         $id = $request->session()->get('id');
         $dbvar = recheck_fabric::find($id);
+         $mainDb = recheck::find($id);
 
         $fault = $request["fault"];
        
         $dbvar->FabricFault = $fault;
+
+        if($mainDb->FabricRequired != 0)
+        $dbvar->FabricFaultOutput = (100*$fault)/$mainDb->FabricRequired;
 
         $dbvar->save();
 
