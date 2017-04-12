@@ -24,6 +24,7 @@
                             <option>CAD</option>
                             <option>Store</option>
                             <option>MU</option>
+                            <option>Fabric</option>
                         </select>
                     </div>
                     <div class="form-group">

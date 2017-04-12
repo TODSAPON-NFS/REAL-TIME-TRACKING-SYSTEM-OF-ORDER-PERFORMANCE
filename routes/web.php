@@ -51,9 +51,7 @@ Route::post('/mu/CuttingMistake', 'orderToCutMuController@postCuttingMistake');
 //recheck with extra booking
 
 //cad input
-Route::get('/recheck/cad', function () {
-    return view('Recheck with extra booking.cad');
-});
+Route::get('/recheck/cad', 'RecheckCadController@show');
 
 //fabric input
 Route::get('/recheck/fabric', function () {

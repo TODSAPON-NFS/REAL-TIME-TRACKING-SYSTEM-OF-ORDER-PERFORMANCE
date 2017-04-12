@@ -15,13 +15,23 @@ class CoverController extends Controller
     {
         $dept = $request->session()->get('dept');
 
-        if ($request["orderToCut"]) {
+        if ($request["orderToCut"] == "orderToCut") {
             if ($dept == 'Merchandising')
                 return redirect()->action('orderToCutMarchantController@view');
             else if ($dept == 'CAD')
                 return redirect()->action('orderToCutCadController@showCad') ;
             else if ($dept == 'MU')
                 return redirect()->action('orderToCutMuController@showMu') ;
+        }
+
+        else if($request["recheck"] == "recheck"){
+
+            if ($dept == 'CAD')
+                return redirect()->action('RecheckCadController@show');
+           /* else if ($dept == 'Fabric')
+                return redirect()->action('orderToCutCadController@showCad') ;
+            else if ($dept == 'MU')
+                return redirect()->action('orderToCutMuController@showMu') ;*/
         }
 
         //echo $request["orderToCut"];

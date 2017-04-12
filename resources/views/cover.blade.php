@@ -40,7 +40,7 @@
             <div class="col-sm-2"></div>
         </div>
 
-        <div class="row margin" >
+        <div class="row margin">
             <div class="col-sm-4"></div>
             <div class="col-sm-4">
                 <form action="cover/validate" method="post">
@@ -48,7 +48,7 @@
                     <button type="submit" class="btn btn-primary btn-block" name="orderToCut" value="orderToCut">
                         Order To Cut
                     </button>
-                    <button type="submit" class="btn btn-primary btn-block">
+                    <button type="submit" class="btn btn-primary btn-block" name="recheck" value="recheck">
                         Recheck with Extra booking
                     </button>
                     <button type="submit" class="btn btn-primary btn-block">
