@@ -56,6 +56,8 @@ Route::post('/recheck/cad/addMarker', 'RecheckCadController@addMarker');
 Route::post('/recheck/cad/updateMarkerLength', 'RecheckCadController@updateMarkerLength');
 Route::post('/recheck/cad/updatePiles', 'RecheckCadController@updatePiles');
 Route::post('/recheck/cad/updateMarkerPcs', 'RecheckCadController@updatemarkerPcs');
+Route::post('/recheck/cad/uploadFile', 'RecheckCadController@uploadFile');
+
 
 //fabric input
 Route::get('/recheck/fabric', 'RecheckFabricController@show');

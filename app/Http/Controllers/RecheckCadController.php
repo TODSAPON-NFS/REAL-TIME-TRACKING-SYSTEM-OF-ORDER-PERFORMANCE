@@ -79,5 +79,20 @@ class RecheckCadController extends Controller
         return redirect()->action('RecheckCadController@show');
     }
 
+    public function uploadFile(Request $request){
+
+        $sel1=$request['sel1'];
+        $file = $request->file('userFile');
+        $destinationPath = 'files';
+        return 'File Name: '.$file->getClientOriginalExtension();
+        
+        // if ($sel1!="") {
+        //     # code...
+
+        //     return $sel1;
+        // }
+        // return "OK BOSS";
+        // return redirect()->action('RecheckCadController@show');
+    }
 
 }
