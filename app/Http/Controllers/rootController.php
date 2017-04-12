@@ -69,6 +69,7 @@ class rootController extends Controller
        // echo $key;
 
 
+        //return redirect()->action('CoverController@viewCover')->with(array('inputs' => $request));
         return view('cover')->with(array('inputs' => $request));
     }
 }

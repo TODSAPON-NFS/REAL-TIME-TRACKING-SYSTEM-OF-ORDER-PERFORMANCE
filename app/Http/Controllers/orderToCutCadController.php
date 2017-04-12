@@ -4,14 +4,26 @@ namespace App\Http\Controllers;
 
 use App\ordertocut_cad;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class orderToCutCadController extends Controller
 {
     //
-    public function showCad(){
-    	$dbvar = ordertocut_cad::find(1);
-    	return view('order to cut.cad');
+    public function showCad(Request $request){
+        $id = $request->session()->get('id');
+        $dbvar = ordertocut_cad::find($id);
+        $items = [
+            "id" => $id,
+            "CuttingWastage" => $dbvar->CuttingWastage,
+            "ExtraLoading" => $dbvar->ExtraLoading,
+            "RelaxingShrinkage" => $dbvar->RelaxingShrinkage,
+            "WashingWastage" => $dbvar->WashingWastage,
+            "buyer" => $request->session()->get('buyer'),
+            "orderNo" => $request->session()->get('orderNo'),
+            "color" => $request->session()->get('color'),
+            "item" => $request->session()->get('item'),
+            "output" => $dbvar -> Output
+        ];
+    	return view('order to cut.cad') -> with('items', $items);
     }
 
     public function UpdateCad(Request $request){
@@ -23,7 +35,8 @@ class orderToCutCadController extends Controller
 		    'WashingWastage' => 'nullable|numeric',
 		]);
 
-    	$dbvar = ordertocut_cad::find(1);
+        $id = $request->session()->get('id');
+    	$dbvar = ordertocut_cad::find($id);
 
     	if($request["CuttingWastage"]){
     		$dbvar->CuttingWastage = $request["CuttingWastage"];
@@ -41,6 +54,7 @@ class orderToCutCadController extends Controller
     	$dbvar->Output = $dbvar->CuttingWastage + $dbvar->ExtraLoading + $dbvar->RelaxingShrinkage + $dbvar->WashingWastage;
     	$dbvar->save();
 
-    	return view('order to cut.cad');
+        return redirect()->action('orderToCutCadController@showCad');
+    	//return view('orderToCutCadController@showCad');
     }
 }
