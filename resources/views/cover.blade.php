@@ -19,12 +19,12 @@
                     <tbody>
                     <tr>
                         <td>Buyer : {{$inputs->buyer}}</td>
-                        <td>Short / Excess monitoring : {{$inputs->excessMonitor}}</td>
+                        <td>Short / Excess monitoring : {{$inputs->excessMonitor}} %</td>
                     </tr>
                     <tr>
 
                         <td>Item : {{$inputs->item}}</td>
-                        <td>Extra booking : 20%</td>
+                        <td>Extra booking : {{$inputs->extraBooking}} %</td>
                     </tr>
                     <tr>
                         <td>Color : {{$inputs->color}}</td>
