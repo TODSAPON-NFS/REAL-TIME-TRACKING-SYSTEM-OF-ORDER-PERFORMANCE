@@ -22,9 +22,11 @@ class rootController extends Controller
         if (empty($request["buyer"]) || empty($request["order"]) || empty($request["color"]) || empty($request["item"]))
             return view('root_inputs')->with('invalid', 'Please Enter All Fields');
 
-
+       
         $db = ordertocut::where('Buyer', '=', $request["buyer"])->where('OrderNo', '=', $request["order"])
             ->where('Color', '=', $request["color"])->where('Item', '=', $request["item"])->get();
+        
+        $key = $db[0]->id;
 
         if (empty($db[0])) {
             //save in order to cut database and get the id
@@ -54,11 +56,8 @@ class rootController extends Controller
             $dbstore = new ordertocut_cad;
             $dbstore->id = $key;
             $dbstore->save();
-
-
         }
-
-        $key = $db[0]->id;
+        
         //storing to session to access in every page
         $request->session()->put('id', $db[0] -> id);
         $request->session()->put('buyer', $db[0] -> Buyer);
