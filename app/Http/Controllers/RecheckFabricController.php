@@ -35,7 +35,7 @@ class RecheckFabricController extends Controller
         if($request["submit"] == 1)
         {
             $dbvar->Shrinkage = $dbvar->Shrinkage + $shrinkage;
-            $dbvar->ShrinkageOutput = 
+            //$dbvar->ShrinkageOutput = 
         }
         else{
             $dbvar->Shrinkage = $dbvar->Shrinkage - $shrinkage;
