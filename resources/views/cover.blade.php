@@ -60,5 +60,43 @@
             </div>
         </div>
 
+        <!-- CAD 1 input -->
+        <div class="row margin">
+            <h4 align="center"><i>Download File: </i></h4>
+            <form class="form-horizontal">
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-4">
+                            <select class="form-control" id="sel1">
+                                <option selected disabled>Select a Marker pcs</option>
+
+                                {{--?showing marker pcs from database--}}
+                                @foreach($markerPcs  as $markerPc)
+                                    @if($markerPc != null)
+                                        <option>{{$markerPc["MarkerPcs"]}}</option>
+                                    @endif
+                                @endforeach
+
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4"></div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-4"></div>
+
+                        <div class="col-sm-4">
+                            <button type="submit" class="btn btn-primary btn-block">Download</button>
+                        </div>
+                        <div class="col-sm-4"></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
     </div>
 @endsection

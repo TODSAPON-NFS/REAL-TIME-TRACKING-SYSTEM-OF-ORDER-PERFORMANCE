@@ -126,7 +126,11 @@ class rootController extends Controller
 
         $request["excessMonitor"] = $db->ExcessMonitoring;
 
-         return view('cover')->with(array('inputs' => $request));
+        $marker = recheck_cad::where('id', '=', $key) ->get();
+
+        //echo $marker;
+
+         return view('cover')->with(array('inputs' => $request)) -> with('markerPcs', $marker);
     }
 
 }
