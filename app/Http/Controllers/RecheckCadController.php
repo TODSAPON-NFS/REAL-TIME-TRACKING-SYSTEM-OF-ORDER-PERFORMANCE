@@ -8,6 +8,8 @@ class RecheckCadController extends Controller
 {
     public function show(Request $request)
     {
+
+
         return view('Recheck with extra booking.cad');
     }
 }
