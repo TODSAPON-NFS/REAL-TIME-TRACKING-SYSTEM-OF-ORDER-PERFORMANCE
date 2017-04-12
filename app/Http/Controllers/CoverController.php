@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 
 class CoverController extends Controller
 {
-    public function viewCover()
+    public function viewCover(Request $request)
     {
-        //return view('cover')->with(array('inputs'=>$request));
+       // return view('cover')->with(array('inputs'=>$request));
     }
 
     public function redirect(Request $request)

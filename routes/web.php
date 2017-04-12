@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('/','HomeController@home');
-Route::get('/logout','HomeController@logout');
+Route::get('/', 'HomeController@home');
+Route::get('/logout', 'HomeController@logout');
 Route::post('/login', 'HomeController@check');
 
 // *****
@@ -22,18 +22,16 @@ Route::post('/login', 'HomeController@check');
 Route::post('/root/postCreateDb', 'rootController@postCreateDb');
 Route::post('root/cover/validate', 'CoverController@redirect');
 
-// Route::get('/cover', function () {
-//     return view('cover');
-// });
+//Route::get('/cover', 'CoverController@viewCover');
 
 // *****
 //Order to cut merchant inputs
 //******
-Route::get('/order-to-cut/merchant',  'orderToCutMarchantController@view');
-Route::post('/order-to-cut/merchant/update',  'orderToCutMarchantController@updateData');
+Route::get('/order-to-cut/merchant', 'orderToCutMarchantController@view');
+Route::post('/order-to-cut/merchant/update', 'orderToCutMarchantController@updateData');
 
 //CAD input
-Route::get('/input/CAD','orderToCutCadController@showCad');
+Route::get('/input/CAD', 'orderToCutCadController@showCad');
 Route::post('/input/CAD/update', 'orderToCutCadController@UpdateCad');
 
 //store input

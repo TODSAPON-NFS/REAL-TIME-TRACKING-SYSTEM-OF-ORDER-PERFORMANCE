@@ -89,6 +89,7 @@ class rootController extends Controller
 
         $request["excessMonitor"] = $db->ExcessMonitoring;
 
+        //return redirect()->action('CoverController@viewCover')->with(array('inputs' => $request));
         return view('cover')->with(array('inputs' => $request));
     }
 

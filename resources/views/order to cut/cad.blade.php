@@ -17,20 +17,24 @@
                     <table class="table table-striped">
                         <tbody>
                         <tr>
-                            <td>Buyer : a</td>
-                            <td>Cutting Wastage : 2</td>
+                            <td>Buyer : {{$items["buyer"]}}</td>
+                            <td>Cutting Wastage : {{$items["CuttingWastage"]}}</td>
                         </tr>
                         <tr>
-                            <td>Order No. : 2</td>
-                            <td>Extra Loading : 100</td>
+                            <td>Order No. :  {{$items["orderNo"]}}</td>
+                            <td>Extra Loading : {{$items["ExtraLoading"]}}</td>
                         </tr>
                         <tr>
-                            <td>Color : White</td>
-                            <td>Relaxing Shrinkage : 100</td>
+                            <td>Color : {{$items["color"]}}</td>
+                            <td>Relaxing Shrinkage : {{$items["RelaxingShrinkage"]}}</td>
                         </tr>
                         <tr>
-                            <td>Item : 12</td>
-                            <td>Washing Wastage : 12</td>
+                            <td>Item : {{$items["item"]}}</td>
+                            <td>Washing Wastage : {{$items["WashingWastage"]}}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>output(u) : {{$items["output"]}}</td>
                         </tr>
                         </tbody>
                     </table>
