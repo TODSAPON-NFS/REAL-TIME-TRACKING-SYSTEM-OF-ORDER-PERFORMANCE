@@ -102,13 +102,10 @@
                  <div class="col-sm-4"></div>
                  <div class="col-sm-4">
                      <form action="/recheck/cad/updateMarkerLength" method="post">
-
                          <input type="hidden" name="_token" value="{{csrf_token()}}">
-
                          <div class="form-group">
                              <select class="form-control" name="selectedMarkerPcs">
                                  <option selected disabled>Select a Marker pcs</option>
-
                                  --}}{{--showing marker pcs from database--}}{{--
                                  @foreach($db  as $markerPcs)
                                      <option>{{$markerPcs["MarkerPcs"]}}</option>
@@ -119,7 +116,6 @@
                              <input type="text" class="form-control" name="updateMarkerLength"
                                     placeholder=""></td>
                          </div>
-
                              <button type="submit" class="btn btn-primary btn-block" name="update" value="update">
                                  Update
                              </button>
@@ -130,10 +126,8 @@
                  </div>
              </div>
          </div>
-
          <div class="col-sm-4"></div>
      </div>
-
      </form>
  </div>--}}
 
