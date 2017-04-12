@@ -19,12 +19,12 @@
                     <table class="table table-striped">
                         <tbody>
                         <tr>
-                            <td>Buyer : a</td>
-                            <td>Order No. : 2</td>
+                            <td>Buyer : {{$items["buyer"]}}</td>
+                            <td>Order No. : {{$items["orderNo"]}}</td>
                         </tr>
                         <tr>
-                            <td>Color : White</td>
-                            <td>Item : 12</td>
+                            <td>Color : {{$items["color"]}}</td>
+                            <td>Item : {{$items["item"]}}</td>
                         </tr>
                         </tbody>
                     </table>
@@ -66,8 +66,12 @@
                                 <div class="col-sm-4">
                                     <select class="form-control" id="sel1">
                                         <option selected disabled>Select a Marker pcs</option>
-                                        <option>500</option>
-                                        <option>100</option>
+
+                                        {{--showing marker pcs from database--}}
+                                        @foreach($db  as $markerPcs)
+                                            <option>{{$markerPcs["MarkerPcs"]}}</option>
+                                        @endforeach
+
                                     </select>
                                 </div>
                             </div>
@@ -105,7 +109,23 @@
                             </tr>
                             </thead>
                             <tbody>
+
                             <tr>
+
+                                {{--showing marker pcs from database--}}
+                                @foreach($db  as $markerPcs)
+                                    <td>500</td>
+                                    <td>10</td>
+                                    <td><input type="text" class="form-control" id="mock up"
+                                               placeholder=""></td>
+                                    <td>
+                                        <button type="submit" class="btn btn-primary">Update</button>
+                                    </td>
+                                    <td>
+                                        <button type="submit" class="btn btn-primary">Delete</button>
+                                    </td>
+                                @endforeach
+
                                 <td>500</td>
                                 <td>10</td>
                                 <td><input type="text" class="form-control" id="mock up"
