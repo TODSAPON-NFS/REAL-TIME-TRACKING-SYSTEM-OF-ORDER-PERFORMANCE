@@ -85,7 +85,7 @@ class RecheckCadController extends Controller
         $file = $request->file('userFile');
         $destinationPath = 'files';
 
-        if ($sel1!="") {
+        if ($sel1!="" && $request->hasFile('userFile')  && $request->file('userFile')->isValid() ) {
             # code...
             $fileName=$sel1.'.'.$file->getClientOriginalExtension();
             $file->move($destinationPath,$fileName);
