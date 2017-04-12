@@ -56,9 +56,10 @@ Route::post('/recheck/cad/addMarker', 'RecheckCadController@addMarker');
 Route::post('/recheck/cad/updateMarkerLength', 'RecheckCadController@updateMarkerLength');
 
 //fabric input
-Route::get('/recheck/fabric', function () {
-    return view('Recheck with extra booking.fabric');
-});
+Route::get('/recheck/fabric', 'RecheckFabricController@show');
+Route::post('/recheck/fabric/shrinkage', 'RecheckFabricController@shrinkage');
+Route::post('/recheck/fabric/bowling', 'RecheckFabricController@bowling');
+Route::post('/recheck/fabric/fault', 'RecheckFabricController@fault');
 
 //order to ship
 

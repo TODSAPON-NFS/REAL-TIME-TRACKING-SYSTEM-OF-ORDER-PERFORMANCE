@@ -19,19 +19,19 @@
                     <table class="table table-striped">
                         <tbody>
                         <tr>
-                            <td>Buyer : a</td>
-                            <td>Shrinkage : 100</td>
+                            <td>Buyer :{{$items["buyer"]}}</td>
+                            <td>Shrinkage : {{$items["shrinkage"]}}</td>
                         </tr>
                         <tr>
-                            <td>Order No. : 2</td>
-                            <td>Bowing : 10</td>
+                            <td>Order No. : {{$items["orderNo"]}}</td>
+                            <td>Bowing : {{$items["bowling"]}}</td>
                         </tr>
                         <tr>
-                            <td>Color : White</td>
-                            <td>Fabric with fault : 1</td>
+                            <td>Color : {{$items["color"]}}</td>
+                            <td>Fabric with fault : {{$items["fabricFault"]}}</td>
                         </tr>
                         <tr>
-                            <td>Item : 12</td>
+                            <td>Item : {{$items["item"]}}</td>
                             <td></td>
                         </tr>
                         </tbody>
@@ -43,16 +43,17 @@
             <!-- Fabric 1 input -->
             <div class="row">
                 <h4 align="center">Shrinkage input :</h4>
-                <form class="form-horizontal">
+                <form class="form-horizontal" action="/recheck/fabric/shrinkage" method="post">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="form-group">
                         <div class="col-sm-4"></div>
                         <div class="col-sm-4">
                             <input type="text" class="form-control" id="input"
-                                   placeholder="Shrinkage">
+                                   placeholder="Shrinkage" name = "shrinkage">
                         </div>
                         <div class="col-sm-2">
-                            <button type="submit" class="btn btn-primary">+</button>
-                            <button type="submit" class="btn btn-primary">-</button>
+                            <button type="submit" name = "submit" class="btn btn-primary" value = "1">+</button>
+                            <button type="submit" name = "submit" class="btn btn-primary" value = "2">-</button>
                         </div>
                         <div class="col-sm-2">
 
@@ -64,12 +65,13 @@
             <!-- Fabric 2 input -->
             <div class="row">
                 <h4 align="center">Bowling input :</h4>
-                <form class="form-horizontal">
+                 <form class="form-horizontal" action="/recheck/fabric/bowling" method="post">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="form-group">
                         <div class="col-sm-4"></div>
                         <div class="col-sm-4">
                             <input type="text" class="form-control" id="input"
-                                   placeholder="Bowling">
+                                   placeholder="Bowling" name = "bowling">
                         </div>
                         <div class="col-sm-2">
                             <button type="submit" class="btn btn-primary">+</button>
@@ -84,12 +86,13 @@
             <!-- Fabric 3 input -->
             <div class="row">
                 <h4 align="center">Fabric with fault input :</h4>
-                <form class="form-horizontal">
+                <form class="form-horizontal" action="/recheck/fabric/fault" method="post">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="form-group">
                         <div class="col-sm-4"></div>
                         <div class="col-sm-4">
                             <input type="text" class="form-control" id="input"
-                                   placeholder="Fabric with fault">
+                                   placeholder="Fabric with fault" name = "fault">
                         </div>
                         <div class="col-sm-2">
                             <button type="submit" class="btn btn-primary">Save</button>
