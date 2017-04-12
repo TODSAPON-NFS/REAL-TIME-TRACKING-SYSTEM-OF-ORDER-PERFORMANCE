@@ -75,6 +75,10 @@ class rootController extends Controller
             $dbstore->id = $key;
             $dbstore->save();
 
+            $dbstore = new recheck_cad;
+            $dbstore->id = $key;
+            $dbstore->save();
+
              //storing to session to access in every page
             $request->session()->put('id', $dbvar -> id);
             $request->session()->put('buyer', $dbvar -> Buyer);
@@ -110,7 +114,7 @@ class rootController extends Controller
         //endcalculating
         
         //for calculating and saving result in recheck
-         $db = recheck::find($key);
+        $db = recheck::find($key);
         $cad = recheck_cad::find($key);
         $fabric = recheck_fabric::find($key);
 

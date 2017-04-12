@@ -37,14 +37,21 @@ class RecheckFabricController extends Controller
         if($request["submit"] == 1)
         {
             $dbvar->Shrinkage = $shrinkage;
-            $dbvar->ShrinkageOutput = -(100*$shrinkage)/($mainDb->MarkerLengthInYard);
-            $mainDb->LayLength = $mainDb->MarkerLengthInYard+$dbvar->ShrinkageOutput+$dbvar->BowlingOutput+0.0218723;
+            if($mainDb->MarkerLengthInYard != 0)
+            {
+                $dbvar->ShrinkageOutput = -(100*$shrinkage)/($mainDb->MarkerLengthInYard);
+                $mainDb->LayLength = $mainDb->MarkerLengthInYard+$dbvar->ShrinkageOutput+$dbvar->BowlingOutput+0.0218723;
+            }
+          
 
         }
         else{
             $dbvar->Shrinkage = $shrinkage;
-            $dbvar->ShrinkageOutput = (100*$shrinkage)/($mainDb->MarkerLengthInYard);
-            $mainDb->LayLength = $mainDb->MarkerLengthInYard-$dbvar->ShrinkageOutput+$dbvar->BowlingOutput+0.0218723;
+             if($mainDb->MarkerLengthInYard != 0)
+            {
+                $dbvar->ShrinkageOutput = (100*$shrinkage)/($mainDb->MarkerLengthInYard);
+                $mainDb->LayLength = $mainDb->MarkerLengthInYard+$dbvar->ShrinkageOutput+$dbvar->BowlingOutput+0.0218723;
+            }
         } 
 
         if($dbvar->Shrinkage <= 0)
@@ -75,6 +82,7 @@ class RecheckFabricController extends Controller
         $bowling = $request["bowling"];
        
         $dbvar->Bowling = $bowling;
+        if($mainDb->MarkerLengthInYard != 0)
         $dbvar->BowlingOutput = (100*$bowling)/($mainDb->MarkerLengthInYard*5);
 
         $dbvar->save();
@@ -104,6 +112,7 @@ class RecheckFabricController extends Controller
        
         $dbvar->FabricFault = $fault;
 
+        if($mainDb->FabricRequired != 0)
         $dbvar->FabricFaultOutput = (100*$fault)/$mainDb->FabricRequired;
 
         $dbvar->save();
