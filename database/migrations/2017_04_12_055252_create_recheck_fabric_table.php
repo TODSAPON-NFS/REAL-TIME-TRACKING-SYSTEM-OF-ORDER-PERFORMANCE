@@ -20,6 +20,7 @@ class CreateRecheckFabricTable extends Migration
             $table->double('Bowling', 15, 8)->default(0.0);
             $table->double('BowlingOutput', 15, 8)->default(0.0);
             $table->double('FabricFault', 15, 8)->default(0.0);
+            $table->double('FabricFaultOutput', 15, 8)->default(0.0);
             $table->timestamps();
             $table->foreign('id')->references('id')->on('rechecks');
         });

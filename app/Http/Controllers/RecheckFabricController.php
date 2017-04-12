@@ -38,13 +38,13 @@ class RecheckFabricController extends Controller
         {
             $dbvar->Shrinkage = $shrinkage;
             $dbvar->ShrinkageOutput = -(100*$shrinkage)/($mainDb->MarkerLengthInYard);
-            $mainDb->LayLength = $mainDb->MarkerLengthInYard+$dbvar->ShrinkageOutput+$dbvar->Bowling+0.0218723;
+            $mainDb->LayLength = $mainDb->MarkerLengthInYard+$dbvar->ShrinkageOutput+$dbvar->BowlingOutput+0.0218723;
 
         }
         else{
             $dbvar->Shrinkage = $shrinkage;
             $dbvar->ShrinkageOutput = (100*$shrinkage)/($mainDb->MarkerLengthInYard);
-            $mainDb->LayLength = $mainDb->MarkerLengthInYard-$dbvar->ShrinkageOutput+$dbvar->Bowling+0.0218723;
+            $mainDb->LayLength = $mainDb->MarkerLengthInYard-$dbvar->ShrinkageOutput+$dbvar->BowlingOutput+0.0218723;
         } 
 
         if($dbvar->Shrinkage <= 0)
@@ -98,10 +98,13 @@ class RecheckFabricController extends Controller
    
         $id = $request->session()->get('id');
         $dbvar = recheck_fabric::find($id);
+         $mainDb = recheck::find($id);
 
         $fault = $request["fault"];
        
         $dbvar->FabricFault = $fault;
+
+        $dbvar->FabricFaultOutput = (100*$fault)/$mainDb->FabricRequired;
 
         $dbvar->save();
 
