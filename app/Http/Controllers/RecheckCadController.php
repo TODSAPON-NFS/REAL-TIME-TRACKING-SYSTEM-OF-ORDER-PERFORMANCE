@@ -84,15 +84,15 @@ class RecheckCadController extends Controller
         $sel1=$request['sel1'];
         $file = $request->file('userFile');
         $destinationPath = 'files';
-        return 'File Name: '.$file->getClientOriginalExtension();
-        
-        // if ($sel1!="") {
-        //     # code...
 
-        //     return $sel1;
-        // }
-        // return "OK BOSS";
-        // return redirect()->action('RecheckCadController@show');
+        if ($sel1!="") {
+            # code...
+            $fileName=$sel1.'.'.$file->getClientOriginalExtension();
+            $file->move($destinationPath,$fileName);
+            return "Uploaded";
+        }
+        return "Fail";
+        //return redirect()->action('RecheckCadController@show');
     }
 
 }
