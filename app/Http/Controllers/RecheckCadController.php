@@ -20,9 +20,24 @@ class RecheckCadController extends Controller
             "item" => $request->session()->get('item')
         ];
 
-        /*foreach ($dbvar as $iid)
-            echo $iid["MarkerPcs"];*/
 
         return view('Recheck with extra booking.cad') ->with('db', $dbvar) ->with('items', $items);
+    }
+
+    public function addMarker(Request $request)
+    {
+        $id = $request->session()->get('id');
+
+        //$markerPcs = $request["addMarkerPcs"];
+
+        if($request["addMarkerPcs"])
+        {
+            $dbstore = new recheck_cad;
+            $dbstore -> id = $id;
+            $dbstore -> MarkerPcs = $request["addMarkerPcs"];
+            $dbstore ->save();
+        }
+
+        return redirect()->action('RecheckCadController@show');
     }
 }

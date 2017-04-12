@@ -37,15 +37,16 @@
             <div class="row">
                 <h4 align="center"> Marker pcs input :</h4>
 
-                <form class="form-horizontal">
+                <form class="form-horizontal" action="/recheck/cad/addMarker" method="post">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="form-group">
                         <div class="col-sm-4"></div>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="input"
+                            <input type="text" class="form-control" name="addMarkerPcs"
                                    placeholder="Marker pcs">
                         </div>
                         <div class="col-sm-4">
-                            <button type="button" class="btn btn-primary">
+                            <button type="submit" class="btn btn-primary" >
                                 ADD
                             </button>
                             <button type="button" class="btn btn-primary">
