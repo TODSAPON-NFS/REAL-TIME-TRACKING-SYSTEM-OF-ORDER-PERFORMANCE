@@ -7,6 +7,9 @@ use App\ordertocut_store;
 use App\ordertocut_mu;
 use App\ordertocut_marchant;
 use App\ordertocut_cad;
+use App\recheck;
+use App\recheck_cad;
+use App\recheck_fabric;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -25,12 +28,22 @@ class rootController extends Controller
        
         $db = ordertocut::where('Buyer', '=', $request["buyer"])->where('OrderNo', '=', $request["order"])
             ->where('Color', '=', $request["color"])->where('Item', '=', $request["item"])->get();
-
-        $key = 0;
+          
+        $db1 = recheck::where('Buyer', '=', $request["buyer"])->where('OrderNo', '=', $request["order"])
+        ->where('Color', '=', $request["color"])->where('Item', '=', $request["item"])->get();
+        
+         $key = 0;
         
         if (empty($db[0])) {
             //save in order to cut database and get the id
             $dbvar = new ordertocut;
+            $dbvar->Buyer = $request["buyer"];
+            $dbvar->OrderNo = $request["order"];
+            $dbvar->Color = $request["color"];
+            $dbvar->Item = $request["item"];
+            $dbvar->save();
+            
+            $dbvar = new recheck;
             $dbvar->Buyer = $request["buyer"];
             $dbvar->OrderNo = $request["order"];
             $dbvar->Color = $request["color"];
@@ -57,7 +70,14 @@ class rootController extends Controller
             $dbstore->id = $key;
             $dbstore->save();
 
-            //For recheck department
+            //for recheck db
+            $dbstore = new recheck_cad;
+            $dbstore->id = $key;
+            $dbstore->save();
+
+            $dbstore = new recheck_fabric;
+            $dbstore->id = $key;
+            $dbstore->save();
 
              //storing to session to access in every page
             $request->session()->put('id', $dbvar -> id);
