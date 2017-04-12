@@ -57,6 +57,8 @@ class rootController extends Controller
             $dbstore->id = $key;
             $dbstore->save();
 
+            //For recheck department
+
              //storing to session to access in every page
             $request->session()->put('id', $dbvar -> id);
             $request->session()->put('buyer', $dbvar -> Buyer);
