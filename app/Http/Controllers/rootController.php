@@ -71,10 +71,6 @@ class rootController extends Controller
             $dbstore->save();
 
             //for recheck db
-            $dbstore = new recheck_cad;
-            $dbstore->id = $key;
-            $dbstore->save();
-
             $dbstore = new recheck_fabric;
             $dbstore->id = $key;
             $dbstore->save();
