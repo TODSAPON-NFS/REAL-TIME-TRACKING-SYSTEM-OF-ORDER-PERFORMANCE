@@ -25,9 +25,9 @@ class rootController extends Controller
        
         $db = ordertocut::where('Buyer', '=', $request["buyer"])->where('OrderNo', '=', $request["order"])
             ->where('Color', '=', $request["color"])->where('Item', '=', $request["item"])->get();
-        
-        $key = $db[0]->id;
 
+        $key = 0;
+        
         if (empty($db[0])) {
             //save in order to cut database and get the id
             $dbvar = new ordertocut;
@@ -56,16 +56,25 @@ class rootController extends Controller
             $dbstore = new ordertocut_cad;
             $dbstore->id = $key;
             $dbstore->save();
+
+             //storing to session to access in every page
+            $request->session()->put('id', $dbvar -> id);
+            $request->session()->put('buyer', $dbvar -> Buyer);
+            $request->session()->put('orderNo', $dbvar -> OrderNo);
+            $request->session()->put('color', $dbvar -> Color);
+            $request->session()->put('item', $dbvar -> Item);
         }
-        
-        //storing to session to access in every page
-        $request->session()->put('id', $db[0] -> id);
-        $request->session()->put('buyer', $db[0] -> Buyer);
-        $request->session()->put('orderNo', $db[0] -> OrderNo);
-        $request->session()->put('color', $db[0] -> Color);
-        $request->session()->put('item', $db[0] -> Item);
- 
-        
+        else {
+             $key = $db[0]->id;
+              //storing to session to access in every page
+            $request->session()->put('id', $db[0] -> id);
+            $request->session()->put('buyer', $db[0] -> Buyer);
+            $request->session()->put('orderNo', $db[0] -> OrderNo);
+            $request->session()->put('color', $db[0] -> Color);
+            $request->session()->put('item', $db[0] -> Item);
+        }
+       
+       
         //For calculating getting and saving result
         $db = ordertocut::find($key);
         $cad = ordertocut_cad::find($key);
