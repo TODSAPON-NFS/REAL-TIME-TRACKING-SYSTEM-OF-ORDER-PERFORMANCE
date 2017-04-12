@@ -110,12 +110,11 @@
                             </thead>
                             <tbody>
 
-                            <tr>
-
-                                {{--showing marker pcs from database--}}
-                                @foreach($db  as $markerPcs)
-                                    <td>500</td>
-                                    <td>10</td>
+                            {{--showing marker pcs and marker length from database to update--}}
+                            @foreach($db  as $markerPcs)
+                                <tr>
+                                    <td>{{$markerPcs["MarkerPcs"]}}</td>
+                                    <td>{{$markerPcs["markerLengthInMeter"]}}</td>
                                     <td><input type="text" class="form-control" id="mock up"
                                                placeholder=""></td>
                                     <td>
@@ -124,33 +123,9 @@
                                     <td>
                                         <button type="submit" class="btn btn-primary">Delete</button>
                                     </td>
-                                @endforeach
+                                </tr>
+                            @endforeach
 
-                                <td>500</td>
-                                <td>10</td>
-                                <td><input type="text" class="form-control" id="mock up"
-                                           placeholder=""></td>
-                                <td>
-                                    <button type="submit" class="btn btn-primary">Update</button>
-                                </td>
-                                <td>
-                                    <button type="submit" class="btn btn-primary">Delete</button>
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <td>500</td>
-                                <td>10</td>
-                                <td><input type="text" class="form-control" id="mock up"
-                                           placeholder=""></td>
-                                <td>
-                                    <button type="submit" class="btn btn-primary">Update</button>
-                                </td>
-                                <td>
-                                    <button type="submit" class="btn btn-primary">Delete</button>
-                                </td>
-
-                            </tr>
                             </tbody>
                         </table>
                     </div>
@@ -171,32 +146,23 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>500</td>
-                                <td>10</td>
-                                <td><input type="text" class="form-control" id="mock up"
-                                           placeholder=""></td>
-                                <td>
-                                    <button type="submit" class="btn btn-primary">Update</button>
-                                </td>
-                                <td>
-                                    <button type="submit" class="btn btn-primary">Delete</button>
-                                </td>
 
-                            </tr>
-                            <tr>
-                                <td>500</td>
-                                <td>10</td>
-                                <td><input type="text" class="form-control" id="mock up"
-                                           placeholder=""></td>
-                                <td>
-                                    <button type="submit" class="btn btn-primary">Update</button>
-                                </td>
-                                <td>
-                                    <button type="submit" class="btn btn-primary">Delete</button>
-                                </td>
+                            {{--showing marker pcs and piles from database to update--}}
+                            @foreach($db  as $markerPcs)
+                                <tr>
+                                    <td>{{$markerPcs["MarkerPcs"]}}</td>
+                                    <td>{{$markerPcs["Piles"]}}</td>
+                                    <td><input type="text" class="form-control" id="mock up"
+                                               placeholder=""></td>
+                                    <td>
+                                        <button type="submit" class="btn btn-primary">Update</button>
+                                    </td>
+                                    <td>
+                                        <button type="submit" class="btn btn-primary">Delete</button>
+                                    </td>
+                                </tr>
+                            @endforeach
 
-                            </tr>
                             </tbody>
                         </table>
                     </div>
@@ -217,30 +183,22 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>500</td>
-                                <td><input type="text" class="form-control" id="mock up"
-                                           placeholder=""></td>
-                                <td>
-                                    <button type="submit" class="btn btn-primary">Update</button>
-                                </td>
-                                <td>
-                                    <button type="submit" class="btn btn-primary">Delete</button>
-                                </td>
 
-                            </tr>
-                            <tr>
-                                <td>500</td>
-                                <td><input type="text" class="form-control" id="mock up"
-                                           placeholder=""></td>
-                                <td>
-                                    <button type="submit" class="btn btn-primary">Update</button>
-                                </td>
-                                <td>
-                                    <button type="submit" class="btn btn-primary">Delete</button>
-                                </td>
+                            {{--showing marker pcs and marker length from database to update--}}
+                            @foreach($db  as $markerPcs)
+                                <tr>
+                                    <td>{{$markerPcs["MarkerPcs"]}}</td>
+                                    <td><input type="text" class="form-control" id="mock up"
+                                               placeholder=""></td>
+                                    <td>
+                                        <button type="submit" class="btn btn-primary">Update</button>
+                                    </td>
+                                    <td>
+                                        <button type="submit" class="btn btn-primary">Delete</button>
+                                    </td>
+                                </tr>
+                            @endforeach
 
-                            </tr>
                             </tbody>
                         </table>
                     </div>
