@@ -22,6 +22,12 @@ Route::post('/login', 'HomeController@check');
 Route::post('/root/postCreateDb', 'rootController@postCreateDb');
 Route::post('root/cover/validate', 'CoverController@redirect');
 
+//for general users
+Route::get('/search', 'SearchController@show');
+Route::get('/searchResult', 'SearchController@viewSearchResult');
+Route::post('/searchResult', 'SearchController@search');
+Route::post('/search/result', 'SearchController@searchRedirect');
+
 //Route::get('/cover', 'CoverController@viewCover');
 
 // *****
