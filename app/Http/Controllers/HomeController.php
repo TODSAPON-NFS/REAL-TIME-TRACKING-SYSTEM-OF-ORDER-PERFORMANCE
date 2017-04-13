@@ -18,19 +18,19 @@ class HomeController extends Controller
         $dept = $request["department"];
         $password = $request["password"];
 
-        $flag = 1;
+        $flag = 0;
 
-        /*if ($dept == "Merchandising" && $password == "a") {
+        if ($dept == "Merchandising" && $password == "mer") {
             $flag = 1;
-        } else if ($dept == "CAD" && $password == "b") {
+        } else if ($dept == "CAD" && $password == "cd") {
             $flag = 1;
-        } else if ($dept == "Store" && $password == "c") {
+        } else if ($dept == "Store" && $password == "str") {
             $flag = 1;
-        } else if ($dept == "MU" && $password == "d") {
+        } else if ($dept == "MU" && $password == "mu") {
             $flag = 1;
-        } else if ($dept == "Fabric" && $password == "e") {
+        } else if ($dept == "Fabric" && $password == "fbrc") {
             $flag = 1;
-        }*/
+        }
 
         if ($flag == 0) {
             return redirect()->action('HomeController@home');
