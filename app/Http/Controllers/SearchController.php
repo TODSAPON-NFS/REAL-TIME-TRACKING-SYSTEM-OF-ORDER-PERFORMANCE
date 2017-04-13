@@ -8,6 +8,8 @@ use  App\ordertocut_marchant;
 use  App\ordertocut_cad;
 use  App\ordertocut_store;
 use  App\ordertocut_mu;
+use  App\recheck_cad;
+use App\recheck_fabric;
 
 class SearchController extends Controller
 {
@@ -75,8 +77,8 @@ class SearchController extends Controller
                 "storeOutput" => $dbvar2->Output,
 
                 //extra fabric + excess monitoring
-                "extraFabric" => $dbvar3->ExtraFabric,
-                "shortMonitoring" => $dbvar3->ExcessMonitoring,
+                "extraFabric" => $dbvar1->Output - $dbvar->MockUpOutput - $dbvar2->Output,
+                "shortMonitoring" => $dbvar4->Output - ($dbvar1->Output - $dbvar->MockUpOutput - $dbvar2->Output),
 
                 //mu
                 "IncreasedConsumption" => $dbvar4->IncreasedConsumption,
@@ -88,15 +90,35 @@ class SearchController extends Controller
                 "muOutput" => $dbvar4->Output
             ];
 
-            // echo $items[0]["OrderQuantity"] ;
-            // echo $dbvar -> OrderQuantity;
-            // echo $items["id"];
-            //echo $id;
 
             return view('order to cut.general')->with('items', $items);
-            //return view('order to cut.general');
+        } else if ($request["recheck"]) {
+            $id = $request->session()->get('id');
+            $dbvar = recheck_cad::where('id', '=', $id)->get();
+            $dbvar1 = recheck_fabric::find($id);
+
+            $sumMP = 0;
+
+            foreach ($dbvar as $var)
+            {
+                $sumMP += $var["MarkerPcs"];
+            }
+
+            $items = [
+                "id" => $id,
+                "buyer" => $request->session()->get('buyer'),
+                "orderNo" => $request->session()->get('orderNo'),
+                "color" => $request->session()->get('color'),
+                "item" => $request->session()->get('item'),
+                "Shrinkage" => $dbvar1->Shrinkage,
+                "Bowling" => $dbvar1->Bowling,
+                "FabricFault" => $dbvar1 -> FabricFault,
+                "sumMp" => $sumMP
+
+            ];
+
+            return view('Recheck with extra booking.general')->with('items', $items)->with('db', $dbvar);
         }
-        //else if ($request["recheck"])
 
     }
 }
