@@ -104,18 +104,35 @@ class SearchController extends Controller
                 $sumMP += $var["MarkerPcs"];
             }
 
+            //getting session data
+            $buyer = $request->session()->get('buyer');
+            $orderNo = $request->session()->get('orderNo');
+            $color  = $request->session()->get('color');
+            $item = $request->session()->get('item');
+
+            //getting the value of f from order to cut merchant
+            $orderToCutM1 = ordertocut::where('Buyer', '=', $buyer ) -> where('OrderNo', '=', $orderNo)
+                ->where('Color', '=', $color) -> where('Item', '=', $item)->first();
+            $f = ordertocut_marchant::find($orderToCutM1["id"]);
+
             $items = [
                 "id" => $id,
-                "buyer" => $request->session()->get('buyer'),
-                "orderNo" => $request->session()->get('orderNo'),
-                "color" => $request->session()->get('color'),
-                "item" => $request->session()->get('item'),
+                "buyer" => $buyer,
+                "orderNo" => $orderNo,
+                "color" => $color,
+                "item" => $item,
                 "Shrinkage" => $dbvar1->Shrinkage,
                 "Bowling" => $dbvar1->Bowling,
                 "FabricFault" => $dbvar1 -> FabricFault,
-                "sumMp" => $sumMP
+                "sumMp" => $sumMP,
+                "F" => $f["FabricNeed"]
 
             ];
+
+
+
+
+           // echo $f;
 
             return view('Recheck with extra booking.general')->with('items', $items)->with('db', $dbvar);
         }
