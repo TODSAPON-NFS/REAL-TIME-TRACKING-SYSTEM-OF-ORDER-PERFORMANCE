@@ -49,9 +49,7 @@
                             <button type="submit" class="btn btn-primary">
                                 ADD
                             </button>
-                            <button type="button" class="btn btn-primary">
-                                EDIT
-                            </button>
+                            <a href="#editMarkerPcs" class="btn btn-primary" role="button">Edit</a>
                         </div>
                     </div>
                 </form>
@@ -59,7 +57,8 @@
                 <!-- CAD 1 input -->
                 <div class="row">
                     <h4 align="center"><i>Upload File: </i></h4>
-                    <form class="form-horizontal" action="/recheck/cad/uploadFile" method="post" enctype="multipart/form-data">
+                    <form class="form-horizontal" action="/recheck/cad/uploadFile" method="post"
+                          enctype="multipart/form-data">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group">
                             <div class="row">
@@ -83,7 +82,9 @@
                             <div class="row">
                                 <div class="col-sm-4"></div>
                                 <div class="col-sm-4">
-                                    <label class="btn btn-default btn-file"> <input type="file" hidden name="userFile" id="userFile" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+                                    <label class="btn btn-default btn-file"> <input type="file" hidden name="userFile"
+                                                                                    id="userFile"
+                                                                                    accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
                                     </label>
                                 </div>
                                 <div class="col-sm-3">
@@ -95,41 +96,6 @@
                     </form>
                 </div>
 
-
-            {{-- <!-- CAD 1 input -->
-             <div class="row">
-                 <h4 align="center"><i>Marker Length (in meters) input : </i></h4>
-                 <div class="col-sm-4"></div>
-                 <div class="col-sm-4">
-                     <form action="/recheck/cad/updateMarkerLength" method="post">
-                         <input type="hidden" name="_token" value="{{csrf_token()}}">
-                         <div class="form-group">
-                             <select class="form-control" name="selectedMarkerPcs">
-                                 <option selected disabled>Select a Marker pcs</option>
-                                 --}}{{--showing marker pcs from database--}}{{--
-                                 @foreach($db  as $markerPcs)
-                                     <option>{{$markerPcs["MarkerPcs"]}}</option>
-                                 @endforeach
-                             </select>
-                         </div>
-                         <div class="form-group">
-                             <input type="text" class="form-control" name="updateMarkerLength"
-                                    placeholder=""></td>
-                         </div>
-                             <button type="submit" class="btn btn-primary btn-block" name="update" value="update">
-                                 Update
-                             </button>
-                         <button type="submit" class="btn btn-primary btn-block" name="update" value="update">
-                             View All inputs
-                         </button>
-                     </form>
-                 </div>
-             </div>
-         </div>
-         <div class="col-sm-4"></div>
-     </div>
-     </form>
- </div>--}}
 
             <!-- cad 5 input -->
                 <div class="row">
@@ -164,9 +130,6 @@
                                                 Update
                                             </button>
                                         </td>
-                                        <td>
-                                            <button type="submit" class="btn btn-primary">Delete</button>
-                                        </td>
                                     </tr>
 
                                 </form>
@@ -200,7 +163,8 @@
                                         <td>{{$markerPcs["MarkerPcs"]}}</td>
                                         <td>{{$markerPcs["Piles"]}}</td>
 
-                                        <input type="hidden" name="pilesHiddenMarkerPcs" value={{$markerPcs["MarkerPcs"]}}>
+                                        <input type="hidden" name="pilesHiddenMarkerPcs"
+                                               value={{$markerPcs["MarkerPcs"]}}>
                                         <input type="hidden" name="hiddenMarkerpiles"
                                                value={{$markerPcs["Piles"]}}>
 
@@ -208,9 +172,6 @@
                                                    placeholder=""></td>
                                         <td>
                                             <button type="submit" class="btn btn-primary">Update</button>
-                                        </td>
-                                        <td>
-                                            <button type="submit" class="btn btn-primary">Delete</button>
                                         </td>
                                     </tr>
                                 </form>
@@ -224,7 +185,7 @@
 
 
                 <!-- edit option for marker pcs -->
-                <div class="row">
+                <div class="row" id = "editMarkerPcs">
                     <h4 align="center">Edit Marker pcs</h4>
                     <div class="col-sm-3"></div>
                     <div class="col-sm-6">
@@ -241,18 +202,23 @@
                             @foreach($db  as $markerPcs)
                                 <form action="/recheck/cad/updateMarkerPcs" method="post">
                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                <tr>
-                                    <td>{{$markerPcs["MarkerPcs"]}}</td>
-                                    <input type="hidden" name="updateHiddenMarkerPcs" value={{$markerPcs["MarkerPcs"]}}>
-                                    <td><input type="text" class="form-control" name="updateMarkerPcs"
-                                               placeholder=""></td>
-                                    <td>
-                                        <button type="submit" class="btn btn-primary">Update</button>
-                                    </td>
-                                    <td>
-                                        <button type="submit" class="btn btn-primary">Delete</button>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td>{{$markerPcs["MarkerPcs"]}}</td>
+                                        <input type="hidden" name="updateHiddenMarkerPcs"
+                                               value={{$markerPcs["MarkerPcs"]}}>
+                                        <td><input type="text" class="form-control" name="updateMarkerPcs"
+                                                   placeholder=""></td>
+                                        <td>
+                                            <button type="submit" class="btn btn-primary" name="submit" value="update">
+                                                Update
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button type="submit" class="btn btn-primary" name="submit" value="delete">
+                                                Delete
+                                            </button>
+                                        </td>
+                                    </tr>
                                 </form>
                             @endforeach
 

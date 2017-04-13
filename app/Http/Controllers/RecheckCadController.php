@@ -60,7 +60,7 @@ class RecheckCadController extends Controller
 
         }
 
-       // echo $request["pilesHiddenMarkerPcs"] . " " . $request["hiddenMarkerpiles"] . " " . $request["updatePiles"];
+        // echo $request["pilesHiddenMarkerPcs"] . " " . $request["hiddenMarkerpiles"] . " " . $request["updatePiles"];
 
         return redirect()->action('RecheckCadController@show');
     }
@@ -69,9 +69,11 @@ class RecheckCadController extends Controller
     {
         $id = $request->session()->get('id');
 
-        if ($request["updateHiddenMarkerPcs"] != "" && $request["updateMarkerPcs"] != "" ) {
+        if ($request["updateHiddenMarkerPcs"] != "" && $request["updateMarkerPcs"] != "" && $request["submit"] == "update") {
             recheck_cad::where('id', '=', $id)->where('MarkerPcs', '=', $request["updateHiddenMarkerPcs"])->update(['MarkerPcs' => $request["updateMarkerPcs"]]);
 
+        } else if ($request["updateHiddenMarkerPcs"] != "" && $request["submit"] == "delete") {
+            recheck_cad::where('id', '=', $id)->where('MarkerPcs', '=', $request["updateHiddenMarkerPcs"]) -> delete();
         }
 
         // echo $request["updateHiddenMarkerPcs"] . " " . $request["updateMarkerPcs"];
@@ -79,21 +81,23 @@ class RecheckCadController extends Controller
         return redirect()->action('RecheckCadController@show');
     }
 
-    public function uploadFile(Request $request){
 
-        $sel1=$request['sel1'];
+    public function uploadFile(Request $request)
+    {
+
+        $sel1 = $request['sel1'];
         $file = $request->file('userFile');
         $destinationPath = 'files';
 
-        if ($sel1!="" && $request->hasFile('userFile')  && $request->file('userFile')->isValid() ) {
+        if ($sel1 != "" && $request->hasFile('userFile') && $request->file('userFile')->isValid()) {
             # code...
-            $fileName=$sel1.'.'.$file->getClientOriginalExtension();
-            $uploadSuccess=$file->move($destinationPath,$fileName);
-             if($uploadSuccess){
+            $fileName = $sel1 . '.' . $file->getClientOriginalExtension();
+            $uploadSuccess = $file->move($destinationPath, $fileName);
+            if ($uploadSuccess) {
                 //Make DB query Here.. file name $filename
-                return "Uploaded".$uploadSuccess;
+                return "Uploaded" . $uploadSuccess;
             }
-            
+
         }
         return "Fail";
         //return redirect()->action('RecheckCadController@show');

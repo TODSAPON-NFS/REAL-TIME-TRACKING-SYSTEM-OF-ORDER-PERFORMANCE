@@ -34,7 +34,7 @@
                     <button type="submit" class="btn btn-primary btn-block">
                         Login
                     </button>
-                        <a href="/search"> Search</a>
+                    <a href="/search" class="btn btn-primary btn-block" role="button">Search</a>
 
                 </form>
             </div>
