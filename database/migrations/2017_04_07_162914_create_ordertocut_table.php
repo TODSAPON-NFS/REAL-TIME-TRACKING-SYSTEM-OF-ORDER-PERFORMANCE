@@ -17,9 +17,9 @@ class CreateOrdertocutTable extends Migration
 
             $table->increments('id');
             $table->string('Buyer',50)->nullable(false);
-            $table->integer('OrderNo')->nullable(false);
-            $table->integer('Color')->nullable(false);
-            $table->integer('Item')->nullable(false);
+            $table->string('OrderNo', 50)->nullable(false);
+            $table->string('Color',50)->nullable(false);
+            $table->string('Item',50)->nullable(false);
             $table->double('ExtraFabric', 15, 8)->default(0.0);
             $table->double('ExcessMonitoring', 15, 8)->default(0.0);
             $table->timestamps(); 
