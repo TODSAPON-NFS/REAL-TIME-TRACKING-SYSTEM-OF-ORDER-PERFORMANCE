@@ -16,23 +16,28 @@
                         <tbody>
                         <tr>
                             <td>Buyer : {{$items["buyer"]}}</td>
-                            <td>Increased Consumption: {{$items["IncreasedConsumption"]}}</td>
+                            <td>Increased Consumption: {{$items["IncreasedConsumption"]}}%</td>
                         </tr>
                         <tr>
                             <td>Order No. : {{$items["orderNo"]}}</td>
-                            <td>Fabric Fault : {{$items["FabricFault"]}}</td>
+                            <td>Fabric Fault : {{$items["FabricFault"]}}%</td>
                         </tr>
                         <tr>
                             <td>Color : {{$items["color"]}}</td>
-                            <td> Roll Shortage : {{$items["RollShortage"]}}</td>
+                            <td> Roll Shortage : {{$items["RollShortage"]}}%</td>
                         </tr>
                         <tr>
                             <td>Item : {{$items["item"]}}</td>
-                            <td>Production Damage : {{$items["ProductionDamage"]}}</td>
+                            <td>Production Damage : {{$items["ProductionDamage"]}}%</td>
                         </tr>
                         <tr>
-                            <td>Cutting Mistake : {{$items["UnstableCut"]}}</td>
-                            <td>Unusable Cut Pcs : {{$items["CuttingMistake"]}}</td>
+                            <td>Cutting Mistake : {{$items["CuttingMistake"]}}%</td>
+                            <td>Unusable Cut Pcs : {{$items["UnstableCut"]}}%</td>
+                        </tr>
+
+                        <tr>
+                            <td>Found Loses: {{$items["FoundLosses"]}}%</td>
+                            <td></td>
                         </tr>
                         </tbody>
                     </table>

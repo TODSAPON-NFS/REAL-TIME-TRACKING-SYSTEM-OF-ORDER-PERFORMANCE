@@ -24,11 +24,11 @@
                         </tr>
                         <tr>
                             <td>Color : {{$items["color"]}}</td>
-                            <td>Mock up : {{$items["mockUpInput"]}}</td>
+                            <td>Mock up : {{$items["mockUpInput"]}}%</td>
                         </tr>
                         <tr>
                             <td>Item : {{$items["item"]}}</td>
-                            <td>Output(v) : {{$items["mockUpOutput"]}} </td>
+                            <td>Output(v) : {{$items["mockUpOutput"]}}%</td>
                         </tr>
                         </tbody>
                     </table>

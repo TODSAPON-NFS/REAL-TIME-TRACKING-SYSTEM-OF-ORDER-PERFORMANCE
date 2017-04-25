@@ -24,7 +24,7 @@
                         </tr>
                         <tr>
                             <td>Color : {{$items["color"]}}</td>
-                            <td>Output : {{$items["output"]}}</td>
+                            <td>Fabric Inspection : {{$items["output"]}}%</td>
                         </tr>
                         <tr>
                             <td>Item : {{$items["item"]}}</td>

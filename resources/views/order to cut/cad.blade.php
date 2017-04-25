@@ -18,23 +18,23 @@
                         <tbody>
                         <tr>
                             <td>Buyer : {{$items["buyer"]}}</td>
-                            <td>Cutting Wastage : {{$items["CuttingWastage"]}}</td>
+                            <td>Cutting Wastage : {{$items["CuttingWastage"]}}%</td>
                         </tr>
                         <tr>
                             <td>Order No. :  {{$items["orderNo"]}}</td>
-                            <td>Extra Loading : {{$items["ExtraLoading"]}}</td>
+                            <td>Extra Loading : {{$items["ExtraLoading"]}}%</td>
                         </tr>
                         <tr>
                             <td>Color : {{$items["color"]}}</td>
-                            <td>Relaxing Shrinkage : {{$items["RelaxingShrinkage"]}}</td>
+                            <td>Relaxing Shrinkage : {{$items["RelaxingShrinkage"]}}%</td>
                         </tr>
                         <tr>
                             <td>Item : {{$items["item"]}}</td>
-                            <td>Washing Wastage : {{$items["WashingWastage"]}}</td>
+                            <td>Washing Wastage : {{$items["WashingWastage"]}}%</td>
                         </tr>
                         <tr>
                             <td></td>
-                            <td>output(u) : {{$items["output"]}}</td>
+                            <td>Extra Booking : {{$items["output"]}}%</td>
                         </tr>
                         </tbody>
                     </table>

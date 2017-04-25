@@ -27,11 +27,11 @@
                         </tr>
                         <tr>
                             <td>Color : {{$items["color"]}}</td>
-                            <td>Mock Up Input : {{$items["mockUpInput"]}}</td>
+                            <td>Mock Up Input : {{$items["mockUpInput"]}}%</td>
                         </tr>
                         <tr>
                             <td>Item : {{$items["item"]}}</td>
-                            <td>Mock Up Output : {{$items["mockUpOutput"]}}</td>
+                            <td>Mock Up Output : {{$items["mockUpOutput"]}}%</td>
                         </tr>
                         </tbody>
                     </table>
@@ -49,23 +49,23 @@
                             <tbody>
                             <tr>
                                 <td>Buyer : {{$items["buyer"]}}</td>
-                                <td>Cutting Wastage : {{$items["CuttingWastage"]}}</td>
+                                <td>Cutting Wastage : {{$items["CuttingWastage"]}}%</td>
                             </tr>
                             <tr>
                                 <td>Order No. :  {{$items["orderNo"]}}</td>
-                                <td>Extra Loading : {{$items["ExtraLoading"]}}</td>
+                                <td>Extra Loading : {{$items["ExtraLoading"]}}%</td>
                             </tr>
                             <tr>
                                 <td>Color : {{$items["color"]}}</td>
-                                <td>Relaxing Shrinkage : {{$items["RelaxingShrinkage"]}}</td>
+                                <td>Relaxing Shrinkage : {{$items["RelaxingShrinkage"]}}%</td>
                             </tr>
                             <tr>
                                 <td>Item : {{$items["item"]}}</td>
-                                <td>Washing Wastage : {{$items["WashingWastage"]}}</td>
+                                <td>Washing Wastage : {{$items["WashingWastage"]}}%</td>
                             </tr>
                             <tr>
                                 <td></td>
-                                <td>output(u) : {{$items["output"]}}</td>
+                                <td>Extra Booking : {{$items["output"]}}%</td>
                             </tr>
                             </tbody>
                         </table>
@@ -90,10 +90,11 @@
                         </tr>
                         <tr>
                             <td>Color : {{$items["color"]}}</td>
-                            <td>Output : {{$items["storeOutput"]}}</td>
+                            <td>Fabric Inspection : {{$items["storeOutput"]}}%</td>
                         </tr>
                         <tr>
                             <td>Item : {{$items["item"]}}</td>
+                            <td></td>
                         </tr>
                         </tbody>
                     </table>
@@ -101,8 +102,8 @@
                 <div class="col-sm-3"></div>
             </div>
             <div class="row">
-                <h4 align="center"><i>Extra Fabric : {{$items["extraFabric"]}}  </i></h4>
-                <h4 align="center"><i>Short / excess Monitoring : {{$items["shortMonitoring"]}}  </i></h4>
+                <h4 align="center"><i>Extra Fabric : {{$items["extraFabric"]}}%</i></h4>
+                <h4 align="center"><i>Short / excess Monitoring : {{$items["shortMonitoring"]}}%</i></h4>
             </div>
     </div>
 
@@ -115,27 +116,27 @@
                         <tbody>
                         <tr>
                             <td>Buyer : {{$items["buyer"]}}</td>
-                            <td>Increased Consumption: {{$items["IncreasedConsumption"]}}</td>
+                            <td>Increased Consumption: {{$items["IncreasedConsumption"]}}%</td>
                         </tr>
                         <tr>
                             <td>Order No. : {{$items["orderNo"]}}</td>
-                            <td>Fabric Fault : {{$items["FabricFault"]}}</td>
+                            <td>Fabric Fault : {{$items["FabricFault"]}}%</td>
                         </tr>
                         <tr>
                             <td>Color : {{$items["color"]}}</td>
-                            <td> Roll Shortage : {{$items["RollShortage"]}}</td>
+                            <td> Roll Shortage : {{$items["RollShortage"]}}%</td>
                         </tr>
                         <tr>
                             <td>Item : {{$items["item"]}}</td>
-                            <td>Production Damage : {{$items["ProductionDamage"]}}</td>
+                            <td>Production Damage : {{$items["ProductionDamage"]}}%</td>
                         </tr>
                         <tr>
-                            <td>Cutting Mistake : {{$items["UnstableCut"]}}</td>
-                            <td>Unusable Cut Pcs : {{$items["CuttingMistake"]}}</td>
+                            <td>Cutting Mistake : {{$items["UnstableCut"]}}%</td>
+                            <td>Unusable Cut Pcs : {{$items["CuttingMistake"]}}%</td>
                         </tr>
                         <tr>
                             <td></td>
-                            <td>Output : {{$items["muOutput"]}}</td>
+                            <td>Output : {{$items["muOutput"]}}%</td>
                         </tr>
                         </tbody>
                     </table>
