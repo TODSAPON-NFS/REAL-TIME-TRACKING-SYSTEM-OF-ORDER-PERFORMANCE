@@ -45,10 +45,10 @@
                             <th>Marker length in meter</th>
                             <th>Marker Length in Yards (MY)</th>
                             <th>Shrinkage</th>
-                            <th>Bowling</th>
+                            <th>Bowing</th>
                             <th>Lay Length</th>
-                            <th>piles</th>
-                            <th>fabric Required</th>
+                            <th>Plies</th>
+                            <th>Fabric Required</th>
                             <th>Fabric Fault</th>
                             <th>Total Fabric</th>
                             <th>Pieces Cut</th>

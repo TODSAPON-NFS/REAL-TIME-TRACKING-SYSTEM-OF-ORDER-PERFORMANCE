@@ -46,6 +46,10 @@ class RecheckFabricController extends Controller
 
         }
         else{
+
+            $shrinkage *= -1;
+
+
             $dbvar->Shrinkage = $shrinkage;
              if($mainDb->MarkerLengthInYard != 0)
             {
@@ -53,9 +57,9 @@ class RecheckFabricController extends Controller
                 $mainDb->LayLength = $mainDb->MarkerLengthInYard+$dbvar->ShrinkageOutput+$dbvar->BowlingOutput+0.0218723;
             }
         } 
-
+/*
         if($dbvar->Shrinkage <= 0)
-            $dbvar->Shrinkage = 0;
+            $dbvar->Shrinkage = 0;*/
 
         $dbvar->save();
 

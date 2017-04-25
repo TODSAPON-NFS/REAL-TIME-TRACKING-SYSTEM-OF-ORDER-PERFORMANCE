@@ -64,7 +64,7 @@
 
             <!-- Fabric 2 input -->
             <div class="row">
-                <h4 align="center">Bowling input :</h4>
+                <h4 align="center">Bowing input :</h4>
                  <form class="form-horizontal" action="/recheck/fabric/bowling" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="form-group">

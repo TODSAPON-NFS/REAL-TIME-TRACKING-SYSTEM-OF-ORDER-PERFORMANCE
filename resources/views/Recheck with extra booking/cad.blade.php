@@ -112,7 +112,7 @@
                             </thead>
                             <tbody>
 
-                            showing marker pcs and marker length from database to update
+                           {{-- showing marker pcs and marker length from database to update--}}
                             @foreach($db  as $markerPcs)
                                 <form action="/recheck/cad/updateMarkerLength" method="post">
                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
@@ -142,7 +142,7 @@
 
                 <!-- cad 4 Piles -->
                 <div class="row">
-                    <h4 align="center">Piles input :</h4>
+                    <h4 align="center">Plies input :</h4>
                     <div class="col-sm-3"></div>
                     <div class="col-sm-6">
                         <table class="table table-striped">

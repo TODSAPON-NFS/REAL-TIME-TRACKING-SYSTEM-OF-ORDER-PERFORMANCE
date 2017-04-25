@@ -17,9 +17,9 @@ class CreateRecheckTable extends Migration
 
             $table->increments('id');
             $table->string('Buyer',50)->nullable(false);
-            $table->integer('OrderNo')->nullable(false);
-            $table->integer('Color')->nullable(false);
-            $table->integer('Item')->nullable(false);
+            $table->string('OrderNo')->nullable(false);
+            $table->string('Color')->nullable(false);
+            $table->string('Item')->nullable(false);
             $table->double('MarkerLengthInYard', 15, 8)->default(0.0);
             $table->double('LayLength', 15, 8)->default(0.0);
             $table->double('FabricRequired', 15, 8)->default(0.0);
