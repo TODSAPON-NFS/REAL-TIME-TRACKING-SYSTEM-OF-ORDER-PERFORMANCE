@@ -33,7 +33,7 @@
             </div>
 
             <!-- Download file-->
-            <div class="row">
+            {{-- <div class="row">
                 <h4 align="center"><i>Download File: </i></h4>
                 <form class="form-horizontal" action="/recheck/cad/uploadFile" method="post"
                       enctype="multipart/form-data">
@@ -45,7 +45,7 @@
                                 <select class="form-control" id="sel1" name="sel1">
                                     <option selected disabled>Select a Marker pcs</option>
 
-                                    {{--showing marker pcs from database--}}
+                                    
                                     @foreach($db  as $markerPcs)
                                         <option>{{$markerPcs["MarkerPcs"]}}</option>
                                     @endforeach
@@ -69,7 +69,7 @@
                         </div>
                     </div>
                 </form>
-            </div>
+            </div> --}}
 
 
             <!-- cad 5 input -->
@@ -127,9 +127,15 @@
                             ?>
 
                             <tr>
-                                <td>{{$markerPcs["MarkerPcs"]}} <a href="#">
-                                   <span class="glyphicon glyphicon-download"></span>
-                                </a></td>
+                                <td>{{$markerPcs["MarkerPcs"]}}
+                                <?php
+                                    if($markerPcs["file"]!=NULL){
+                                        echo '<a href="'.asset('files/'.$markerPcs["file"]).'" download>
+                                       <span class="glyphicon glyphicon-download"></span>
+                                    </a></td>';
+                                    } 
+                                ?>
+                                
                                 <td>{{$markerPcs["markerLengthInMeter"]}}</td>
                                 <td><?php echo $my; ?></td>
 
