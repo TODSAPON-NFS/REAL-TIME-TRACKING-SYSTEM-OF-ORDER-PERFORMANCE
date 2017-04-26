@@ -127,7 +127,9 @@
                             ?>
 
                             <tr>
-                                <td>{{$markerPcs["MarkerPcs"]}}</td>
+                                <td>{{$markerPcs["MarkerPcs"]}} <a href="#">
+                                   <span class="glyphicon glyphicon-download"></span>
+                                </a></td>
                                 <td>{{$markerPcs["markerLengthInMeter"]}}</td>
                                 <td><?php echo $my; ?></td>
 
