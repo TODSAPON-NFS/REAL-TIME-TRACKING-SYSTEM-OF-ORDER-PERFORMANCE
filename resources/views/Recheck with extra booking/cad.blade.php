@@ -82,10 +82,8 @@
                             <div class="row">
                                 <div class="col-sm-4"></div>
                                 <div class="col-sm-4">
-                                    <label class="btn btn-default btn-file"> <input type="file" hidden name="userFile"
-                                                                                    id="userFile"
-                                                                                    accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
-                                    </label>
+                                    <label class="btn btn-default btn-file"> <input type="file" hidden name="userFile" id="userFile" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+                                     </label>
                                 </div>
                                 <div class="col-sm-3">
                                     <button type="submit" class="btn btn-primary">Upload</button>

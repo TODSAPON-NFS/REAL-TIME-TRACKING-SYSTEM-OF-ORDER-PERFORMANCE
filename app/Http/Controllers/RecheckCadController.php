@@ -44,7 +44,7 @@ class RecheckCadController extends Controller
         $id = $request->session()->get('id');
 
         if ($request["hiddenMarkerLength"] != "" && $request["hiddenMarkerPcs"] != "" && $request["updateMarkerLength"] != "") {
-            recheck_cad::where('id', '=', $id)->where('MarkerPcs', '=', $request["hiddenMarkerPcs"])->update(['markerLengthInMeter' => $request["updateMarkerLength"]]);
+            recheck_cad::where('id', '=', $id)->where('MarkerPcs' ,'=', $request["hiddenMarkerPcs"])->update(['markerLengthInMeter' => $request["updateMarkerLength"]]);
 
         }
         //echo $request["markerLengthInMeter"] . " " . $request["MarkerPcs"] . " " . $request["updateMarkerLength"];
@@ -88,19 +88,26 @@ class RecheckCadController extends Controller
         $sel1 = $request['sel1'];
         $file = $request->file('userFile');
         $destinationPath = 'files';
+        $id = $request->session()->get('id');
 
         if ($sel1 != "" && $request->hasFile('userFile') && $request->file('userFile')->isValid()) {
             # code...
-            $fileName = $sel1 . '.' . $file->getClientOriginalExtension();
-            $uploadSuccess = $file->move($destinationPath, $fileName);
-            if ($uploadSuccess) {
-                //Make DB query Here.. file name $filename
-                return "Uploaded" . $uploadSuccess;
-            }
-
+            $fileType= $file->getClientOriginalExtension();
+            if($fileType=='xlsx'){
+                $fileName = $id.$sel1 . '.' . $file->getClientOriginalExtension();
+                $uploadSuccess = $file->move($destinationPath, $fileName);
+                if ($uploadSuccess) {
+                    //Make DB query Here.. file name $filename
+                    recheck_cad::where('id', '=', $id)->where('MarkerPcs' ,'=',$sel1)->update(['file' => $fileName]);
+                    return redirect()->action('RecheckCadController@show');
+                }else{
+                   return "OPPS!!!Something Is Going TO wrong Please Try letter";
+                }
+            }else{
+                return "OPPS!!! Invalid File Type.";
+            }  
+        }else{
+            return "Fill All Info Correctly.";
         }
-        return "Fail";
-        //return redirect()->action('RecheckCadController@show');
     }
-
 }
