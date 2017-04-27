@@ -41,7 +41,7 @@
                     <button type="submit" class="btn btn-primary btn-block" name="recheck" value="recheck">
                         Recheck with Extra booking
                     </button>
-                    <button type="submit" class="btn btn-primary btn-block">
+                    <button type="submit" class="btn btn-primary btn-block" name="orderToShip" value="orderToShip">
                         Order To Ship
                     </button>
 
@@ -49,7 +49,6 @@
 
             </div>
         </div>
-
 
 
     </div>

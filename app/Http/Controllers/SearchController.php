@@ -128,13 +128,22 @@ class SearchController extends Controller
                 "F" => $f["FabricNeed"]
 
             ];
-
-
-
-
-           // echo $f;
-
             return view('Recheck with extra booking.general')->with('items', $items)->with('db', $dbvar);
+        }
+
+        else if($request["orderToShip"])
+        {
+            $id = $request->session()->get('id');
+
+            $items = [
+                "id" => $id,
+                "buyer" => $request->session()->get('buyer'),
+                "orderNo" => $request->session()->get('orderNo'),
+                "color" => $request->session()->get('color'),
+                "item" => $request->session()->get('item'),
+                ];
+
+            return view('Order to ship.general')->with('items', $items);
         }
 
     }
