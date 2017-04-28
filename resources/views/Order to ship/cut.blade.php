@@ -13,25 +13,23 @@
         <h1 align="center">Cutting Department</h1>
 
         <div class="row">
-
-            <div class="row">
-                <div class="col-sm-4"></div>
-                <div class="col-sm-5">
-                    <table class="table table-striped">
-                        <tbody>
-                        <tr>
-                            <td>Buyer : a</td>
-                            <td>Order No. : 2</td>
-                        </tr>
-                        <tr>
-                            <td>Color : White</td>
-                            <td>Item : 12</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="col-sm-2"></div>
+            <div class="col-sm-4"></div>
+            <div class="col-sm-5">
+                <table class="table table-striped">
+                    <tbody>
+                    <tr>
+                        <td>Buyer : a</td>
+                        <td>Order No. : 2</td>
+                    </tr>
+                    <tr>
+                        <td>Color : White</td>
+                        <td>Item : 12</td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
+            <div class="col-sm-2"></div>
+        </div>
 
         <!-- cut inputs  -->
         <div class="row">
@@ -42,7 +40,7 @@
                     <tr>
                         <th>Sizes</th>
                         <th>Inputs</th>
-                        <th>update quantity</th>
+                        <th>Cut Quantity Total</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -77,4 +75,5 @@
             </div>
             <div class="col-sm-3"></div>
         </div>
+    </div>
 @endsection

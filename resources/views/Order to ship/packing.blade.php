@@ -41,7 +41,7 @@
                         <thead>
                         <tr>
                             <th>Sizes</th>
-                            <th>Inputs</th>
+                            <th>Packing Receive Total</th>
                             <th>update quantity</th>
                         </tr>
                         </thead>
@@ -75,7 +75,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="col-sm-2"></div>
+                <div class="col-sm-3"></div>
             </div>
 
             <div class="row">
