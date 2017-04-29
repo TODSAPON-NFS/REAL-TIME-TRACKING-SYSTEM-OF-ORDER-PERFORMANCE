@@ -18,7 +18,7 @@ class CreateOrdertoshipCountryNameTable extends Migration
             $table->increments('country_name_id');
             $table->unsignedInteger('id')->nullable(false);
             $table->string('CountryName', 50)->nullable(false);
-            $table->string('ShipmentDate',50)->nullable(false);
+            $table->string('ShipmentDate',50)->nullable(true);
             $table->timestamps();
 
             $table->foreign('id')->references('id')->on('ordertoships');

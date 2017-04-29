@@ -78,15 +78,16 @@
             <div class="row">
                 <h4 align="center">Country input :</h4>
 
-                <form class="form-horizontal">
+                <form class="form-horizontal" action="/order-to-ship/PackingAddCountry" method="post">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="form-group">
                         <div class="col-sm-3"></div>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="input"
+                            <input type="text" class="form-control" id="input" name = "AddCountry"
                                    placeholder="Country Name : ">
                         </div>
                         <div class="col-sm-3">
-                            <button type="button" class="btn btn-primary">
+                            <button type="submit" class="btn btn-primary">
                                 ADD
                             </button>
                             <button type="button" class="btn btn-primary">
@@ -100,9 +101,14 @@
 
             <!-- Country data input -->
             <div class="row">
-                <h3 align="center">Country : China</h3>
-                <h4 align="center">Shipment Date : 11/11/2017</h4>
-                <form class="form-horizontal">
+
+                @foreach($country as $countries)
+
+                <h3 align="center">Country : {{$countries["CountryName"]}}</h3>
+                <h4 align="center">Shipment Date : {{$countries["ShipmentDate"]}}</h4>
+
+                <form class="form-horizontal" action="/order-to-ship/addShipmentDate" method="post">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="form-group">
                         <div class="col-sm-3"></div>
                         <div class="col-sm-4">
@@ -116,6 +122,7 @@
                         <div class="col-sm-2"></div>
                     </div>
                 </form>
+                @endforeach
                 <div class="col-sm-3"></div>
                 <div class="col-sm-6">
                     <table class="table table-striped">
