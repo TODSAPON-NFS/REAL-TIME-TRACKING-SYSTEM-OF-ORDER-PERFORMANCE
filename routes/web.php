@@ -97,9 +97,8 @@ Route::get('/order-to-ship/finishing', function () {
 });
 
 //rejection input
-Route::get('/order-to-ship/rejection', function () {
-    return view('Order to ship.rejection');
-});
+Route::get('/order-to-ship/rejection', 'OrderToShipRejectionController@show');
+Route::post('/order-to-ship/rejection/update', 'OrderToShipRejectionController@update');
 //packing input
 Route::get('/order-to-ship/packing', 'OrderToShipPackingController@show');
 Route::post('order-to-ship/updatePackingReceive', 'OrderToShipPackingController@updateOrderQuantity');
