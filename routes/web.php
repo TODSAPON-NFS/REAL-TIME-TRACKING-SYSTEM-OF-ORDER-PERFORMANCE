@@ -104,3 +104,4 @@ Route::get('/order-to-ship/rejection', function () {
 Route::get('/order-to-ship/packing', 'OrderToShipPackingController@show');
 Route::post('order-to-ship/updatePackingReceive', 'OrderToShipPackingController@updateOrderQuantity');
 Route::post('/order-to-ship/PackingAddCountry', 'OrderToShipPackingController@addCountry');
+Route::post('/order-to-ship/PackingAddCountry', 'OrderToShipPackingController@addShipmentDate');

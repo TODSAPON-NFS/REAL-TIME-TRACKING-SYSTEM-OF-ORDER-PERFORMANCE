@@ -22,7 +22,6 @@ class CreateOrdertoshipTable extends Migration
             $table->string('Item',50)->nullable(false);
             $table->double('CutPlan', 15, 8)->default(0.0);
             $table->double('FabricAllocation', 15, 8)->default(0.0);
-            $table->double('Rejection', 15, 8)->default(0.0);
             $table->timestamps();
 
             $table->unique(['Buyer', 'OrderNo', 'Color', 'Item']);

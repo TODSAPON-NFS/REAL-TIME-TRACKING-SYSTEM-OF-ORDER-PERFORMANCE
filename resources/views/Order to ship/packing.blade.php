@@ -109,6 +109,7 @@
 
                 <form class="form-horizontal" action="/order-to-ship/addShipmentDate" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
+                    <input type="hidden" name="CountryNameID" value="{{$countries["country_name_id"]}}">
                     <div class="form-group">
                         <div class="col-sm-3"></div>
                         <div class="col-sm-4">

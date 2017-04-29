@@ -50,4 +50,17 @@ class OrderToShipPackingController extends Controller
         }
         return redirect('/order-to-ship/packing');
     }
+
+    public function addShipmentDate(Request $request)
+    {
+        $id = $request->session()->get('id');
+
+        if ($request["AddCountry"] != "") {
+            $country = new ordertoship_country_name;
+            $country->id = $id;
+            $country->CountryName = $request["AddCountry"];
+            $country->save();
+        }
+        return redirect('/order-to-ship/packing');
+    }
 }
