@@ -42,6 +42,8 @@ class HomeController extends Controller
         }
         else if ($dept == "Sewing" && $password == "swng") {
             $flag = 1;
+         else if ($dept == "Rejection" && $password == "rjctn") {
+            $flag = 1;
         }*/
 
        /* if ($flag == 0) {

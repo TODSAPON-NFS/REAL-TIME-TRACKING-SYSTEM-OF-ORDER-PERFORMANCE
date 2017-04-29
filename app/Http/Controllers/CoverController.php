@@ -45,6 +45,8 @@ class CoverController extends Controller
                 return redirect('/order-to-ship/finishing');
             else if ($dept == 'Sewing')
                 return redirect('/order-to-ship/sew');
+            else if ($dept == 'Rejection')
+                return redirect('/order-to-ship/rejection');
 
         }
 

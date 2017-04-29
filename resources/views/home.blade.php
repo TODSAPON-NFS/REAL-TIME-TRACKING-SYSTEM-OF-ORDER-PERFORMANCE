@@ -29,6 +29,7 @@
                             <option>Cutting</option>
                             <option>Finishing</option>
                             <option>Sewing</option>
+                            <option>Rejection</option>
                         </select>
                     </div>
                     <div class="form-group">

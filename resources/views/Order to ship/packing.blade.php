@@ -20,12 +20,12 @@
                     <table class="table table-striped">
                         <tbody>
                         <tr>
-                            <td>Buyer : a</td>
-                            <td>Order No. : 2</td>
+                            <td>Buyer : {{$items["buyer"]}}</td>
+                            <td>Order No. : {{$items["orderNo"]}}</td>
                         </tr>
                         <tr>
-                            <td>Color : White</td>
-                            <td>Item : 12</td>
+                            <td>Color : {{$items["color"]}}</td>
+                            <td>Item : {{$items["item"]}}</td>
                         </tr>
                         </tbody>
                     </table>
@@ -46,32 +46,29 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>500</td>
-                            <td>10</td>
-                            <td><input type="text" class="form-control" id="mock up"
-                                       placeholder=""></td>
-                            <td>
-                                <button type="submit" class="btn btn-primary">Add</button>
-                            </td>
-                            <td>
-                                <button type="submit" class="btn btn-primary">Sub</button>
-                            </td>
+                        {{-- showing marker pcs and marker length from database to update--}}
+                        @foreach($db  as $packingReceive)
+                            <form action="/order-to-ship/updatePackingReceive" method="post">
+                                <input type="hidden" name="_token" value="{{csrf_token()}}">
 
-                        </tr>
-                        <tr>
-                            <td>500</td>
-                            <td>10</td>
-                            <td><input type="text" class="form-control" id="mock up"
-                                       placeholder=""></td>
-                            <td>
-                                <button type="submit" class="btn btn-primary">Add</button>
-                            </td>
-                            <td>
-                                <button type="submit" class="btn btn-primary">Sub</button>
-                            </td>
+                                <tr>
+                                    <td>{{$packingReceive["Size"]}}</td>
+                                    <td>{{$packingReceive["PackingReceive"]}}</td>
 
-                        </tr>
+                                    <input type="hidden" name="hiddenMerchantID"
+                                           value={{$packingReceive["marchant_id"]}}>
+                                    <td><input type="text" class="form-control" name="updatePackingReceive"
+                                               placeholder=""></td>
+                                    <td>
+                                        <button type="submit" class="btn btn-primary" name="update" value="update">
+                                            Update
+                                        </button>
+                                    </td>
+                                </tr>
+
+                            </form>
+                        @endforeach
+
                         </tbody>
                     </table>
                 </div>

@@ -23,7 +23,7 @@
                     </tr>
                     <tr>
                         <td>Color : {{$items["color"]}}</td>
-                        <td>Item : {{$items["color"]}}</td>
+                        <td>Item : {{$items["item"]}}</td>
                     </tr>
                     </tbody>
                 </table>
