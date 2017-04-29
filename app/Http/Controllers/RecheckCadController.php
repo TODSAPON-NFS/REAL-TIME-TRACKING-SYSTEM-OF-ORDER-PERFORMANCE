@@ -44,7 +44,7 @@ class RecheckCadController extends Controller
         $id = $request->session()->get('id');
 
         if ($request["hiddenMarkerLength"] != "" && $request["hiddenMarkerPcs"] != "" && $request["updateMarkerLength"] != "") {
-            recheck_cad::where('id', '=', $id)->where('MarkerPcs' ,'=', $request["hiddenMarkerPcs"])->update(['markerLengthInMeter' => $request["updateMarkerLength"]]);
+            recheck_cad::where('id', '=', $id)->where('MarkerPcs', '=', $request["hiddenMarkerPcs"])->update(['markerLengthInMeter' => $request["updateMarkerLength"]]);
 
         }
         //echo $request["markerLengthInMeter"] . " " . $request["MarkerPcs"] . " " . $request["updateMarkerLength"];
@@ -73,7 +73,7 @@ class RecheckCadController extends Controller
             recheck_cad::where('id', '=', $id)->where('MarkerPcs', '=', $request["updateHiddenMarkerPcs"])->update(['MarkerPcs' => $request["updateMarkerPcs"]]);
 
         } else if ($request["updateHiddenMarkerPcs"] != "" && $request["submit"] == "delete") {
-            recheck_cad::where('id', '=', $id)->where('MarkerPcs', '=', $request["updateHiddenMarkerPcs"]) -> delete();
+            recheck_cad::where('id', '=', $id)->where('MarkerPcs', '=', $request["updateHiddenMarkerPcs"])->delete();
         }
 
         // echo $request["updateHiddenMarkerPcs"] . " " . $request["updateMarkerPcs"];
@@ -92,21 +92,21 @@ class RecheckCadController extends Controller
 
         if ($sel1 != "" && $request->hasFile('userFile') && $request->file('userFile')->isValid()) {
             # code...
-            $fileType= $file->getClientOriginalExtension();
-            if($fileType=='xlsx'){
-                $fileName = $id.$sel1 . '.' . $file->getClientOriginalExtension();
+            $fileType = $file->getClientOriginalExtension();
+            if ($fileType == 'xlsx') {
+                $fileName = $id . $sel1 . '.' . $file->getClientOriginalExtension();
                 $uploadSuccess = $file->move($destinationPath, $fileName);
                 if ($uploadSuccess) {
                     //Make DB query Here.. file name $filename
-                    recheck_cad::where('id', '=', $id)->where('MarkerPcs' ,'=',$sel1)->update(['file' => $fileName]);
+                    recheck_cad::where('id', '=', $id)->where('MarkerPcs', '=', $sel1)->update(['file' => $fileName]);
                     return redirect()->action('RecheckCadController@show');
-                }else{
-                   return "OPPS!!!Something Is Going TO wrong Please Try letter";
+                } else {
+                    return "OPPS!!!Something Is Going TO wrong Please Try letter";
                 }
-            }else{
+            } else {
                 return "OPPS!!! Invalid File Type.";
-            }  
-        }else{
+            }
+        } else {
             return "Fill All Info Correctly.";
         }
     }

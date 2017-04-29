@@ -71,17 +71,16 @@ Route::post('/recheck/fabric/shrinkage', 'RecheckFabricController@shrinkage');
 Route::post('/recheck/fabric/bowling', 'RecheckFabricController@bowling');
 Route::post('/recheck/fabric/fault', 'RecheckFabricController@fault');
 
-//order to ship
-
+/*order to ship*/
 //marchant input
 Route::get('/order-to-ship/marchant', function () {
     return view('Order to ship.marchant');
 });
 
 //cad input
-Route::get('/order-to-ship/cad', function () {
-    return view('Order to ship.cad');
-});
+Route::get('/order-to-ship/cad', 'OrderToShipCadController@show');
+Route::post('/order-to-ship/cadCutInput', 'OrderToShipCadController@updateCut');
+Route::post('/order-to-ship/cadFabricInput', 'OrderToShipCadController@updateFabric');
 //cut input
 Route::get('/order-to-ship/cut', function () {
     return view('Order to ship.cut');

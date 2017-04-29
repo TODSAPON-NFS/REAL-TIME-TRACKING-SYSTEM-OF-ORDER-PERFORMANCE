@@ -8,7 +8,7 @@ class CoverController extends Controller
 {
     public function viewCover(Request $request)
     {
-       // return view('cover')->with(array('inputs'=>$request));
+        // return view('cover')->with(array('inputs'=>$request));
     }
 
     public function redirect(Request $request)
@@ -19,24 +19,29 @@ class CoverController extends Controller
             if ($dept == 'Merchandising')
                 return redirect()->action('orderToCutMarchantController@view');
             else if ($dept == 'CAD')
-                return redirect()->action('orderToCutCadController@showCad') ;
+                return redirect()->action('orderToCutCadController@showCad');
             else if ($dept == 'MU')
-                return redirect()->action('orderToCutMuController@showMu') ;
+                return redirect()->action('orderToCutMuController@showMu');
             else if ($dept == 'Store')
-                return redirect()->action('orderToCutStoreController@view') ;
-        }
-
-        else if($request["recheck"] == "recheck"){
+                return redirect()->action('orderToCutStoreController@view');
+        } else if ($request["recheck"] == "recheck") {
 
             if ($dept == 'CAD')
                 return redirect()->action('RecheckCadController@show');
             else if ($dept == 'Fabric')
-                    return redirect()->action('RecheckFabricController@show') ;
+                return redirect()->action('RecheckFabricController@show');
+
+        } else if ($request["OrderToShip"] == "OrderToShip") {
+
+            if ($dept == 'CAD')
+                return redirect('/order-to-ship/cad');
+            /*else if ($dept == 'Fabric')
+                return redirect()->action('RecheckFabricController@show') ;*/
 
         }
 
         //echo $request["orderToCut"];
 
-        //return view('order to cut.merchant');
+        //return redirect('cover');
     }
 }

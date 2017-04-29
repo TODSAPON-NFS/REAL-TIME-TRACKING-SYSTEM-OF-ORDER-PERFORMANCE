@@ -7,11 +7,11 @@ use App\ordertocut_store;
 use App\ordertocut_mu;
 use App\ordertocut_marchant;
 use App\ordertocut_cad;
+use App\ordertoship;
 use App\recheck;
 use App\recheck_cad;
 use App\recheck_fabric;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class rootController extends Controller
 {
@@ -44,6 +44,13 @@ class rootController extends Controller
             $dbvar->save();
             
             $dbvar = new recheck;
+            $dbvar->Buyer = $request["buyer"];
+            $dbvar->OrderNo = $request["order"];
+            $dbvar->Color = $request["color"];
+            $dbvar->Item = $request["item"];
+            $dbvar->save();
+
+            $dbvar = new ordertoship;
             $dbvar->Buyer = $request["buyer"];
             $dbvar->OrderNo = $request["order"];
             $dbvar->Color = $request["color"];

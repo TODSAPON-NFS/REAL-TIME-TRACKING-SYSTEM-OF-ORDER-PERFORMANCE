@@ -12,71 +12,72 @@
     <div class="container">
         <h1 align="center">CAD Department</h1>
 
+
         <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-5">
+                <table class="table table-striped">
+                    <tbody>
+                    <tr>
+                        <td>Buyer : {{$items["buyer"]}}</td>
+                        <td>Order No. : {{$items["orderNo"]}}</td>
+                    </tr>
+                    <tr>
 
-            <div class="row">
-                <div class="col-sm-4"></div>
-                <div class="col-sm-5">
-                    <table class="table table-striped">
-                        <tbody>
-                        <tr>
-                            <td>Buyer : a</td>
-                            <td>Order No. : 2</td>
-                        </tr>
-                        <tr>
+                        <td>Item : {{$items["item"]}}</td>
+                        <td>Cut Plan : {{$items["CutPlan"]}}</td>
+                    </tr>
+                    <tr>
+                        <td>Color : {{$items["color"]}}</td>
+                        <td>Fabric Allocation : {{$items["FabricAllocation"]}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
 
-                            <td>Item : 12</td>
-                            <td>Cut No : 11</td>
-                        </tr>
-                        <tr>
-                            <td>Color : White</td>
-                            <td>Fabric Allocation : 20</td>
-                        </tr>
-                        </tbody>
-                    </table>
+        <!-- marchant1 input -->
+
+        <div class="row">
+            <h4 align="center">Cut Plan input :</h4>
+
+            <form class="form-horizontal" action="/order-to-ship/cadCutInput" method="post">
+                <input type="hidden" name="_token" value="{{csrf_token()}}">
+                <div class="form-group">
+                    <div class="col-sm-4"></div>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="input"
+                               placeholder="Cut Plan" name="CutPlan">
+                    </div>
+                    <div class="col-sm-4">
+                        <button type="submit" class="btn btn-primary">
+                            Save / update
+                        </button>
+                    </div>
                 </div>
-                <div class="col-sm-2"></div>
-            </div>
-
-            <!-- marchant1 input -->
-
-            <div class="row">
-                <h4 align="center">Cut Plan input :</h4>
-
-                <form class="form-horizontal">
-                    <div class="form-group">
-                        <div class="col-sm-4"></div>
-                        <div class="col-sm-4">
-                            <input type="text" class="form-control" id="input"
-                                   placeholder="Cut Plan">
-                        </div>
-                        <div class="col-sm-4">
-                            <button type="button" class="btn btn-primary">
-                                Save / update
-                            </button>
-                        </div>
-                    </div>
-                </form>
+            </form>
         </div>
 
-            <div class="row">
-                <h4 align="center">Fabric Allocation input :</h4>
+        <div class="row">
+            <h4 align="center">Fabric Allocation input :</h4>
 
-                <form class="form-horizontal">
-                    <div class="form-group">
-                        <div class="col-sm-4"></div>
-                        <div class="col-sm-4">
-                            <input type="text" class="form-control" id="input"
-                                   placeholder="Fabric Allocation">
-                        </div>
-                        <div class="col-sm-4">
-                            <button type="button" class="btn btn-primary">
-                                Save / update
-                            </button>
-                        </div>
+            <form class="form-horizontal" action="/order-to-ship/cadFabricInput" method="post">
+                <input type="hidden" name="_token" value="{{csrf_token()}}">
+                <div class="form-group">
+                    <div class="col-sm-4"></div>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="input"
+                               placeholder="Fabric Allocation" name="FabricAllocation">
                     </div>
-                </form>
-            </div>
-
+                    <div class="col-sm-4">
+                        <button type="submit" class="btn btn-primary">
+                            Save / update
+                        </button>
+                    </div>
+                </div>
+            </form>
         </div>
+
+    </div>
 @endsection
