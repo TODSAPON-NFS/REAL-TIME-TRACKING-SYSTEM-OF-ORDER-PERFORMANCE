@@ -18,7 +18,7 @@ class HomeController extends Controller
         $dept = $request["department"];
         $password = $request["password"];
 
-        $flag = 0;
+        $flag = 1;
 
         /*if ($dept == "Merchandising" && $password == "mer") {
             $flag = 1;
@@ -44,9 +44,9 @@ class HomeController extends Controller
             $flag = 1;
         }*/
 
-        if ($flag == 0) {
+       /* if ($flag == 0) {
             return redirect()->action('HomeController@home');
-        }
+        }*/
 
         $request->session()->put('dept', $dept);
 
