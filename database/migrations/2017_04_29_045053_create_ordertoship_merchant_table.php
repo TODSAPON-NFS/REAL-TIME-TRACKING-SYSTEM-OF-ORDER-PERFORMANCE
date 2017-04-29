@@ -24,6 +24,7 @@ class CreateOrdertoshipMerchantTable extends Migration
             $table->double('SewingReceive', 15, 8)->default(0.0);
             $table->double('FinishingReceive', 15, 8)->default(0.0);
             $table->double('PackingReceive', 15, 8)->default(0.0);
+            $table->double('Rejection', 15, 8)->default(0.0);
 
             $table->timestamps();
 
