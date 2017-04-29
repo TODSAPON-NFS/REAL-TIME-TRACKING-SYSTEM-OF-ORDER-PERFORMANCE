@@ -35,8 +35,8 @@ class CoverController extends Controller
 
             if ($dept == 'CAD')
                 return redirect('/order-to-ship/cad');
-            /*else if ($dept == 'Fabric')
-                return redirect()->action('RecheckFabricController@show') ;*/
+            else if ($dept == 'Merchandising')
+                return redirect('/order-to-ship/marchant') ;
 
         }
 

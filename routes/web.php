@@ -73,9 +73,10 @@ Route::post('/recheck/fabric/fault', 'RecheckFabricController@fault');
 
 /*order to ship*/
 //marchant input
-Route::get('/order-to-ship/marchant', function () {
-    return view('Order to ship.marchant');
-});
+Route::get('/order-to-ship/marchant', 'OrderToShipMerchantController@show');
+Route::post('/order-to-ship/sizeInput', 'OrderToShipMerchantController@addSize');
+Route::post('/order-to-ship/updateMerchantOrderQuantity', 'OrderToShipMerchantController@updateOrderQuantity');
+Route::post('/order-to-ship/merchantUpdateSize', 'OrderToShipMerchantController@updateSizes');
 
 //cad input
 Route::get('/order-to-ship/cad', 'OrderToShipCadController@show');

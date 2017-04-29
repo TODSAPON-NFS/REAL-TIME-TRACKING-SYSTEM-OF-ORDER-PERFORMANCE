@@ -18,7 +18,7 @@ class CreateOrdertoshipCountryValueTable extends Migration
             $table->increments('country_value_id');
             $table->unsignedInteger('id')->nullable(false);
             $table->unsignedInteger('country_name_id')->nullable(false);
-            $table->string('Value', 50)->nullable(false);
+            $table->double('Value', 15, 8)->default(0.0);
 
             $table->timestamps();
 

@@ -19,11 +19,11 @@ class CreateOrdertoshipMerchantTable extends Migration
             $table->increments('marchant_id');
             $table->unsignedInteger('id')->nullable(false);
             $table->string('Size', 50)->nullable(false);
-            $table->string('OrderQuantity',50)->nullable(false);
-            $table->string('CutQuantity', 50)->nullable(false);
-            $table->string('SewingReceive',50)->nullable(false);
-            $table->string('FinishingReceive', 50)->nullable(false);
-            $table->string('PackingReceive',50)->nullable(false);
+            $table->double('OrderQuantity', 15, 8)->default(0.0);
+            $table->double('CutQuantity', 15, 8)->default(0.0);
+            $table->double('SewingReceive', 15, 8)->default(0.0);
+            $table->double('FinishingReceive', 15, 8)->default(0.0);
+            $table->double('PackingReceive', 15, 8)->default(0.0);
 
             $table->timestamps();
 

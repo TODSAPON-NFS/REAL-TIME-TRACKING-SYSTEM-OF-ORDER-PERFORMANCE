@@ -18,12 +18,12 @@
                 <table class="table table-striped">
                     <tbody>
                     <tr>
-                        <td>Buyer : a</td>
-                        <td>Order No. : 2</td>
+                        <td>Buyer : {{$items["buyer"]}}</td>
+                        <td>Order No. : {{$items["orderNo"]}}</td>
                     </tr>
                     <tr>
-                        <td>Color : White</td>
-                        <td>Item : 12</td>
+                        <td>Color : {{$items["color"]}}</td>
+                        <td>Item : {{$items["color"]}}</td>
                     </tr>
                     </tbody>
                 </table>
@@ -36,15 +36,16 @@
         <div class="row">
             <h4 align="center"> Size input :</h4>
 
-            <form class="form-horizontal">
+            <form class="form-horizontal" action="/order-to-ship/sizeInput" method="post">
+                <input type="hidden" name="_token" value="{{csrf_token()}}">
                 <div class="form-group">
                     <div class="col-sm-4"></div>
                     <div class="col-sm-4">
                         <input type="text" class="form-control" id="input"
-                               placeholder="Sizes">
+                               placeholder="Sizes" name="Size">
                     </div>
                     <div class="col-sm-4">
-                        <button type="button" class="btn btn-primary">
+                        <button type="submit" class="btn btn-primary">
                             ADD
                         </button>
                         <button type="button" class="btn btn-primary">
@@ -55,35 +56,7 @@
             </form>
         </div>
 
-
-    {{--  <!-- marchant 2 input -->
-      <div class="row">
-          <h4 align="center">order quantity input :</h4>
-          <div class="col-sm-4"></div>
-          <div class="col-sm-5">
-              <form class=>
-
-                  <div class="form-group">
-                      <select class="form-control" id="sel1">
-                          <option selected disabled>Select a Size</option>
-                          <option>500</option>
-                          <option>100</option>
-                      </select>
-                  </div>
-                  <div class="form-group">
-                      <input type="text" class="form-control" id="mock up"
-                             placeholder="Order Quantity">
-                  </div>
-
-
-                  <button type="submit" class="btn btn-primary btn-block">Save</button>
-                  <button type="submit" class="btn btn-primary btn-block">View / Edit data</button>
-              </form>
-          </div>
-          <div class="col-sm-3"></div>
-      </div>--}}
-
-    <!-- edit order quantity inputs  -->
+        <!-- edit order quantity inputs  -->
         <div class="row">
             <h4 align="center">Enter order Quantity</h4>
             <div class="col-sm-3"></div>
@@ -97,19 +70,28 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>500</td>
-                        <td>10</td>
-                        <td><input type="text" class="form-control" id="mock up"
-                                   placeholder=""></td>
-                        <td>
-                            <button type="submit" class="btn btn-primary">ADD</button>
-                        </td>
-                        <td>
-                            <button type="submit" class="btn btn-primary">SUB</button>
-                        </td>
+                    {{-- showing marker pcs and marker length from database to update--}}
+                    @foreach($db  as $sizes)
+                        <form action="/order-to-ship/updateMerchantOrderQuantity" method="post">
+                            <input type="hidden" name="_token" value="{{csrf_token()}}">
 
-                    </tr>
+                            <tr>
+                                <td>{{$sizes["Size"]}}</td>
+                                <td>{{$sizes["OrderQuantity"]}}</td>
+
+                                <input type="hidden" name="hiddenMerchantID"
+                                       value={{$sizes["marchant_id"]}}>
+                                <td><input type="text" class="form-control" name="updateOrderQuantity"
+                                           placeholder=""></td>
+                                <td>
+                                    <button type="submit" class="btn btn-primary" name="update" value="update">
+                                        Update
+                                    </button>
+                                </td>
+                            </tr>
+
+                        </form>
+                    @endforeach
 
                     </tbody>
                 </table>
@@ -131,30 +113,29 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>500</td>
-                        <td><input type="text" class="form-control" id="mock up"
-                                   placeholder=""></td>
-                        <td>
-                            <button type="submit" class="btn btn-primary">Update</button>
-                        </td>
-                        <td>
-                            <button type="submit" class="btn btn-primary">Delete</button>
-                        </td>
-
-                    </tr>
-                    <tr>
-                        <td>500</td>
-                        <td><input type="text" class="form-control" id="mock up"
-                                   placeholder=""></td>
-                        <td>
-                            <button type="submit" class="btn btn-default">Update</button>
-                        </td>
-                        <td>
-                            <button type="submit" class="btn btn-default">Delete</button>
-                        </td>
-
-                    </tr>
+                    {{--showing Sizes from database to update--}}
+                    @foreach($db  as $sizes)
+                        <form action="/order-to-ship/merchantUpdateSize" method="post">
+                            <input type="hidden" name="_token" value="{{csrf_token()}}">
+                            <tr>
+                                <td>{{$sizes["Size"]}}</td>
+                                <input type="hidden" name="updateHiddenSize"
+                                       value={{$sizes["marchant_id"]}}>
+                                <td><input type="text" class="form-control" name="sizeUpdate"
+                                           placeholder=""></td>
+                                <td>
+                                    <button type="submit" class="btn btn-primary" name="submit" value="update">
+                                        Update
+                                    </button>
+                                </td>
+                                <td>
+                                    <button type="submit" class="btn btn-primary" name="submit" value="delete">
+                                        Delete
+                                    </button>
+                                </td>
+                            </tr>
+                        </form>
+                    @endforeach
                     </tbody>
                 </table>
             </div>
