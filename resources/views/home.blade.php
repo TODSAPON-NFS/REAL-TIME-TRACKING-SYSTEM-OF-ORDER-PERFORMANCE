@@ -25,6 +25,10 @@
                             <option>Store</option>
                             <option>MU</option>
                             <option>Fabric</option>
+                            <option>Packing</option>
+                            <option>Cutting</option>
+                            <option>Finishing</option>
+                            <option>Sewing</option>
                         </select>
                     </div>
                     <div class="form-group">

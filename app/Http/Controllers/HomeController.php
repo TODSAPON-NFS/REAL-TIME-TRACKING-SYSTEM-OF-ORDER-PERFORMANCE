@@ -20,7 +20,7 @@ class HomeController extends Controller
 
         $flag = 0;
 
-        if ($dept == "Merchandising" && $password == "mer") {
+        /*if ($dept == "Merchandising" && $password == "mer") {
             $flag = 1;
         } else if ($dept == "CAD" && $password == "cd") {
             $flag = 1;
@@ -31,6 +31,18 @@ class HomeController extends Controller
         } else if ($dept == "Fabric" && $password == "fbrc") {
             $flag = 1;
         }
+        else if ($dept == "Packing" && $password == "pc") {
+            $flag = 1;
+        }
+        else if ($dept == "Cutting" && $password == "cut") {
+            $flag = 1;
+        }
+        else if ($dept == "Finishing" && $password == "fnsng") {
+            $flag = 1;
+        }
+        else if ($dept == "Sewing" && $password == "swng") {
+            $flag = 1;
+        }*/
 
         if ($flag == 0) {
             return redirect()->action('HomeController@home');

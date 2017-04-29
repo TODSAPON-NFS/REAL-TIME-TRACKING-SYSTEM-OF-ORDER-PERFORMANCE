@@ -102,6 +102,4 @@ Route::get('/order-to-ship/rejection', function () {
     return view('Order to ship.rejection');
 });
 //packing input
-Route::get('/order-to-ship/packing', function () {
-    return view('Order to ship.packing');
-});
+Route::get('/order-to-ship/packing', 'OrderToShipPackingController@show');
