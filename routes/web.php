@@ -83,9 +83,8 @@ Route::get('/order-to-ship/cad', 'OrderToShipCadController@show');
 Route::post('/order-to-ship/cadCutInput', 'OrderToShipCadController@updateCut');
 Route::post('/order-to-ship/cadFabricInput', 'OrderToShipCadController@updateFabric');
 //cut input
-Route::get('/order-to-ship/cut', function () {
-    return view('Order to ship.cut');
-});
+Route::get('/order-to-ship/cut', 'OrderToShipCuttingController@show');
+Route::post('/order-to-ship/AddOrSub', 'OrderToShipCuttingController@updateSizes');
 
 //sew input
 Route::get('/order-to-ship/sew', function () {
