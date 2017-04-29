@@ -18,7 +18,7 @@ class HomeController extends Controller
         $dept = $request["department"];
         $password = $request["password"];
 
-        $flag = 1;
+        //$flag = 1;
 
         /*if ($dept == "Merchandising" && $password == "mer") {
             $flag = 1;
