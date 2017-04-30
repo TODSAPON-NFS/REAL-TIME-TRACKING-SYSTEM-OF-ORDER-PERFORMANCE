@@ -30,19 +30,14 @@ class OrderToShipRejectionController extends Controller
     	$id = $request->session()->get('id');
     	$value=$request["rejectionValue"];
     	if($request["actype"]=="add"){
-    		// $db = ordertoship_marchant::where('id', '=', $id)->where('size', '=' ,$size)->first();
-    		// $dbvar=ordertoship_marchant::find($db->marchant_id);
-    		// $dbvar->Rejection += $value;
-    		// $dbvar->save();
+    		$db = ordertoship_marchant::where('id', '=', $id)->where('size', '=' ,$size)->first();
+    		ordertoship_marchant::where('marchant_id','=',$db->marchant_id)->update(['Rejection' => $db->Rejection+$value]);
     		return redirect('/order-to-ship/rejection');
     	}else if($request["actype"]="sub"){
-    		// $db = ordertoship_marchant::where('id', '=', $id)->where('size', '=' ,$size)->first();
-    		// $dbvar=ordertoship_marchant::find($db->marchant_id);
-    		// $dbvar->Rejection -= $value;
-    		// if($dbvar->Rejection < 0.00) $dbvar->Rejection=0.00;
-    		// $dbvar->save();
+    		$db = ordertoship_marchant::where('id', '=', $id)->where('size', '=' ,$size)->first();
+            ordertoship_marchant::where('marchant_id','=',$db->marchant_id)->update(['Rejection' => $db->Rejection-$value]);
     		return redirect('/order-to-ship/rejection');
     	}
-    	return $request->all();
+    	return "OPPS!!!  Something wrong ,Please Try Again";
     }
 }
