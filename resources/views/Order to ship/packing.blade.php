@@ -137,6 +137,7 @@
                         <tbody>
 
                         <?php $value = null;
+                        $id = null;
                         $i = 0; ?>
 
 
@@ -147,25 +148,26 @@
                             @for( ; $i < count($countryValues); $i++)
                                 @if($countryValues[$i]["country_name_id"] == $countries["country_name_id"])
                                     <?php $value = $countryValues[$i]["Value"];
+                                    $id =  $countryValues[$i]["country_value_id"];
                                     $i++;
                                     ?>
                                     @break
                                 @endif
                             @endfor
 
-                            <form action="/order-to-ship/updateMerchantOrderQuantity" method="post">
+                            <form action="/order-to-ship/PackingUpdateCountryValue" method="post">
                                 <input type="hidden" name="_token" value="{{csrf_token()}}">
 
                                 <tr>
                                     <td>{{$packingReceive["Size"]}}</td>
                                     <td>{{$value}}</td>
-                                    <td><input type="text" class="form-control" id="mock up"
-                                               placeholder=""></td>
+                                    <input type="hidden" name="updateHiddenCountryValueID"
+                                           value={{$countryValues[$i-1]["country_value_id"]}}>
+
+                                    <td><input type="text" class="form-control" name="UpdateCountryValue"
+                                               ></td>
                                     <td>
                                         <button type="submit" class="btn btn-primary">Update</button>
-                                    </td>
-                                    <td>
-                                        <button type="submit" class="btn btn-primary">Delete</button>
                                     </td>
 
                                 </tr>
@@ -197,7 +199,7 @@
                     <tbody>
                     {{--showing Sizes from database to update--}}
                     @foreach($country as $countries)
-                        <form action="/order-to-ship/merchantUpdateSize" method="post">
+                        <form action="/order-to-ship/PackingUpdateCountryName" method="post">
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
                             <tr>
                                 <td>{{$countries["CountryName"]}}</td>

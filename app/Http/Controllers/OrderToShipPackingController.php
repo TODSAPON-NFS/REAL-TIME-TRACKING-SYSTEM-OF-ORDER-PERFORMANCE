@@ -81,16 +81,25 @@ class OrderToShipPackingController extends Controller
         $id = $request->session()->get('id');
 
         if ($request["updateHiddenCountryID"] != "" && $request["CountryUpdate"] != "" && $request["submit"] == "update") {
-            ordertoship_marchant::where('country_name_id', '=', $request["updateHiddenCountryID"])
+            ordertoship_country_name::where('country_name_id', '=', $request["updateHiddenCountryID"])
                 ->update(['CountryName' => $request["CountryUpdate"]]);
             //echo $var;
 
-        } else if ($request["updateHiddenSize"] != "" && $request["submit"] == "delete") {
-            ordertoship_marchant::where('marchant_id', '=', $request["updateHiddenSize"])->delete();
+        } else if ($request["updateHiddenCountryID"] != "" && $request["submit"] == "delete") {
+            ordertoship_country_name::where('country_name_id', '=', $request["updateHiddenCountryID"])->delete();
         }
 
-        // echo $request["updateHiddenMarkerPcs"] . " " . $request["updateMarkerPcs"];
+        return redirect('/order-to-ship/packing');
+    }
 
-        return redirect('/order-to-ship/marchant');
+    public function updateCountryValue(Request $request)
+    {
+
+        if ($request["updateHiddenCountryValueID"] != "" && $request["UpdateCountryValue"] != "") {
+            ordertoship_country_value::where('country_value_id', '=', $request["updateHiddenCountryValueID"])->update(['Value' => $request["UpdateCountryValue"]]);
+
+        }
+
+        return redirect('/order-to-ship/packing');
     }
 }
