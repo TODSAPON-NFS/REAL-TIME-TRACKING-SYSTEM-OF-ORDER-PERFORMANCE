@@ -83,7 +83,7 @@
                     <div class="form-group">
                         <div class="col-sm-3"></div>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="input" name = "AddCountry"
+                            <input type="text" class="form-control" id="input" name="AddCountry"
                                    placeholder="Country Name : ">
                         </div>
                         <div class="col-sm-3">
@@ -99,75 +99,71 @@
                 </form>
             </div>
 
-            <!-- Country data input -->
-            <div class="row">
+            <!-- Country data input, data showing dynamically from database -->
+            @foreach($country as $countries)
+                <div class="row">
+                    <h3 align="center">Country : {{$countries["CountryName"]}}</h3>
+                    <h4 align="center">Shipment Date : {{$countries["ShipmentDate"]}}</h4>
 
-                @foreach($country as $countries)
+                    <form class="form-horizontal" action="/order-to-ship/PackingAddCountryValue" method="post">
+                        <input type="hidden" name="_token" value="{{csrf_token()}}">
+                        <input type="hidden" name="HiddenCountryNameID" value="{{$countries["country_name_id"]}}">
 
-                <h3 align="center">Country : {{$countries["CountryName"]}}</h3>
-                <h4 align="center">Shipment Date : {{$countries["ShipmentDate"]}}</h4>
-
-                <form class="form-horizontal" action="/order-to-ship/addShipmentDate" method="post">
-                    <input type="hidden" name="_token" value="{{csrf_token()}}">
-                    <input type="hidden" name="CountryNameID" value="{{$countries["country_name_id"]}}">
-                    <div class="form-group">
-                        <div class="col-sm-3"></div>
-                        <div class="col-sm-4">
-                            <input class="form-control" type="date" name="date" id="date" placeholder="Enter Date">
+                        <div class="form-group">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-4">
+                                <input class="form-control" type="date" name="shipmentDate" id="date"
+                                       placeholder="Enter Date">
+                            </div>
+                            <div class="col-sm-3">
+                                <button type="submit" class="btn btn-primary">
+                                    ADD / Update
+                                </button>
+                            </div>
+                            <div class="col-sm-2"></div>
                         </div>
-                        <div class="col-sm-3">
-                            <button type="button" class="btn btn-primary">
-                                ADD / Update
-                            </button>
-                        </div>
-                        <div class="col-sm-2"></div>
+                    </form>
+
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-6">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>Size</th>
+                                <th>Inputs</th>
+                                <th>Update Value</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                           {{-- @foreach($db  as $sizes)
+                                <form action="/order-to-ship/updateMerchantOrderQuantity" method="post">
+                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+
+                                    <tr>
+                                        <td>{{$sizes["Size"]}}</td>
+                                        <td>{{$sizes["Size"]}}</td>
+                                        <td><input type="text" class="form-control" id="mock up"
+                                                   placeholder=""></td>
+                                        <td>
+                                            <button type="submit" class="btn btn-primary">Update</button>
+                                        </td>
+                                        <td>
+                                            <button type="submit" class="btn btn-primary">Delete</button>
+                                        </td>
+
+                                    </tr>
+                                </form>
+                            @endforeach--}}
+
+                            </tbody>
+                        </table>
                     </div>
-                </form>
-                @endforeach
-                <div class="col-sm-3"></div>
-                <div class="col-sm-6">
-                    <table class="table table-striped">
-                        <thead>
-                        <tr>
-                            <th>Size</th>
-                            <th>Inputs</th>
-                            <th>Update Value</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>500</td>
-                            <td>10</td>
-                            <td><input type="text" class="form-control" id="mock up"
-                                       placeholder=""></td>
-                            <td>
-                                <button type="submit" class="btn btn-primary">Update</button>
-                            </td>
-                            <td>
-                                <button type="submit" class="btn btn-primary">Delete</button>
-                            </td>
+                    <div class="col-sm-3"></div>
 
-                        </tr>
-                        <tr>
-                            <td>500</td>
-                            <td>10</td>
-                            <td><input type="text" class="form-control" id="mock up"
-                                       placeholder=""></td>
-                            <td>
-                                <button type="submit" class="btn btn-primary">Update</button>
-                            </td>
-                            <td>
-                                <button type="submit" class="btn btn-primary">Delete</button>
-                            </td>
-
-                        </tr>
-                        </tbody>
-                    </table>
                 </div>
-                <div class="col-sm-3"></div>
-            </div>
+        @endforeach
 
-            <!-- Country data input -->
+        <!-- Country data input -->
             <div class="row">
                 <h3 align="center">Country : United Kingdom</h3>
                 <h4 align="center">Shipment Date : 11/11/2017</h4>
