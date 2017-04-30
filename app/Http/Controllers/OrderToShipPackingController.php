@@ -27,7 +27,9 @@ class OrderToShipPackingController extends Controller
             "item" => $request->session()->get('item'),
         ];
 
-        return view('Order to ship.packing')->with('items', $items)->with('db', $db)->with('country', $country);
+        return view('Order to ship.packing')->with('items', $items)->with('db', $db)
+            ->with('country', $country)
+            ->with('countryValues', $countryValue);
     }
 
     public function updateOrderQuantity(Request $request)
@@ -56,11 +58,10 @@ class OrderToShipPackingController extends Controller
             //saving country default values
             $merchants = ordertoship_marchant:: where('id', '=', $id)->get();
 
-            foreach ($merchants as $merchant)
-            {
+            foreach ($merchants as $merchant) {
                 $countryValue = new ordertoship_country_value;
                 $countryValue->id = $id;
-                $countryValue->	country_name_id = $country->id;
+                $countryValue->country_name_id = $country->id;
                 $countryValue->save();
             }
         }
@@ -73,5 +74,23 @@ class OrderToShipPackingController extends Controller
             ordertoship_country_name:: where('country_name_id', '=', $request["HiddenCountryNameID"])->update(['ShipmentDate' => $request["shipmentDate"]]);
         }
         return redirect('/order-to-ship/packing');
+    }
+
+    public function updateCountry(Request $request)
+    {
+        $id = $request->session()->get('id');
+
+        if ($request["updateHiddenCountryID"] != "" && $request["CountryUpdate"] != "" && $request["submit"] == "update") {
+            ordertoship_marchant::where('country_name_id', '=', $request["updateHiddenCountryID"])
+                ->update(['CountryName' => $request["CountryUpdate"]]);
+            //echo $var;
+
+        } else if ($request["updateHiddenSize"] != "" && $request["submit"] == "delete") {
+            ordertoship_marchant::where('marchant_id', '=', $request["updateHiddenSize"])->delete();
+        }
+
+        // echo $request["updateHiddenMarkerPcs"] . " " . $request["updateMarkerPcs"];
+
+        return redirect('/order-to-ship/marchant');
     }
 }
