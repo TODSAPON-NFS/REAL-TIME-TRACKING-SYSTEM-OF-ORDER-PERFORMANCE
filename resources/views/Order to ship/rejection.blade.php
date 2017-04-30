@@ -57,7 +57,7 @@
                             <tr>
                                 <form method="post" action="/order-to-ship/rejection/update">
                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                   <input type="hidden" name="size" value="{{$sizes["Size"]}}">
+                                   <input type="hidden" name="id" value="{{$sizes["marchant_id"]}}">
                                     <td>{{$sizes["Size"]}}</td>
                                     <td>{{$sizes["Rejection"]}}</td>
                                     <td><input type="text" class="form-control" name="rejectionValue" 
