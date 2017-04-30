@@ -84,12 +84,11 @@ Route::post('/order-to-ship/cadCutInput', 'OrderToShipCadController@updateCut');
 Route::post('/order-to-ship/cadFabricInput', 'OrderToShipCadController@updateFabric');
 //cut input
 Route::get('/order-to-ship/cut', 'OrderToShipCuttingController@show');
-Route::post('/order-to-ship/AddOrSub', 'OrderToShipCuttingController@updateSizes');
+Route::post('/order-to-ship/CutAddOrSub', 'OrderToShipCuttingController@updateSizes');
 
 //sew input
-Route::get('/order-to-ship/sew', function () {
-    return view('Order to ship.sew');
-});
+Route::get('/order-to-ship/sew', 'OrderToShipSewController@show');
+Route::post('/order-to-ship/SewAddOrSub', 'OrderToShipSewController@updateSizes');
 
 //finishing input
 Route::get('/order-to-ship/finishing', function () {
@@ -97,9 +96,8 @@ Route::get('/order-to-ship/finishing', function () {
 });
 
 //rejection input
-Route::get('/order-to-ship/rejection', function () {
-    return view('Order to ship.rejection');
-});
+Route::get('/order-to-ship/rejection', 'OrderToShipRejectionController@show');
+Route::post('/order-to-ship/rejection/update', 'OrderToShipRejectionController@update');
 //packing input
 Route::get('/order-to-ship/packing', 'OrderToShipPackingController@show');
 Route::post('order-to-ship/updatePackingReceive', 'OrderToShipPackingController@updateOrderQuantity');
