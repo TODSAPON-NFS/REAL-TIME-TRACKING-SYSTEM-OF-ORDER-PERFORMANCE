@@ -24,17 +24,16 @@ class OrderToShipRejectionController extends Controller
     public function update(Request $request){
     	$this->validate($request, [
 	        'rejectionValue' => 'required|numeric',
-	        'size' => 'required|numeric'
+	        'id' => 'required|numeric'
     	]);
-    	$size=$request["size"];
-    	$id = $request->session()->get('id');
+    	$id = $request["id"];
     	$value=$request["rejectionValue"];
     	if($request["actype"]=="add"){
-    		$db = ordertoship_marchant::where('id', '=', $id)->where('size', '=' ,$size)->first();
+    		$db = ordertoship_marchant::where('marchant_id', '=', $id)->first();
     		ordertoship_marchant::where('marchant_id','=',$db->marchant_id)->update(['Rejection' => $db->Rejection+$value]);
     		return redirect('/order-to-ship/rejection');
     	}else if($request["actype"]="sub"){
-    		$db = ordertoship_marchant::where('id', '=', $id)->where('size', '=' ,$size)->first();
+    		$db = ordertoship_marchant::where('marchant_id', '=', $id)->first();
             ordertoship_marchant::where('marchant_id','=',$db->marchant_id)->update(['Rejection' => $db->Rejection-$value]);
     		return redirect('/order-to-ship/rejection');
     	}
