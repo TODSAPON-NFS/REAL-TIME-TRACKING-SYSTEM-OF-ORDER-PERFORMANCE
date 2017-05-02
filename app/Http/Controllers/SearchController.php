@@ -140,7 +140,19 @@ class SearchController extends Controller
 
             $outputs = array();
             $SumOfOutputs = array(
-                "sum"
+                "A" => 0,
+                "C" => 0,
+                "E" => 0,
+                "F" => 0,
+                "G" => 0,
+                "H" => 0,
+                "CutTransactionBalance" => 0,
+                "I" => 0,
+                "SEWTransactionBalance" => 0,
+                "J" => 0,
+                "FinishingTransactionBalance" => 0,
+                "K" => 0,
+                "Rejection" => 0,
             );
 
             foreach ($orderTOShipMerchantDB as $output) {
@@ -182,6 +194,21 @@ class SearchController extends Controller
                         'PackingTransactionBalance' => $PackingTransactionBalance,
                         'Rejection' => $R
                     ];
+
+                $SumOfOutputs["A"] += $A;
+                $SumOfOutputs["C"] += $C;
+                $SumOfOutputs["E"] += $E;
+                $SumOfOutputs["F"] += $F;
+                $SumOfOutputs["G"] += $G;
+                $SumOfOutputs["H"] += $H;
+                $SumOfOutputs["CutTransactionBalance"] += $CutTransactionBalance;
+                $SumOfOutputs["I"] += $I;
+                $SumOfOutputs["SEWTransactionBalance"] += $SEWTransactionBalance;
+                $SumOfOutputs["J"] += $FinishingTransactionBalance;
+                $SumOfOutputs["K"] += $K;
+                $SumOfOutputs["Rejection"] += $R;
+
+
             }
 
             $CountryOutputs = array();
@@ -195,7 +222,8 @@ class SearchController extends Controller
             ];
 
             return view('Order to ship.general')->with('items', $items)->with('mainDB', $mainDB)
-                ->with('Outputs', $outputs);
+                ->with('Outputs', $outputs)
+                ->with('SUMS', $SumOfOutputs);
         }
 
 

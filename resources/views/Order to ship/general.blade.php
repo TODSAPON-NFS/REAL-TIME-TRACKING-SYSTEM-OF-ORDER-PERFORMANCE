@@ -34,8 +34,8 @@
         <div class="row">
             <h4 align="center">Order to ship outputs :</h4>
 
-            <p style="margin-top: 10px" align="center">Extra Quantity Percentance : </p>
-            <p align="center">Per GMT Consumtion yrd : </p>
+            <p style="margin-top: 10px" align="center">Extra Quantity Percentance : {{$mainDB["CutPlan"]}}</p>
+            <p align="center">Per GMT Consumtion yrd : {{$mainDB["FabricAllocation"]}}</p>
 
             <table class="table table-striped">
                 <thead>
@@ -58,10 +58,53 @@
                 </tr>
                 </thead>
                 <tbody>
+                @foreach($Outputs as $output)
+                    <tr>
+                        <td>{{$output["Size"]}}</td>
+                        <td>{{$output["OrderQuantity"]}}</td>
+                        <td>{{$output["CutPlan"]}}</td>
+                        <td>{{$output["FabricAllocation"]}}</td>
+                        <td>{{$output["ExtraFabricNeed"]}}</td>
+                        <td>{{$output["AvailableGMT"]}}</td>
+                        <td>{{$output["CutQuantity"]}}</td>
+                        <td>{{$output["CutTransactionBalance"]}}</td>
+                        <td>{{$output["SewingReceive"]}}</td>
+                        <td>{{$output["SEWTransactionBalance"]}}</td>
+                        <td>{{$output["FinishingReceive"]}}</td>
+                        <td>{{$output["FinishingTransactionBalance"]}}</td>
+                        <td>{{$output["PackingReceive"]}}</td>
+                        <td>{{$output["PackingTransactionBalance"]}}</td>
+                        <td>{{$output["Rejection"]}}</td>
 
 
+                    </tr>
+                @endforeach
+
+                <tr>
+                    <td>SUMS:</td>
+                    <td>{{$output["OrderQuantity"]}}</td>
+                    <td>{{$output["CutPlan"]}}</td>
+                    <td>{{$output["FabricAllocation"]}}</td>
+                    <td>{{$output["ExtraFabricNeed"]}}</td>
+                    <td>{{$output["AvailableGMT"]}}</td>
+                    <td>{{$output["CutQuantity"]}}</td>
+                    <td>{{$output["CutTransactionBalance"]}}</td>
+                    <td>{{$output["SewingReceive"]}}</td>
+                    <td>{{$output["SEWTransactionBalance"]}}</td>
+                    <td>{{$output["FinishingReceive"]}}</td>
+                    <td>{{$output["FinishingTransactionBalance"]}}</td>
+                    <td>{{$output["PackingReceive"]}}</td>
+                    <td>{{$output["PackingTransactionBalance"]}}</td>
+                    <td>{{$output["Rejection"]}}</td>
+
+
+                </tr>
                 </tbody>
             </table>
+
+
+
+
         </div>
 
         {{--Country Outputs--}}
