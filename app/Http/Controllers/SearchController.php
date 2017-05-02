@@ -136,7 +136,7 @@ class SearchController extends Controller
 
             $mainDB = ordertoship::find($id);
             $orderTOShipMerchantDB = ordertoship_marchant::where('id', '=', $id)->get();
-            $countryNames = ordertoship_country_name::where('id', '=', $id) ->get();
+            $countryNames = ordertoship_country_name::where('id', '=', $id)->get();
 
             $B = $mainDB["CutPlan"];
             $D = $mainDB["FabricAllocation"];
@@ -158,7 +158,7 @@ class SearchController extends Controller
                 "Rejection" => 0,
             );
 
-           // echo count($orderTOShipMerchantDB) ." ";
+            // echo count($orderTOShipMerchantDB) ." ";
 
             foreach ($orderTOShipMerchantDB as $output) {
                 $A = $output["OrderQuantity"];
@@ -219,11 +219,49 @@ class SearchController extends Controller
 
             $CountryOutputs = array();
 
-            foreach ($countryNames as $countryName)
-            {
-                $CountryOutputs[] = ordertoship_country_value::where('country_name_id', '=', $countryName["country_name_id"])->first();
+            //showing output of per countries data
+            for ($i = 0; $i < count($orderTOShipMerchantDB); $i++) {
+                $CountryOutputs[][] = $orderTOShipMerchantDB[$i]["Size"];
+                $CountryOutputs[$i][] = 0;
 
+                $tempSum = 0;
+
+                //searching value for country
+                foreach ($countryNames as $countryName) {
+                    $tempValue = ordertoship_country_value::where('country_name_id', '=', $countryName["country_name_id"])
+                        ->where('marchant_id', '=', $orderTOShipMerchantDB[$i]["marchant_id"])->first();
+                    if ($tempValue != "") {
+                        $CountryOutputs[$i][] = $tempValue["Value"];
+                        $tempSum += $tempValue["Value"];
+
+                    }
+
+                }
+
+                //updating availability
+                $CountryOutputs[$i][1] = $orderTOShipMerchantDB[$i]["PackingReceive"] - $tempSum;
             }
+
+            /*  for ($i = 0; $i < 10; $i++) {
+                  $CountryOutputs[$i]["size"] = 1;
+                  $CountryOutputs[$i]["availability"] = 0;
+                  for ($j = 0; $j < 5; $j++)
+                      $CountryOutputs[$i][] = $j;
+              }
+
+
+
+              for ($i = 0; $i < count($CountryOutputs); $i++) {
+                  for ($j = 0; $j < count($CountryOutputs[$i]); $j++)
+                      echo $CountryOutputs[$i][$j] . " ";
+                  echo "<br>";
+              }*/
+
+           /* for($i = 0; $i < count($CountryOutputs); $i++) {
+                for ($j = 0; $j < count($CountryOutputs[$i]); $j++)
+                    echo $CountryOutputs[$i][$j] . " ";
+                echo "<br>";
+            }*/
 
             $items = [
                 "id" => $id,
@@ -236,7 +274,8 @@ class SearchController extends Controller
             return view('Order to ship.general')->with('items', $items)->with('mainDB', $mainDB)
                 ->with('Outputs', $outputs)
                 ->with('SUMS', $SumOfOutputs)
-                ->with('CountryNames', $countryNames);
+                ->with('CountryNames', $countryNames)
+                ->with('CountryOutputs', $CountryOutputs);
         }
 
 

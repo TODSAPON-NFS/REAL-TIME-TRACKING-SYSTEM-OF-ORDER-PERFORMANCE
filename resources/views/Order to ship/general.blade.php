@@ -121,7 +121,13 @@
                 </tr>
                 </thead>
                 <tbody>
-
+                @for($i = 0; $i < count($CountryOutputs); $i++)
+                    <tr>
+                    @for($j = 0; $j < count($CountryOutputs[$i]); $j++)
+                        <td>{{$CountryOutputs[$i][$j]}}</td>
+                    @endfor
+                    </tr>
+                @endfor
 
                 </tbody>
             </table>
