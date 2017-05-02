@@ -136,44 +136,6 @@
                         </thead>
                         <tbody>
 
-                        <?php $value = null;
-                        $id = null;
-                        $i = 0; ?>
-
-
-
-                        {{--showing data for per size and for per country--}}
-                        @foreach($db  as $packingReceive)
-                            {{--finding specific data for per country--}}
-                            @for( ; $i < count($countryValues); $i++)
-                                @if($countryValues[$i]["country_name_id"] == $countries["country_name_id"])
-                                    <?php $value = $countryValues[$i]["Value"];
-                                    $id =  $countryValues[$i]["country_value_id"];
-                                    $i++;
-                                    ?>
-                                    @break
-                                @endif
-                            @endfor
-
-                            <form action="/order-to-ship/PackingUpdateCountryValue" method="post">
-                                <input type="hidden" name="_token" value="{{csrf_token()}}">
-
-                                <tr>
-                                    <td>{{$packingReceive["Size"]}}</td>
-                                    <td>{{$value}}</td>
-                                    <input type="hidden" name="updateHiddenCountryValueID"
-                                           value={{$countryValues[$i-1]["country_value_id"]}}>
-
-                                    <td><input type="text" class="form-control" name="UpdateCountryValue"
-                                               ></td>
-                                    <td>
-                                        <button type="submit" class="btn btn-primary">Update</button>
-                                    </td>
-
-                                </tr>
-                            </form>
-                        @endforeach
-
 
                         </tbody>
                     </table>

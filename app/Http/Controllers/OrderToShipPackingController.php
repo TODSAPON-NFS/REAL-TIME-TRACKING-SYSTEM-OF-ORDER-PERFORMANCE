@@ -61,6 +61,7 @@ class OrderToShipPackingController extends Controller
             foreach ($merchants as $merchant) {
                 $countryValue = new ordertoship_country_value;
                 $countryValue->id = $id;
+                $countryValue->marchant_id = $merchant["marchant_id"];
                 $countryValue->country_name_id = $country->id;
                 $countryValue->save();
             }

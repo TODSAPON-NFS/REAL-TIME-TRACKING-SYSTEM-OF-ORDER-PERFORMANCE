@@ -82,27 +82,25 @@
 
                 <tr>
                     <td>SUMS:</td>
-                    <td>{{$output["OrderQuantity"]}}</td>
-                    <td>{{$output["CutPlan"]}}</td>
-                    <td>{{$output["FabricAllocation"]}}</td>
-                    <td>{{$output["ExtraFabricNeed"]}}</td>
-                    <td>{{$output["AvailableGMT"]}}</td>
-                    <td>{{$output["CutQuantity"]}}</td>
-                    <td>{{$output["CutTransactionBalance"]}}</td>
-                    <td>{{$output["SewingReceive"]}}</td>
-                    <td>{{$output["SEWTransactionBalance"]}}</td>
-                    <td>{{$output["FinishingReceive"]}}</td>
-                    <td>{{$output["FinishingTransactionBalance"]}}</td>
-                    <td>{{$output["PackingReceive"]}}</td>
-                    <td>{{$output["PackingTransactionBalance"]}}</td>
-                    <td>{{$output["Rejection"]}}</td>
+                    <td>{{$SUMS["A"]}}</td>
+                    <td>{{$SUMS["C"]}}</td>
+                    <td>{{$SUMS["E"]}}</td>
+                    <td>{{$SUMS["F"]}}</td>
+                    <td>{{$SUMS["G"]}}</td>
+                    <td>{{$SUMS["H"]}}</td>
+                    <td>{{$SUMS["CutTransactionBalance"]}}</td>
+                    <td>{{$SUMS["I"]}}</td>
+                    <td>{{$SUMS["SEWTransactionBalance"]}}</td>
+                    <td>{{$SUMS["J"]}}</td>
+                    <td>{{$SUMS["FinishingTransactionBalance"]}}</td>
+                    <td>{{$SUMS["K"]}}</td>
+                    <td>{{$SUMS["K"]}}</td>
+                    <td>{{$SUMS["Rejection"]}}</td>
 
 
                 </tr>
                 </tbody>
             </table>
-
-
 
 
         </div>
@@ -116,8 +114,9 @@
                 <tr>
                     <th>Display Sizes</th>
                     <th>Available</th>
-                    <th>Bhutan (Shipment : 10/10/17)</th>
-                    <th>Bhutan (Shipment : 10/10/17)</th>
+                    @foreach($CountryNames as $CountryName)
+                        <th>{{$CountryName["CountryName"]}} (Shipment :{{$CountryName["ShipmentDate"]}})</th>
+                    @endforeach
 
                 </tr>
                 </thead>

@@ -18,12 +18,14 @@ class CreateOrdertoshipCountryValueTable extends Migration
             $table->increments('country_value_id');
             $table->unsignedInteger('id')->nullable(false);
             $table->unsignedInteger('country_name_id')->nullable(false);
+            $table->unsignedInteger('marchant_id')->nullable(false);
             $table->double('Value', 15, 8)->default(0.0);
 
             $table->timestamps();
 
             $table->foreign('id')->references('id')->on('ordertoships');
             $table->foreign('country_name_id')->references('country_name_id')->on('ordertoship_country_names');
+            $table->foreign('marchant_id')->references('marchant_id')->on('ordertoship_marchants');
 
         });
     }

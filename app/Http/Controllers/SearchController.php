@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\ordertoship;
+use App\ordertoship_country_name;
+use App\ordertoship_country_value;
 use App\ordertoship_marchant;
 use Illuminate\Http\Request;
 use App\ordertocut;
@@ -134,6 +136,7 @@ class SearchController extends Controller
 
             $mainDB = ordertoship::find($id);
             $orderTOShipMerchantDB = ordertoship_marchant::where('id', '=', $id)->get();
+            $countryNames = ordertoship_country_name::where('id', '=', $id) ->get();
 
             $B = $mainDB["CutPlan"];
             $D = $mainDB["FabricAllocation"];
@@ -154,6 +157,8 @@ class SearchController extends Controller
                 "K" => 0,
                 "Rejection" => 0,
             );
+
+           // echo count($orderTOShipMerchantDB) ." ";
 
             foreach ($orderTOShipMerchantDB as $output) {
                 $A = $output["OrderQuantity"];
@@ -204,14 +209,21 @@ class SearchController extends Controller
                 $SumOfOutputs["CutTransactionBalance"] += $CutTransactionBalance;
                 $SumOfOutputs["I"] += $I;
                 $SumOfOutputs["SEWTransactionBalance"] += $SEWTransactionBalance;
-                $SumOfOutputs["J"] += $FinishingTransactionBalance;
+                $SumOfOutputs["J"] += $J;
+                $SumOfOutputs["FinishingTransactionBalance"] += $FinishingTransactionBalance;
                 $SumOfOutputs["K"] += $K;
                 $SumOfOutputs["Rejection"] += $R;
 
-
             }
 
+
             $CountryOutputs = array();
+
+            foreach ($countryNames as $countryName)
+            {
+                $CountryOutputs[] = ordertoship_country_value::where('country_name_id', '=', $countryName["country_name_id"])->first();
+
+            }
 
             $items = [
                 "id" => $id,
@@ -223,7 +235,8 @@ class SearchController extends Controller
 
             return view('Order to ship.general')->with('items', $items)->with('mainDB', $mainDB)
                 ->with('Outputs', $outputs)
-                ->with('SUMS', $SumOfOutputs);
+                ->with('SUMS', $SumOfOutputs)
+                ->with('CountryNames', $countryNames);
         }
 
 
