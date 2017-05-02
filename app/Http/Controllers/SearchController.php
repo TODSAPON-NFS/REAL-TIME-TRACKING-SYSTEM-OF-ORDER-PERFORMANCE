@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\ordertoship;
+use App\ordertoship_marchant;
 use Illuminate\Http\Request;
 use App\ordertocut;
 use  App\ordertocut_marchant;
@@ -90,7 +92,6 @@ class SearchController extends Controller
                 "muOutput" => $dbvar4->Output
             ];
 
-
             return view('order to cut.general')->with('items', $items);
         } else if ($request["recheck"]) {
             $id = $request->session()->get('id');
@@ -99,20 +100,19 @@ class SearchController extends Controller
 
             $sumMP = 0;
 
-            foreach ($dbvar as $var)
-            {
+            foreach ($dbvar as $var) {
                 $sumMP += $var["MarkerPcs"];
             }
 
             //getting session data
             $buyer = $request->session()->get('buyer');
             $orderNo = $request->session()->get('orderNo');
-            $color  = $request->session()->get('color');
+            $color = $request->session()->get('color');
             $item = $request->session()->get('item');
 
             //getting the value of f from order to cut merchant
-            $orderToCutM1 = ordertocut::where('Buyer', '=', $buyer ) -> where('OrderNo', '=', $orderNo)
-                ->where('Color', '=', $color) -> where('Item', '=', $item)->first();
+            $orderToCutM1 = ordertocut::where('Buyer', '=', $buyer)->where('OrderNo', '=', $orderNo)
+                ->where('Color', '=', $color)->where('Item', '=', $item)->first();
             $f = ordertocut_marchant::find($orderToCutM1["id"]);
 
             $items = [
@@ -123,17 +123,68 @@ class SearchController extends Controller
                 "item" => $item,
                 "Shrinkage" => $dbvar1->Shrinkage,
                 "Bowling" => $dbvar1->Bowling,
-                "FabricFault" => $dbvar1 -> FabricFault,
+                "FabricFault" => $dbvar1->FabricFault,
                 "sumMp" => $sumMP,
                 "F" => $f["FabricNeed"]
 
             ];
             return view('Recheck with extra booking.general')->with('items', $items)->with('db', $dbvar);
-        }
-
-        else if($request["orderToShip"])
-        {
+        } else if ($request["orderToShip"]) {
             $id = $request->session()->get('id');
+
+            $mainDB = ordertoship::find($id);
+            $orderTOShipMerchantDB = ordertoship_marchant::where('id', '=', $id)->get();
+
+            $B = $mainDB["CutPlan"];
+            $D = $mainDB["FabricAllocation"];
+
+            $outputs = array();
+            $SumOfOutputs = array(
+                "sum"
+            );
+
+            foreach ($orderTOShipMerchantDB as $output) {
+                $A = $output["OrderQuantity"];
+                $R = $output["Rejection"];
+                $H = $output["CutQuantity"];
+                $I = $output["SewingReceive"];
+                $J = $output["FinishingReceive"];
+                $K = $output["PackingReceive"];
+
+                $C = 0;
+
+                if ($A != 0 && $B != 0)
+                    $C = $A + (($B * $A) / 100);
+
+                $E = $C * $D;
+                $F = $R * $D;
+                $G = $C - $R;
+                $CutTransactionBalance = $H - $I;
+                $SEWTransactionBalance = $I - $J;
+                $FinishingTransactionBalance = $J - $K;
+                $PackingTransactionBalance = $K;
+
+                $outputs[] =
+                    [
+                        'Size' => $output["Size"],
+                        'OrderQuantity' => $output["OrderQuantity"],
+                        'CutPlan' => $C,
+                        'FabricAllocation' => $E,
+                        'ExtraFabricNeed' => $F,
+                        'AvailableGMT' => $G,
+                        'CutQuantity' => $H,
+                        'CutTransactionBalance' => $CutTransactionBalance,
+                        'SewingReceive' => $I,
+                        'SEWTransactionBalance' => $SEWTransactionBalance,
+                        'FinishingReceive' => $J,
+                        'FinishingTransactionBalance' => $FinishingTransactionBalance,
+                        'PackingReceive' => $K,
+                        'PackingTransactionBalance' => $PackingTransactionBalance,
+                        'Rejection' => $R
+                    ];
+            }
+
+            $CountryOutputs = array();
 
             $items = [
                 "id" => $id,
@@ -141,10 +192,12 @@ class SearchController extends Controller
                 "orderNo" => $request->session()->get('orderNo'),
                 "color" => $request->session()->get('color'),
                 "item" => $request->session()->get('item'),
-                ];
+            ];
 
-            return view('Order to ship.general')->with('items', $items);
+            return view('Order to ship.general')->with('items', $items)->with('mainDB', $mainDB)
+                ->with('Outputs', $outputs);
         }
+
 
     }
 }
