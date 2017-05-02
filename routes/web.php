@@ -105,3 +105,6 @@ Route::post('/order-to-ship/PackingAddCountry', 'OrderToShipPackingController@ad
 Route::post('/order-to-ship/PackingAddCountryValue', 'OrderToShipPackingController@addShipmentDate');
 Route::post('/order-to-ship/PackingUpdateCountryValue', 'OrderToShipPackingController@updateCountryValue');
 Route::post('/order-to-ship/PackingUpdateCountryName', 'OrderToShipPackingController@updateCountry');
+
+//delete data
+Route::get('delete', 'DeleteController@show');
