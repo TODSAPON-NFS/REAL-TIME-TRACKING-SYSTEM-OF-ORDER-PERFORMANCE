@@ -16,43 +16,6 @@ class OrderToShipPackingController extends Controller
         $country = ordertoship_country_name::where('id', '=', $id)->get();
         $countryValue = ordertoship_country_value::where('id', '=', $id)->get();
 
-        $CountryAndValues = array();
-
-        for ($i = 0; $i < count($country); $i++) {
-            $CountryAndValues[][] = $country[$i]["CountryName"];
-            $CountryAndValues[$i][] = $country[$i]["ShipmentDate"];
-            $CountryAndValues[$i][] = $country[$i]["country_name_id"];
-
-            $tempValues = array();
-            //searching value for country
-            foreach ($db as $merchant) {
-
-                $tempValue = ordertoship_country_value::where('country_name_id', '=', $country[$i]["country_name_id"])
-                    ->where('marchant_id', '=', $merchant["marchant_id"])->first();
-
-                if ($tempValue != "") {
-                    $tempValues[] = $merchant["Size"];
-                    $tempValues[] = $merchant["Value"];
-                    $CountryAndValues[$i][] = $merchant["Size"];
-
-                   /* $CountryAndValues[$i][] = $merchant["Size"];
-                    $CountryAndValues[$i][] = $tempValue["Value"];*/
-                    // echo $tempValue["Value"] . " ";
-                }
-            }
-        }
-
-        /*for ($i = 0; $i < count($CountryAndValues); $i++) {
-            // echo count($CountryAndValues)[$i] . " ";
-            //echo $i;
-            for ($j = 0; $j < count($CountryAndValues[$i]); $j++) {
-                $temp = $CountryAndValues[$i][$j];
-                for ($k = 0; $k < count($temp); $k++)
-                    echo $temp[$k] . " ";
-                echo "<br>";
-            }
-        }*/
-
 
         $items = [
             "id" => $id,
@@ -62,10 +25,9 @@ class OrderToShipPackingController extends Controller
             "item" => $request->session()->get('item'),
         ];
 
-         return view('Order to ship.packing')->with('items', $items)->with('db', $db)
-             ->with('countries', $country)
-             ->with('countryValues', $countryValue)
-             ->with('CountryAndValues', $CountryAndValues);
+        return view('Order to ship.packing')->with('items', $items)->with('db', $db)
+            ->with('countries', $country)
+            ->with('countryValues', $countryValue);
     }
 
     public function updateOrderQuantity(Request $request)
@@ -76,8 +38,6 @@ class OrderToShipPackingController extends Controller
             ordertoship_marchant::where('marchant_id', '=', $request["hiddenMerchantID"])->update(['PackingReceive' => $request["updatePackingReceive"]]);
 
         }
-
-
         return redirect('/order-to-ship/packing');
     }
 
@@ -115,8 +75,6 @@ class OrderToShipPackingController extends Controller
 
     public function updateCountry(Request $request)
     {
-        $id = $request->session()->get('id');
-
         if ($request["updateHiddenCountryID"] != "" && $request["CountryUpdate"] != "" && $request["submit"] == "update") {
             ordertoship_country_name::where('country_name_id', '=', $request["updateHiddenCountryID"])
                 ->update(['CountryName' => $request["CountryUpdate"]]);
@@ -132,9 +90,24 @@ class OrderToShipPackingController extends Controller
     public function updateCountryValue(Request $request)
     {
 
-        if ($request["updateHiddenCountryValueID"] != "" && $request["UpdateCountryValue"] != "") {
-            ordertoship_country_value::where('country_value_id', '=', $request["updateHiddenCountryValueID"])->update(['Value' => $request["UpdateCountryValue"]]);
+        if ($request["updateHiddenCountryValueID"] != ""
+            && $request["updateHiddenTempValue"] != ""
+            && $request["updateCountryValue"] != ""
+            && $request["update"] == "add"
+        ) {
+            $updatedValue = $request["updateHiddenTempValue"] + $request["updateCountryValue"];
+            ordertoship_country_value::where('country_value_id', '=', $request["updateHiddenCountryValueID"])
+                ->update(['Value' => $updatedValue]);
 
+        } else if ($request["updateHiddenCountryValueID"] != ""
+            && $request["updateHiddenTempValue"] != ""
+            && $request["updateCountryValue"] != ""
+            && $request["update"] == "sub"
+        ) {
+
+            $updatedValue = $request["updateHiddenTempValue"] - $request["updateCountryValue"];
+            ordertoship_country_value::where('country_value_id', '=', $request["updateHiddenCountryValueID"])
+                ->update(['Value' => $updatedValue]);
         }
 
         return redirect('/order-to-ship/packing');

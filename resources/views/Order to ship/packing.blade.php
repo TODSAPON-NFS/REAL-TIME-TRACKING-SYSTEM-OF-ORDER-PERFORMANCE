@@ -145,24 +145,25 @@
                             @endif
 
 
-                            <form action="" method="post">
+                            <form action="/order-to-ship/PackingUpdateCountryValue" method="post">
                                 <input type="hidden" name="_token" value="{{csrf_token()}}">
 
                                 <tr>
                                     <td>{{$merchant["Size"]}}</td>
                                     <td><?php echo $tempValue["Value"];?></td>
 
-                                    <input type="hidden" name="hiddenMerchantID"
-                                           value="<?php echo $tempValue["marchant_id"];?>">
-                                    <input type="hidden" name="hiddenCountryNameID"
-                                           value="{{$country["country_name_id"]}}">
-                                    <td><input type="text" class="form-control" name="updateOrderQuantity"
+                                    <input type="hidden" name="updateHiddenTempValue"
+                                           value="<?php echo $tempValue["Value"];?>">
+                                    <input type="hidden" name="updateHiddenCountryValueID"
+                                           value="<?php echo $tempValue["country_value_id"];?>">
+
+                                    <td><input type="text" class="form-control" name="updateCountryValue"
                                                placeholder=""></td>
                                     <td>
-                                        <button type="submit" class="btn btn-primary" name="update" value="update">
+                                        <button type="submit" class="btn btn-primary" name="update" value="add">
                                             Add
                                         </button>
-                                        <button type="submit" class="btn btn-primary" name="update" value="update">
+                                        <button type="submit" class="btn btn-primary" name="update" value="sub">
                                             Sub
                                         </button>
                                     </td>
