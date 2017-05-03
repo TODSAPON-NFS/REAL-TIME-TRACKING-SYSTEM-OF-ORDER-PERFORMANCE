@@ -50,6 +50,6 @@ class CoverController extends Controller
 
         }
 
-        return redirect('cover');
+        return redirect('/');
     }
 }

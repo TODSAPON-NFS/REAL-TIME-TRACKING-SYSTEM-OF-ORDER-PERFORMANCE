@@ -48,9 +48,7 @@
                         <button type="submit" class="btn btn-primary">
                             ADD
                         </button>
-                        <button type="button" class="btn btn-primary">
-                            View / Edit
-                        </button>
+                        <a href="#editMerchantSizes" class="btn btn-primary" role="button">EDIT</a>
                     </div>
                 </div>
             </form>
@@ -100,8 +98,8 @@
         </div>
 
 
-        <!-- edit option for sizespcs -->
-        <div class="row">
+        <!-- edit option for Marchant -->
+        <div class="row" id = "editMerchantSizes">
             <h4 align="center">Edit Sizes</h4>
             <div class="col-sm-3"></div>
             <div class="col-sm-6">

@@ -89,9 +89,7 @@
                         <button type="submit" class="btn btn-primary">
                             ADD
                         </button>
-                        <button type="button" class="btn btn-primary">
-                            EDIT
-                        </button>
+                        <a href="#editCountries" class="btn btn-primary" role="button">EDIT</a>
                     </div>
                     <div class="col-sm-2"></div>
                 </div>
@@ -182,7 +180,7 @@
 
 
     <!-- edit option for countries -->
-        <div class="row">
+        <div class="row" id = "editCountries">
             <h4 align="center">Edit Countries</h4>
             <div class="col-sm-3"></div>
             <div class="col-sm-6">

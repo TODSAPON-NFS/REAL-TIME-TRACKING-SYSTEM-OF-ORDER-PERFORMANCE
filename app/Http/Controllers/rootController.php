@@ -25,15 +25,16 @@ class rootController extends Controller
         if (empty($request["buyer"]) || empty($request["order"]) || empty($request["color"]) || empty($request["item"]))
             return view('root_inputs')->with('invalid', 'Please Enter All Fields');
 
-       
-        $db = ordertocut::where('Buyer', '=', $request["buyer"])->where('OrderNo', '=', $request["order"])
-            ->where('Color', '=', $request["color"])->where('Item', '=', $request["item"])->get();
-          
-        $db1 = recheck::where('Buyer', '=', $request["buyer"])->where('OrderNo', '=', $request["order"])
-        ->where('Color', '=', $request["color"])->where('Item', '=', $request["item"])->get();
-        
-         $key = 0;
-        
+        //to prevent case related error
+        $buyer = strtoupper($request["buyer"]);
+        $order = strtoupper($request["order"]);
+        $color = strtoupper($request["color"]);
+        $item = strtoupper($request["item"]);
+
+        $db = ordertocut::where('Buyer', '=', $buyer)->where('OrderNo', '=', $order)
+            ->where('Color', '=', $color)->where('Item', '=', $item)->get();
+
+
         if (empty($db[0])) {
             //save in order to cut database and get the id
             $dbvar = new ordertocut;
@@ -42,7 +43,7 @@ class rootController extends Controller
             $dbvar->Color = $request["color"];
             $dbvar->Item = $request["item"];
             $dbvar->save();
-            
+
             $dbvar = new recheck;
             $dbvar->Buyer = $request["buyer"];
             $dbvar->OrderNo = $request["order"];
@@ -86,24 +87,23 @@ class rootController extends Controller
             $dbstore->id = $key;
             $dbstore->save();
 
-             //storing to session to access in every page
-            $request->session()->put('id', $dbvar -> id);
-            $request->session()->put('buyer', $dbvar -> Buyer);
-            $request->session()->put('orderNo', $dbvar -> OrderNo);
-            $request->session()->put('color', $dbvar -> Color);
-            $request->session()->put('item', $dbvar -> Item);
+            //storing to session to access in every page
+            $request->session()->put('id', $dbvar->id);
+            $request->session()->put('buyer', $dbvar->Buyer);
+            $request->session()->put('orderNo', $dbvar->OrderNo);
+            $request->session()->put('color', $dbvar->Color);
+            $request->session()->put('item', $dbvar->Item);
+        } else {
+            $key = $db[0]->id;
+            //storing to session to access in every page
+            $request->session()->put('id', $db[0]->id);
+            $request->session()->put('buyer', $db[0]->Buyer);
+            $request->session()->put('orderNo', $db[0]->OrderNo);
+            $request->session()->put('color', $db[0]->Color);
+            $request->session()->put('item', $db[0]->Item);
         }
-        else {
-             $key = $db[0]->id;
-              //storing to session to access in every page
-            $request->session()->put('id', $db[0] -> id);
-            $request->session()->put('buyer', $db[0] -> Buyer);
-            $request->session()->put('orderNo', $db[0] -> OrderNo);
-            $request->session()->put('color', $db[0] -> Color);
-            $request->session()->put('item', $db[0] -> Item);
-        }
-       
-       
+
+
         //For calculating getting and saving result
         $db = ordertocut::find($key);
         $cad = ordertocut_cad::find($key);
@@ -112,29 +112,26 @@ class rootController extends Controller
         $mu = ordertocut_mu::find($key);
         $extraFabric = $cad->Output - $merchant->MockUpOutput - $store->Output;
         $shortExcess = $mu->Output - $extraFabric;
-        
-        if($extraFabric > 0.0 &&  $shortExcess > 0.0)
-        {
-            $db->ExtraFabric = $extraFabric;
-            $db->ExcessMonitoring = $shortExcess;
-        }
+
+
+        $db->ExtraFabric = $extraFabric;
+        $db->ExcessMonitoring = $shortExcess;
         //endcalculating
-        
+
         //for calculating and saving result in recheck
-        $db1 = recheck::find($key);
+        /*$db1 = recheck::find($key);
         $cad = recheck_cad::find($key);
         $fabric = recheck_fabric::find($key);
 
-        
 
-        $db1->MarkerLengthInYard = $db->markerLengthInMeter*1.09361;
+        $db1->MarkerLengthInYard = $db->markerLengthInMeter * 1.09361;
         $db1->FabricRequired = $db->LayLength * $cad->Piles;
-        $db1->Totalfabric =  $db->FabricRequired + $fabric->FabricFaultOutput;
+        $db1->Totalfabric = $db->FabricRequired + $fabric->FabricFaultOutput;
 
         $extraBooking = 0;
 
-        if($merchant->FabricNeed > 0)
-            $extraBooking = (($merchant->FabricNeed - $db->Totalfabric)*100)/$merchant->FabricNeed;
+        if ($merchant->FabricNeed > 0)
+            $extraBooking = (($merchant->FabricNeed - $db->Totalfabric) * 100) / $merchant->FabricNeed;
 
         $db1->ExtraBooking = $extraBooking;
         //endcalculating
@@ -142,11 +139,9 @@ class rootController extends Controller
         $request["excessMonitor"] = $db->ExcessMonitoring;
         $request["extraBooking"] = $db->ExcessMonitoring;
 
-        $marker = recheck_cad::where('id', '=', $key) ->get();
+        $marker = recheck_cad::where('id', '=', $key)->get();*/
 
-        //echo $marker;
-
-         return view('cover')->with(array('inputs' => $request)) -> with('markerPcs', $marker);
+        return view('cover')->with(array('inputs' => $request));
     }
 
 }
