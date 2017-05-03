@@ -7,6 +7,7 @@ use App\ordertoship;
 use App\ordertoship_country_name;
 use App\ordertoship_country_value;
 use App\ordertoship_marchant;
+use App\recheck;
 use Illuminate\Http\Request;
 
 class DeleteController extends Controller
@@ -23,11 +24,10 @@ class DeleteController extends Controller
         $id = $request["hiddenID"];
 
         if ($id != "") {
-            //clearing order to ship values
-           // ordertoship::where('id', '=', $id)->delete();
-
-            //clearing order to cut values
+            //clearing all data related to that id
+            ordertoship::where('id', '=', $id)->delete();
             ordertocut::where('id', '=', $id)->delete();
+            recheck::where('id', '=', $id)->delete();
         }
 
         return redirect('delete');

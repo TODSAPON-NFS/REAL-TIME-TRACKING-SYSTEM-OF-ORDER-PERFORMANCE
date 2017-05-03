@@ -20,6 +20,8 @@ class CreateRecheckCadTable extends Migration
             $table->double('Piles', 15, 8)->default(0.0);
             $table->string('file',20)->nullable(true);
             $table->timestamps();
+
+            $table->foreign('id')->references('id')->on('rechecks') ->onDelete('cascade');
         });
     }
 
