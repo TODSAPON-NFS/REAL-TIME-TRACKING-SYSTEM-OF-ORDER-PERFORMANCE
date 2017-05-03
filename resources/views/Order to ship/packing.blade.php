@@ -99,15 +99,15 @@
         </div>
 
         <!-- Country data input, data showing dynamically from database -->
-        @foreach($country as $countries)
+        @foreach($countries as $country)
 
             <div class="row">
-                <h3 align="center">Country : {{$countries["CountryName"]}}</h3>
-                <h4 align="center">Shipment Date : {{$countries["ShipmentDate"]}}</h4>
+                <h3 align="center">Country : {{$country["CountryName"]}}</h3>
+                <h4 align="center">Shipment Date : {{$country["ShipmentDate"]}}</h4>
 
                 <form class="form-horizontal" action="/order-to-ship/PackingAddCountryValue" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
-                    <input type="hidden" name="HiddenCountryNameID" value="{{$countries["country_name_id"]}}">
+                    <input type="hidden" name="HiddenCountryNameID" value="{{$country["country_name_id"]}}">
 
                     <div class="form-group">
                         <div class="col-sm-3"></div>
@@ -135,7 +135,41 @@
                         </tr>
                         </thead>
                         <tbody>
+                        @foreach($db  as $merchant)
 
+                            <?php $tempValue = App\ordertoship_country_value::where('country_name_id', '=', $country["country_name_id"])
+                                ->where('marchant_id', '=', $merchant["marchant_id"])->first();?>
+
+                            @if($tempValue == "")
+                                @continue;
+                            @endif
+
+
+                            <form action="" method="post">
+                                <input type="hidden" name="_token" value="{{csrf_token()}}">
+
+                                <tr>
+                                    <td>{{$merchant["Size"]}}</td>
+                                    <td><?php echo $tempValue["Value"];?></td>
+
+                                    <input type="hidden" name="hiddenMerchantID"
+                                           value="<?php echo $tempValue["marchant_id"];?>">
+                                    <input type="hidden" name="hiddenCountryNameID"
+                                           value="{{$country["country_name_id"]}}">
+                                    <td><input type="text" class="form-control" name="updateOrderQuantity"
+                                               placeholder=""></td>
+                                    <td>
+                                        <button type="submit" class="btn btn-primary" name="update" value="update">
+                                            Add
+                                        </button>
+                                        <button type="submit" class="btn btn-primary" name="update" value="update">
+                                            Sub
+                                        </button>
+                                    </td>
+                                </tr>
+
+                            </form>
+                        @endforeach
 
                         </tbody>
                     </table>
@@ -143,10 +177,10 @@
                 <div class="col-sm-3"></div>
 
             </div>
-        @endforeach
+    @endforeach
 
 
-    <!-- edit option for sizespcs -->
+    <!-- edit option for countries -->
         <div class="row">
             <h4 align="center">Edit Countries</h4>
             <div class="col-sm-3"></div>
@@ -154,19 +188,19 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th>Size</th>
+                        <th>Name</th>
                         <th>Update Value</th>
                     </tr>
                     </thead>
                     <tbody>
-                    {{--showing Sizes from database to update--}}
-                    @foreach($country as $countries)
+                    {{--showing country names from database to update--}}
+                    @foreach($countries as $country)
                         <form action="/order-to-ship/PackingUpdateCountryName" method="post">
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
                             <tr>
-                                <td>{{$countries["CountryName"]}}</td>
+                                <td>{{$country["CountryName"]}}</td>
                                 <input type="hidden" name="updateHiddenCountryID"
-                                       value={{$countries["country_name_id"]}}>
+                                       value={{$country["country_name_id"]}}>
                                 <td><input type="text" class="form-control" name="CountryUpdate"
                                            placeholder=""></td>
                                 <td>

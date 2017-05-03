@@ -242,26 +242,6 @@ class SearchController extends Controller
                 $CountryOutputs[$i][1] = $orderTOShipMerchantDB[$i]["PackingReceive"] - $tempSum;
             }
 
-            /*  for ($i = 0; $i < 10; $i++) {
-                  $CountryOutputs[$i]["size"] = 1;
-                  $CountryOutputs[$i]["availability"] = 0;
-                  for ($j = 0; $j < 5; $j++)
-                      $CountryOutputs[$i][] = $j;
-              }
-
-
-
-              for ($i = 0; $i < count($CountryOutputs); $i++) {
-                  for ($j = 0; $j < count($CountryOutputs[$i]); $j++)
-                      echo $CountryOutputs[$i][$j] . " ";
-                  echo "<br>";
-              }*/
-
-           /* for($i = 0; $i < count($CountryOutputs); $i++) {
-                for ($j = 0; $j < count($CountryOutputs[$i]); $j++)
-                    echo $CountryOutputs[$i][$j] . " ";
-                echo "<br>";
-            }*/
 
             $items = [
                 "id" => $id,

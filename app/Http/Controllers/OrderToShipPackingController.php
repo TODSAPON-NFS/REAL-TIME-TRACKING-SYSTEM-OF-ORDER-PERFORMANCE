@@ -16,8 +16,43 @@ class OrderToShipPackingController extends Controller
         $country = ordertoship_country_name::where('id', '=', $id)->get();
         $countryValue = ordertoship_country_value::where('id', '=', $id)->get();
 
-        /* foreach ($country as $c)
-             echo $c;*/
+        $CountryAndValues = array();
+
+        for ($i = 0; $i < count($country); $i++) {
+            $CountryAndValues[][] = $country[$i]["CountryName"];
+            $CountryAndValues[$i][] = $country[$i]["ShipmentDate"];
+            $CountryAndValues[$i][] = $country[$i]["country_name_id"];
+
+            $tempValues = array();
+            //searching value for country
+            foreach ($db as $merchant) {
+
+                $tempValue = ordertoship_country_value::where('country_name_id', '=', $country[$i]["country_name_id"])
+                    ->where('marchant_id', '=', $merchant["marchant_id"])->first();
+
+                if ($tempValue != "") {
+                    $tempValues[] = $merchant["Size"];
+                    $tempValues[] = $merchant["Value"];
+                    $CountryAndValues[$i][] = $merchant["Size"];
+
+                   /* $CountryAndValues[$i][] = $merchant["Size"];
+                    $CountryAndValues[$i][] = $tempValue["Value"];*/
+                    // echo $tempValue["Value"] . " ";
+                }
+            }
+        }
+
+        /*for ($i = 0; $i < count($CountryAndValues); $i++) {
+            // echo count($CountryAndValues)[$i] . " ";
+            //echo $i;
+            for ($j = 0; $j < count($CountryAndValues[$i]); $j++) {
+                $temp = $CountryAndValues[$i][$j];
+                for ($k = 0; $k < count($temp); $k++)
+                    echo $temp[$k] . " ";
+                echo "<br>";
+            }
+        }*/
+
 
         $items = [
             "id" => $id,
@@ -27,9 +62,10 @@ class OrderToShipPackingController extends Controller
             "item" => $request->session()->get('item'),
         ];
 
-        return view('Order to ship.packing')->with('items', $items)->with('db', $db)
-            ->with('country', $country)
-            ->with('countryValues', $countryValue);
+         return view('Order to ship.packing')->with('items', $items)->with('db', $db)
+             ->with('countries', $country)
+             ->with('countryValues', $countryValue)
+             ->with('CountryAndValues', $CountryAndValues);
     }
 
     public function updateOrderQuantity(Request $request)
