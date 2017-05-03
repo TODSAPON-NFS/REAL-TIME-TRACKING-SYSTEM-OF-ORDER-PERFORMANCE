@@ -9,6 +9,11 @@ class OrderToShipMerchantController extends Controller
 {
     public function show(Request $request)
     {
+        $dept = $request->session()->get('dept');
+
+        if ($dept != "Merchandising")
+            return redirect('/');
+
         $id = $request->session()->get('id');
         $db = ordertoship_marchant::where('id', '=', $id)->get();
 

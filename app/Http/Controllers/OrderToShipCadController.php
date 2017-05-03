@@ -9,6 +9,11 @@ class OrderToShipCadController extends Controller
 {
     public function show(Request $request)
     {
+        $dept = $request->session()->get('dept');
+
+        if ($dept != "CAD")
+            return redirect('/');
+
         $id = $request->session()->get('id');
         $dbvar = ordertoship::find($id);
         //echo $dbvar;

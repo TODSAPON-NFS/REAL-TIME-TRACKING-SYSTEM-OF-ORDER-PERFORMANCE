@@ -32,46 +32,6 @@
                 <div class="col-sm-2"></div>
             </div>
 
-            <!-- Download file-->
-            {{-- <div class="row">
-                <h4 align="center"><i>Download File: </i></h4>
-                <form class="form-horizontal" action="/recheck/cad/uploadFile" method="post"
-                      enctype="multipart/form-data">
-                    <input type="hidden" name="_token" value="{{csrf_token()}}">
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-sm-4"></div>
-                            <div class="col-sm-4">
-                                <select class="form-control" id="sel1" name="sel1">
-                                    <option selected disabled>Select a Marker pcs</option>
-
-                                    
-                                    @foreach($db  as $markerPcs)
-                                        <option>{{$markerPcs["MarkerPcs"]}}</option>
-                                    @endforeach
-
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-4"></div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-sm-4"></div>
-                            <div class="col-sm-4">
-
-                            </div>
-                            <div class="col-sm-3">
-                                <button type="submit" class="btn btn-primary">Download</button>
-                            </div>
-                            <div class="col-sm-1"></div>
-                        </div>
-                    </div>
-                </form>
-            </div> --}}
-
-
             <!-- cad 5 input -->
             <div class="row">
                 <h4 align="center">Marker Length (in meters) input :</h4>

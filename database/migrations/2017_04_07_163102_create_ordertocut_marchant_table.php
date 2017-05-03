@@ -20,7 +20,7 @@ class CreateOrdertocutMarchantTable extends Migration
             $table->double('MockUpInput', 15, 8)->default(0.0);
             $table->double('MockUpOutput', 15, 8)->default(0.0);
             $table->timestamps();
-            $table->foreign('id')->references('id')->on('ordertocuts');
+            $table->foreign('id')->references('id')->on('ordertocuts')->onDelete('cascade');
         });
     }
 

@@ -34,8 +34,8 @@
         <div class="row">
             <h4 align="center">Order to ship outputs :</h4>
 
-            <p style="margin-top: 10px" align="center">Extra Quantity Percentance : </p>
-            <p align="center">Per GMT Consumtion yrd : </p>
+            <p style="margin-top: 10px" align="center">Extra Quantity Percentance : {{$mainDB["CutPlan"]}}</p>
+            <p align="center">Per GMT Consumtion yrd : {{$mainDB["FabricAllocation"]}}</p>
 
             <table class="table table-striped">
                 <thead>
@@ -58,10 +58,51 @@
                 </tr>
                 </thead>
                 <tbody>
+                @foreach($Outputs as $output)
+                    <tr>
+                        <td>{{$output["Size"]}}</td>
+                        <td>{{$output["OrderQuantity"]}}</td>
+                        <td>{{$output["CutPlan"]}}</td>
+                        <td>{{$output["FabricAllocation"]}}</td>
+                        <td>{{$output["ExtraFabricNeed"]}}</td>
+                        <td>{{$output["AvailableGMT"]}}</td>
+                        <td>{{$output["CutQuantity"]}}</td>
+                        <td>{{$output["CutTransactionBalance"]}}</td>
+                        <td>{{$output["SewingReceive"]}}</td>
+                        <td>{{$output["SEWTransactionBalance"]}}</td>
+                        <td>{{$output["FinishingReceive"]}}</td>
+                        <td>{{$output["FinishingTransactionBalance"]}}</td>
+                        <td>{{$output["PackingReceive"]}}</td>
+                        <td>{{$output["PackingTransactionBalance"]}}</td>
+                        <td>{{$output["Rejection"]}}</td>
 
 
+                    </tr>
+                @endforeach
+
+                <tr>
+                    <td>SUMS:</td>
+                    <td>{{$SUMS["A"]}}</td>
+                    <td>{{$SUMS["C"]}}</td>
+                    <td>{{$SUMS["E"]}}</td>
+                    <td>{{$SUMS["F"]}}</td>
+                    <td>{{$SUMS["G"]}}</td>
+                    <td>{{$SUMS["H"]}}</td>
+                    <td>{{$SUMS["CutTransactionBalance"]}}</td>
+                    <td>{{$SUMS["I"]}}</td>
+                    <td>{{$SUMS["SEWTransactionBalance"]}}</td>
+                    <td>{{$SUMS["J"]}}</td>
+                    <td>{{$SUMS["FinishingTransactionBalance"]}}</td>
+                    <td>{{$SUMS["K"]}}</td>
+                    <td>{{$SUMS["K"]}}</td>
+                    <td>{{$SUMS["Rejection"]}}</td>
+
+
+                </tr>
                 </tbody>
             </table>
+
+
         </div>
 
         {{--Country Outputs--}}
@@ -73,13 +114,20 @@
                 <tr>
                     <th>Display Sizes</th>
                     <th>Available</th>
-                    <th>Bhutan (Shipment : 10/10/17)</th>
-                    <th>Bhutan (Shipment : 10/10/17)</th>
+                    @foreach($CountryNames as $CountryName)
+                        <th>{{$CountryName["CountryName"]}} (Shipment :{{$CountryName["ShipmentDate"]}})</th>
+                    @endforeach
 
                 </tr>
                 </thead>
                 <tbody>
-
+                @for($i = 0; $i < count($CountryOutputs); $i++)
+                    <tr>
+                    @for($j = 0; $j < count($CountryOutputs[$i]); $j++)
+                        <td>{{$CountryOutputs[$i][$j]}}</td>
+                    @endfor
+                    </tr>
+                @endfor
 
                 </tbody>
             </table>

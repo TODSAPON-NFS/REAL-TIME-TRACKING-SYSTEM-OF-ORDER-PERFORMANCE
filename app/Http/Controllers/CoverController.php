@@ -50,8 +50,6 @@ class CoverController extends Controller
 
         }
 
-        //echo $request["orderToCut"];
-
-        //return redirect('cover');
+        return redirect('/');
     }
 }

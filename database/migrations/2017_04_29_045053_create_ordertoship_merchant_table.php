@@ -28,7 +28,7 @@ class CreateOrdertoshipMerchantTable extends Migration
 
             $table->timestamps();
 
-            $table->foreign('id')->references('id')->on('ordertoships');
+            $table->foreign('id')->references('id')->on('ordertoships')->onDelete('cascade');
 
         });
     }

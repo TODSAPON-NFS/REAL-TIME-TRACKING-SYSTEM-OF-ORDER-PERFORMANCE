@@ -5,13 +5,13 @@ namespace App\Http\Controllers;
 use App\ordertoship_marchant;
 use Illuminate\Http\Request;
 
-class OrderToShipCuttingController extends Controller
+class OrderToShipFinishingController extends Controller
 {
-    public function show(Request $request)
+    public function view(Request $request)
     {
         $dept = $request->session()->get('dept');
 
-        if ($dept != "Cutting")
+        if ($dept != "Finishing")
             return redirect('/');
 
         $id = $request->session()->get('id');
@@ -25,19 +25,24 @@ class OrderToShipCuttingController extends Controller
             "item" => $request->session()->get('item'),
         ];
 
-        return view('Order to ship.cut')->with('items', $items)->with('db', $db);
+        return view('Order to ship.finishing')->with('items', $items)->with('db', $db);
     }
 
-    public function updateSizes(Request $request)
+    public function update(Request $request)
     {
-        $id = $request->session()->get('id');
         if ($request["updateHiddenSize"] != "" && $request["sizeUpdate"] != "" && $request["submit"] == "add") {
+
             $temp = ordertoship_marchant::where('marchant_id', '=', $request["updateHiddenSize"])->first();
-            ordertoship_marchant::where('marchant_id', '=', $request["updateHiddenSize"])->update(['CutQuantity' => $request["sizeUpdate"] + $temp->CutQuantity]);
+            $updatedValue = $request["sizeUpdate"] + $temp->FinishingReceive;
+            ordertoship_marchant::where('marchant_id', '=', $request["updateHiddenSize"])
+                ->update(['FinishingReceive' => $updatedValue]);
+
         } else if ($request["updateHiddenSize"] != "" && $request["submit"] == "sub") {
+
             $temp = ordertoship_marchant::where('marchant_id', '=', $request["updateHiddenSize"])->first();
-            ordertoship_marchant::where('marchant_id', '=', $request["updateHiddenSize"])->update(['CutQuantity' => $temp->CutQuantity - $request["sizeUpdate"]]);
+            ordertoship_marchant::where('marchant_id', '=', $request["updateHiddenSize"])
+                ->update(['FinishingReceive' => $temp->FinishingReceive - $request["sizeUpdate"]]);
         }
-        return redirect()->action('OrderToShipCuttingController@show');
+        return redirect('/order-to-ship/finishing');
     }
 }

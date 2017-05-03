@@ -21,7 +21,7 @@ class CreateOrdertoshipCountryNameTable extends Migration
             $table->string('ShipmentDate',50)->nullable(true);
             $table->timestamps();
 
-            $table->foreign('id')->references('id')->on('ordertoships');
+            $table->foreign('id')->references('id')->on('ordertoships')->onDelete('cascade');
 
         });
     }

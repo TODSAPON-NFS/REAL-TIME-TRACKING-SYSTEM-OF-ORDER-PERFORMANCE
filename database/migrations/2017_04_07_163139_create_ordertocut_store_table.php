@@ -19,7 +19,7 @@ class CreateOrdertocutStoreTable extends Migration
             $table->double('AvailableFabricRolls', 15, 8)->default(0.0);
             $table->double('Output', 15, 8)->default(0.0);
             $table->timestamps();
-            $table->foreign('id')->references('id')->on('ordertocuts');
+            $table->foreign('id')->references('id')->on('ordertocuts')->onDelete('cascade');
         });
     }
 

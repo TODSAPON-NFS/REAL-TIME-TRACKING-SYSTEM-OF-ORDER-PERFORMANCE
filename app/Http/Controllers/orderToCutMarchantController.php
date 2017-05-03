@@ -10,6 +10,12 @@ class orderToCutMarchantController extends Controller
 {
     public function view(Request $request)
     {
+        $dept = $request->session()->get('dept');
+
+        if ($dept != "Merchandising")
+            return redirect('/');
+
+
         $id = $request->session()->get('id');
         $dbvar = ordertocut_marchant::find($id);
         $items = [

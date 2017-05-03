@@ -91,9 +91,8 @@ Route::get('/order-to-ship/sew', 'OrderToShipSewController@show');
 Route::post('/order-to-ship/SewAddOrSub', 'OrderToShipSewController@updateSizes');
 
 //finishing input
-Route::get('/order-to-ship/finishing', function () {
-    return view('Order to ship.finishing');
-});
+Route::get('/order-to-ship/finishing', 'OrderToShipFinishingController@view');
+Route::post('/order-to-ship/finishing/update', 'OrderToShipFinishingController@update');
 
 //rejection input
 Route::get('/order-to-ship/rejection', 'OrderToShipRejectionController@show');
@@ -102,4 +101,10 @@ Route::post('/order-to-ship/rejection/update', 'OrderToShipRejectionController@u
 Route::get('/order-to-ship/packing', 'OrderToShipPackingController@show');
 Route::post('order-to-ship/updatePackingReceive', 'OrderToShipPackingController@updateOrderQuantity');
 Route::post('/order-to-ship/PackingAddCountry', 'OrderToShipPackingController@addCountry');
-Route::post('/order-to-ship/PackingAddCountry', 'OrderToShipPackingController@addShipmentDate');
+Route::post('/order-to-ship/PackingAddCountryValue', 'OrderToShipPackingController@addShipmentDate');
+Route::post('/order-to-ship/PackingUpdateCountryValue', 'OrderToShipPackingController@updateCountryValue');
+Route::post('/order-to-ship/PackingUpdateCountryName', 'OrderToShipPackingController@updateCountry');
+
+//delete data
+Route::get('delete', 'DeleteController@show');
+Route::post('/deleteData', 'DeleteController@delete');

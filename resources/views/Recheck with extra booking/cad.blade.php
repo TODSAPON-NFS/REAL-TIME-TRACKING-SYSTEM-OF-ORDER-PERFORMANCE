@@ -82,8 +82,10 @@
                             <div class="row">
                                 <div class="col-sm-4"></div>
                                 <div class="col-sm-4">
-                                    <label class="btn btn-default btn-file"> <input type="file" hidden name="userFile" id="userFile" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
-                                     </label>
+                                    <label class="btn btn-default btn-file"> <input type="file" hidden name="userFile"
+                                                                                    id="userFile"
+                                                                                    accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+                                    </label>
                                 </div>
                                 <div class="col-sm-3">
                                     <button type="submit" class="btn btn-primary">Upload</button>
@@ -95,7 +97,7 @@
                 </div>
 
 
-            <!-- cad 5 input -->
+                <!-- cad 5 input -->
                 <div class="row">
                     <h4 align="center">Marker Length (in meters) input :</h4>
                     <div class="col-sm-3"></div>
@@ -110,7 +112,7 @@
                             </thead>
                             <tbody>
 
-                           {{-- showing marker pcs and marker length from database to update--}}
+                            {{-- showing marker pcs and marker length from database to update--}}
                             @foreach($db  as $markerPcs)
                                 <form action="/recheck/cad/updateMarkerLength" method="post">
                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
@@ -147,7 +149,7 @@
                             <thead>
                             <tr>
                                 <th>Marker pcs</th>
-                                <th>pilesph</th>
+                                <th>Plies</th>
                                 <th>Update Value</th>
                             </tr>
                             </thead>
@@ -183,7 +185,7 @@
 
 
                 <!-- edit option for marker pcs -->
-                <div class="row" id = "editMarkerPcs">
+                <div class="row" id="editMarkerPcs">
                     <h4 align="center">Edit Marker pcs</h4>
                     <div class="col-sm-3"></div>
                     <div class="col-sm-6">
@@ -198,7 +200,8 @@
 
                             {{--showing marker pcs and marker length from database to update--}}
                             @foreach($db  as $markerPcs)
-                                <form action="/recheck/cad/updateMarkerPcs" method="post">
+                                <form action="/recheck/cad/updateMarkerPcs" method="post"
+                                      onsubmit="return confirm('Do you really want to delete the data?');">
                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                                     <tr>
                                         <td>{{$markerPcs["MarkerPcs"]}}</td>
