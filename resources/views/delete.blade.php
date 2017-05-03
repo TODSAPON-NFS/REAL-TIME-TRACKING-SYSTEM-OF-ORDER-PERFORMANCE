@@ -29,7 +29,8 @@
                     <tbody>
                     {{-- showing marker pcs and marker length from database to update--}}
                     @foreach($allData  as $data)
-                        <form action="/deleteData" method="post">
+                        <form action="/deleteData" method="post"
+                              onsubmit="return confirm('Do you really want to delete the data?');">
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
 
                             <tr>
@@ -42,9 +43,9 @@
                                        value={{$data["id"]}}>
 
                                 <td>
-                                <button type="submit" class="btn btn-primary" name="update" value="update">
-                                    Delete
-                                </button>
+                                    <button type="submit" class="btn btn-primary" name="update" value="update">
+                                        Delete
+                                    </button>
                                 </td>
                             </tr>
 
@@ -58,4 +59,6 @@
         </div>
 
     </div>
+
+
 @endsection

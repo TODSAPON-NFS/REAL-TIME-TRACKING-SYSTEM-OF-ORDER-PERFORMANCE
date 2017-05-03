@@ -196,7 +196,8 @@
                     <tbody>
                     {{--showing country names from database to update--}}
                     @foreach($countries as $country)
-                        <form action="/order-to-ship/PackingUpdateCountryName" method="post">
+                        <form action="/order-to-ship/PackingUpdateCountryName" method="post"
+                              onsubmit="return confirm('Do you really want to delete the data?');">
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
                             <tr>
                                 <td>{{$country["CountryName"]}}</td>

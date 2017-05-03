@@ -198,7 +198,8 @@
 
                             {{--showing marker pcs and marker length from database to update--}}
                             @foreach($db  as $markerPcs)
-                                <form action="/recheck/cad/updateMarkerPcs" method="post">
+                                <form action="/recheck/cad/updateMarkerPcs" method="post"
+                                      onsubmit="return confirm('Do you really want to delete the data?');">
                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                                     <tr>
                                         <td>{{$markerPcs["MarkerPcs"]}}</td>
