@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ordertocut;
 use App\ordertoship;
 use App\ordertoship_country_name;
 use App\ordertoship_country_value;
@@ -23,9 +24,10 @@ class DeleteController extends Controller
 
         if ($id != "") {
             //clearing order to ship values
-            ordertoship::where('id', '=', $id)->delete();
+           // ordertoship::where('id', '=', $id)->delete();
 
             //clearing order to cut values
+            ordertocut::where('id', '=', $id)->delete();
         }
 
         return redirect('delete');
