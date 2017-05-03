@@ -21,6 +21,11 @@ class DeleteController extends Controller
 
     public function delete(Request $request)
     {
+        $dept = $request->session()->get('dept');
+
+        if ($dept != "ADMIN")
+            return redirect('/');
+
         $id = $request["hiddenID"];
 
         if ($id != "") {
