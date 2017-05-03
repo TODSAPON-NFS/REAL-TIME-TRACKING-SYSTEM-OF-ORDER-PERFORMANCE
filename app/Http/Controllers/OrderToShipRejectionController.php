@@ -28,13 +28,14 @@ class OrderToShipRejectionController extends Controller
     	]);
     	$id = $request["id"];
     	$value=$request["rejectionValue"];
+        $db=ordertoship_marchant::find($id);
     	if($request["actype"]=="add"){
-    		$db = ordertoship_marchant::where('marchant_id', '=', $id)->first();
-    		ordertoship_marchant::where('marchant_id','=',$db->marchant_id)->update(['Rejection' => $db->Rejection+$value]);
+            $db->Rejection +=$value;
+            $db->save();
     		return redirect('/order-to-ship/rejection');
     	}else if($request["actype"]="sub"){
-    		$db = ordertoship_marchant::where('marchant_id', '=', $id)->first();
-            ordertoship_marchant::where('marchant_id','=',$db->marchant_id)->update(['Rejection' => $db->Rejection-$value]);
+    		$db->Rejection -=$value;
+            $db->save();
     		return redirect('/order-to-ship/rejection');
     	}
     	return "OPPS!!!  Something wrong ,Please Try Again";
