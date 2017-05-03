@@ -19,12 +19,12 @@
                 <table class="table table-striped">
                     <tbody>
                     <tr>
-                        <td>Buyer : a</td>
-                        <td>Order No. : 2</td>
+                        <td>Buyer : {{$items["buyer"]}}</td>
+                        <td>Order No. : {{$items["orderNo"]}}</td>
                     </tr>
                     <tr>
-                        <td>Color : White</td>
-                        <td>Item : 12</td>
+                        <td>Color : {{$items["color"]}}</td>
+                        <td>Item : {{$items["color"]}}</td>
                     </tr>
                     </tbody>
                 </table>
@@ -45,32 +45,26 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>500</td>
-                        <td>10</td>
-                        <td><input type="text" class="form-control" id="mock up"
-                                   placeholder=""></td>
-                        <td>
-                            <button type="submit" class="btn btn-primary">Add</button>
-                        </td>
-                        <td>
-                            <button type="submit" class="btn btn-primary">Sub</button>
-                        </td>
+                    @foreach($db  as $sizes)
+                        <form action="/order-to-ship/finishing/update" method="post">
+                            <input type="hidden" name="_token" value="{{csrf_token()}}">
+                            <tr>
+                                <td>{{$sizes["Size"]}}</td>
+                                <td>{{$sizes["FinishingReceive"]}}</td>
+                                <input type="hidden" name="updateHiddenSize"
+                                       value={{$sizes["marchant_id"]}}>
+                                <td><input type="text" class="form-control" name="sizeUpdate"
+                                           placeholder=""></td>
+                                <td>
+                                    <button type="submit" class="btn btn-primary" name = "submit" value ="add">Add</button>
+                                </td>
+                                <td>
+                                    <button type="submit" class="btn btn-primary" name = "submit" value = "sub">Sub</button>
+                                </td>
+                            </tr>
+                        </form>
+                    @endforeach
 
-                    </tr>
-                    <tr>
-                        <td>500</td>
-                        <td>10</td>
-                        <td><input type="text" class="form-control" id="mock up"
-                                   placeholder=""></td>
-                        <td>
-                            <button type="submit" class="btn btn-primary">Add</button>
-                        </td>
-                        <td>
-                            <button type="submit" class="btn btn-primary">Sub</button>
-                        </td>
-
-                    </tr>
                     </tbody>
                 </table>
             </div>

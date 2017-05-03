@@ -91,9 +91,8 @@ Route::get('/order-to-ship/sew', 'OrderToShipSewController@show');
 Route::post('/order-to-ship/SewAddOrSub', 'OrderToShipSewController@updateSizes');
 
 //finishing input
-Route::get('/order-to-ship/finishing', function () {
-    return view('Order to ship.finishing');
-});
+Route::get('/order-to-ship/finishing', 'OrderToShipFinishingController@view');
+Route::post('/order-to-ship/finishing/update', 'OrderToShipFinishingController@update');
 
 //rejection input
 Route::get('/order-to-ship/rejection', 'OrderToShipRejectionController@show');
