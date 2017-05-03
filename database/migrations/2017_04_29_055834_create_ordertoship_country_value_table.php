@@ -23,9 +23,9 @@ class CreateOrdertoshipCountryValueTable extends Migration
 
             $table->timestamps();
 
-            $table->foreign('id')->references('id')->on('ordertoships');
-            $table->foreign('country_name_id')->references('country_name_id')->on('ordertoship_country_names');
-            $table->foreign('marchant_id')->references('marchant_id')->on('ordertoship_marchants');
+            $table->foreign('id')->references('id')->on('ordertoships')->onDelete('cascade');
+            $table->foreign('country_name_id')->references('country_name_id')->on('ordertoship_country_names')->onDelete('cascade');
+            $table->foreign('marchant_id')->references('marchant_id')->on('ordertoship_marchants')->onDelete('cascade');
 
         });
     }

@@ -28,27 +28,28 @@
                     </thead>
                     <tbody>
                     {{-- showing marker pcs and marker length from database to update--}}
-                   {{-- @foreach($db  as $sizes)
-                        <form action="/delete" method="post">
+                    @foreach($allData  as $data)
+                        <form action="/deleteData" method="post">
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
 
                             <tr>
-                                <td>{{$sizes["Size"]}}</td>
-                                <td>{{$sizes["OrderQuantity"]}}</td>
+                                <td>{{$data["Buyer"]}}</td>
+                                <td>{{$data["OrderNo"]}}</td>
+                                <td>{{$data["Color"]}}</td>
+                                <td>{{$data["Item"]}}</td>
 
-                                <input type="hidden" name="hiddenMerchantID"
-                                       value={{$sizes["marchant_id"]}}>
-                                <td><input type="text" class="form-control" name="updateOrderQuantity"
-                                           placeholder=""></td>
+                                <input type="hidden" name="hiddenID"
+                                       value={{$data["id"]}}>
+
                                 <td>
-                                    <button type="submit" class="btn btn-primary" name="update" value="update">
-                                        Update
-                                    </button>
+                                <button type="submit" class="btn btn-primary" name="update" value="update">
+                                    Delete
+                                </button>
                                 </td>
                             </tr>
 
                         </form>
-                    @endforeach--}}
+                    @endforeach
 
                     </tbody>
                 </table>

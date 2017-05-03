@@ -108,3 +108,4 @@ Route::post('/order-to-ship/PackingUpdateCountryName', 'OrderToShipPackingContro
 
 //delete data
 Route::get('delete', 'DeleteController@show');
+Route::post('/deleteData', 'DeleteController@delete');
