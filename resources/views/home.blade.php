@@ -30,6 +30,7 @@
                             <option>Finishing</option>
                             <option>Sewing</option>
                             <option>Rejection</option>
+                            <option>ADMIN</option>
                         </select>
                     </div>
                     <div class="form-group">

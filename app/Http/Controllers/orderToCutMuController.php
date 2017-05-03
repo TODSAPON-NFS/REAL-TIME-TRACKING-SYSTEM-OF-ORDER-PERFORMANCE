@@ -11,6 +11,11 @@ class orderToCutMuController extends Controller
     //
     public function showMu(Request $request)
     {
+        $dept = $request->session()->get('dept');
+
+        if ($dept != "MU")
+            return redirect('/');
+
         $id = $request->session()->get('id');
         $dbvar = ordertocut_mu::find($id);
 

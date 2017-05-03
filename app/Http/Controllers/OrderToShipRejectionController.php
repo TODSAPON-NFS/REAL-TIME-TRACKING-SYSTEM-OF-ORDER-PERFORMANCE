@@ -9,6 +9,12 @@ class OrderToShipRejectionController extends Controller
 {
     //
     public function show(Request $request){
+
+        $dept = $request->session()->get('dept');
+
+        if ($dept != "Rejection")
+            return redirect('/');
+
     	 $id = $request->session()->get('id');
          $dbvar = ordertoship_marchant::where('id', '=', $id)->get();
 

@@ -10,6 +10,11 @@ class RecheckFabricController extends Controller
 {
     public function show(Request $request)
     {
+        $dept = $request->session()->get('dept');
+
+        if ($dept != "Fabric")
+            return redirect('/');
+
         $id = $request->session()->get('id');
         $dbvar = recheck_fabric::find($id);
 
@@ -34,36 +39,32 @@ class RecheckFabricController extends Controller
         $mainDb = recheck::find($id);
 
         $shrinkage = $request["shrinkage"];
-        if($request["submit"] == 1)
-        {
+        if ($request["submit"] == 1) {
             $dbvar->Shrinkage = $shrinkage;
-            if($mainDb->MarkerLengthInYard != 0)
-            {
-                $dbvar->ShrinkageOutput = -(100*$shrinkage)/($mainDb->MarkerLengthInYard);
-                $mainDb->LayLength = $mainDb->MarkerLengthInYard+$dbvar->ShrinkageOutput+$dbvar->BowlingOutput+0.0218723;
+            if ($mainDb->MarkerLengthInYard != 0) {
+                $dbvar->ShrinkageOutput = -(100 * $shrinkage) / ($mainDb->MarkerLengthInYard);
+                $mainDb->LayLength = $mainDb->MarkerLengthInYard + $dbvar->ShrinkageOutput + $dbvar->BowlingOutput + 0.0218723;
             }
-          
 
-        }
-        else{
+
+        } else {
 
             $shrinkage *= -1;
 
 
             $dbvar->Shrinkage = $shrinkage;
-             if($mainDb->MarkerLengthInYard != 0)
-            {
-                $dbvar->ShrinkageOutput = (100*$shrinkage)/($mainDb->MarkerLengthInYard);
-                $mainDb->LayLength = $mainDb->MarkerLengthInYard+$dbvar->ShrinkageOutput+$dbvar->BowlingOutput+0.0218723;
+            if ($mainDb->MarkerLengthInYard != 0) {
+                $dbvar->ShrinkageOutput = (100 * $shrinkage) / ($mainDb->MarkerLengthInYard);
+                $mainDb->LayLength = $mainDb->MarkerLengthInYard + $dbvar->ShrinkageOutput + $dbvar->BowlingOutput + 0.0218723;
             }
-        } 
-/*
-        if($dbvar->Shrinkage <= 0)
-            $dbvar->Shrinkage = 0;*/
+        }
+        /*
+                if($dbvar->Shrinkage <= 0)
+                    $dbvar->Shrinkage = 0;*/
 
         $dbvar->save();
 
-         $items = [
+        $items = [
             "buyer" => $request->session()->get('buyer'),
             "orderNo" => $request->session()->get('orderNo'),
             "color" => $request->session()->get('color'),
@@ -81,17 +82,17 @@ class RecheckFabricController extends Controller
     {
         $id = $request->session()->get('id');
         $dbvar = recheck_fabric::find($id);
-          $mainDb = recheck::find($id);
+        $mainDb = recheck::find($id);
 
         $bowling = $request["bowling"];
-       
+
         $dbvar->Bowling = $bowling;
-        if($mainDb->MarkerLengthInYard != 0)
-        $dbvar->BowlingOutput = (100*$bowling)/($mainDb->MarkerLengthInYard*5);
+        if ($mainDb->MarkerLengthInYard != 0)
+            $dbvar->BowlingOutput = (100 * $bowling) / ($mainDb->MarkerLengthInYard * 5);
 
         $dbvar->save();
 
-         $items = [
+        $items = [
             "buyer" => $request->session()->get('buyer'),
             "orderNo" => $request->session()->get('orderNo'),
             "color" => $request->session()->get('color'),
@@ -107,22 +108,22 @@ class RecheckFabricController extends Controller
 
     public function fault(Request $request)
     {
-   
+
         $id = $request->session()->get('id');
         $dbvar = recheck_fabric::find($id);
-         $mainDb = recheck::find($id);
+        $mainDb = recheck::find($id);
 
         $fault = $request["fault"];
-       
+
         $dbvar->FabricFault = $fault;
 
-        if($mainDb->FabricRequired != 0)
-        $dbvar->FabricFaultOutput = (100*$fault)/$mainDb->FabricRequired;
+        if ($mainDb->FabricRequired != 0)
+            $dbvar->FabricFaultOutput = (100 * $fault) / $mainDb->FabricRequired;
 
         $dbvar->save();
 
-         
-         $items = [
+
+        $items = [
             "buyer" => $request->session()->get('buyer'),
             "orderNo" => $request->session()->get('orderNo'),
             "color" => $request->session()->get('color'),
@@ -134,7 +135,6 @@ class RecheckFabricController extends Controller
 
         return view('Recheck with extra booking.fabric')->with('items', $items);
     }
-
 
 
 }

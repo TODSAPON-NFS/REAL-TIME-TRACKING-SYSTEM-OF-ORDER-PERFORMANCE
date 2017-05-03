@@ -9,6 +9,11 @@ class RecheckCadController extends Controller
 {
     public function show(Request $request)
     {
+        $dept = $request->session()->get('dept');
+
+        if ($dept != "CAD")
+            return redirect('/');
+
         $id = $request->session()->get('id');
         $dbvar = recheck_cad::where('id', '=', $id)->get();
 

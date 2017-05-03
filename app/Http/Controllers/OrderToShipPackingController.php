@@ -11,6 +11,11 @@ class OrderToShipPackingController extends Controller
 {
     public function show(Request $request)
     {
+        $dept = $request->session()->get('dept');
+
+        if ($dept != "Packing")
+            return redirect('/');
+
         $id = $request->session()->get('id');
         $db = ordertoship_marchant::where('id', '=', $id)->get();
         $country = ordertoship_country_name::where('id', '=', $id)->get();

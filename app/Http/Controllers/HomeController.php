@@ -44,11 +44,14 @@ class HomeController extends Controller
             $flag = 1;
          else if ($dept == "Rejection" && $password == "rjctn") {
             $flag = 1;
-        }*/
+        }
+        else if($dept == "ADMIN" && $password == "admin")
+        return redirect('delete);
+        */
 
-       /* if ($flag == 0) {
-            return redirect()->action('HomeController@home');
-        }*/
+        /* if ($flag == 0) {
+             return redirect()->action('HomeController@home');
+         }*/
 
         $request->session()->put('dept', $dept);
 
