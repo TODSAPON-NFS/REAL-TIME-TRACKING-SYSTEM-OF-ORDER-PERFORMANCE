@@ -105,7 +105,7 @@ class rootController extends Controller
 
 
         //For calculating getting and saving result
-        $db = ordertocut::find($key);
+        /*$db = ordertocut::find($key);
         $cad = ordertocut_cad::find($key);
         $merchant = ordertocut_marchant::find($key);
         $store = ordertocut_store::find($key);
@@ -115,7 +115,7 @@ class rootController extends Controller
 
 
         $db->ExtraFabric = $extraFabric;
-        $db->ExcessMonitoring = $shortExcess;
+        $db->ExcessMonitoring = $shortExcess;*/
         //endcalculating
 
         //for calculating and saving result in recheck
