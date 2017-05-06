@@ -133,7 +133,12 @@
             </table>
         </div>
 
-    </div>
+        <div class="row">
+            <h4 align="center">SHORT AGAINST ORDER QUANTITY: {{$SUMS["shortOrder"]}}</h4>
+            <h4 align="center">SHORT AGAINST CUT QUANTITY: {{$SUMS["shortCut"]}}</h4>
+            <h4 align="center">Order to Ship Ratio: {{$SUMS["orderToShipRatio"]}}%</h4>
+            <h4 align="center">Cut to Ship Ratio: {{$SUMS["cutToShipRatio"]}}%</h4>
+        </div>
 
     </div>
 @endsection

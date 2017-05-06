@@ -25,11 +25,11 @@
                     <tr>
 
                         <td>Item : {{$items["item"]}}</td>
-                        <td>Cut Plan : {{$items["CutPlan"]}}</td>
+                        <td>Extra Quantity Percentage : {{$items["CutPlan"]}}</td>
                     </tr>
                     <tr>
                         <td>Color : {{$items["color"]}}</td>
-                        <td>Fabric Allocation : {{$items["FabricAllocation"]}}</td>
+                        <td>Per GMT Consumption yds: {{$items["FabricAllocation"]}}</td>
                     </tr>
                     </tbody>
                 </table>

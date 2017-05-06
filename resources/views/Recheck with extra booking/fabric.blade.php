@@ -20,15 +20,15 @@
                         <tbody>
                         <tr>
                             <td>Buyer :{{$items["buyer"]}}</td>
-                            <td>Shrinkage : {{$items["shrinkage"]}}</td>
+                            <td>Shrinkage : {{$items["shrinkage"]}}%</td>
                         </tr>
                         <tr>
                             <td>Order No. : {{$items["orderNo"]}}</td>
-                            <td>Bowing : {{$items["bowling"]}}</td>
+                            <td>Bowing : {{$items["bowling"]}}%</td>
                         </tr>
                         <tr>
                             <td>Color : {{$items["color"]}}</td>
-                            <td>Fabric with fault : {{$items["fabricFault"]}}</td>
+                            <td>Fabric with fault : {{$items["fabricFault"]}}%</td>
                         </tr>
                         <tr>
                             <td>Item : {{$items["item"]}}</td>

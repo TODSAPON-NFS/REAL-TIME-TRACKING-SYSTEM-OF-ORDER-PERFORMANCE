@@ -123,7 +123,7 @@
                     $extraBooking = 0;
                     if ($items["F"] != 0)
                         $extraBooking = (($items["F"] - $sumTF) * 100) / $items["F"];
-                    echo $extraBooking;
+                    echo $extraBooking . "%";
                     ?>
                 </h4>
 

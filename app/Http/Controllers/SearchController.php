@@ -216,6 +216,17 @@ class SearchController extends Controller
 
             }
 
+            $SumOfOutputs["shortOrder"] = $SumOfOutputs["A"] - $SumOfOutputs["K"];
+            $SumOfOutputs["shortCut"] = $SumOfOutputs["H"] - $SumOfOutputs["K"];
+            $SumOfOutputs["orderToShipRatio"] = 0;
+            $SumOfOutputs["cutToShipRatio"] = 0;
+
+            if ($SumOfOutputs["A"] != 0)
+                $SumOfOutputs["orderToShipRatio"] = 100 - ($SumOfOutputs["K"] * 100) / $SumOfOutputs["A"];
+
+            if ($SumOfOutputs["H"] != 0)
+                $SumOfOutputs["cutToShipRatio"] = 100 - ($SumOfOutputs["K"] * 100) / $SumOfOutputs["H"];
+
 
             $CountryOutputs = array();
 
