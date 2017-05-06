@@ -30,11 +30,6 @@ class orderToCutMarchantController extends Controller
             "item" => $request->session()->get('item')
         ];
 
-        // echo $items[0]["OrderQuantity"] ;
-        // echo $dbvar -> OrderQuantity;
-        // echo $items["id"];
-        //echo $id;
-
         return view('order to cut.merchant')->with('items', $items);
     }
 

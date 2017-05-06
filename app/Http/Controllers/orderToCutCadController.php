@@ -18,6 +18,8 @@ class orderToCutCadController extends Controller
 
         $id = $request->session()->get('id');
         $dbvar = ordertocut_cad::find($id);
+
+       // $cadOutput = $dbvar->CuttingWastage +  $dbvar->ExtraLoading + $dbvar->RelaxingShrinkage + $dbvar->WashingWastage;
         $items = [
             "id" => $id,
             "CuttingWastage" => $dbvar->CuttingWastage,

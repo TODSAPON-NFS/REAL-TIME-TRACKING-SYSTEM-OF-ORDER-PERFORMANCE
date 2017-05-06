@@ -43,10 +43,13 @@ class orderToCutStoreController extends Controller
 
             if ($request["option"] == "Non Wash") {
 
-                $dbvar->Output = (0.37 * $dbvar->AvailableFabricRolls * 100) / $dbvar->AvailableFabricYards;
+                if ($dbvar->AvailableFabricYards != 0)
+
+                    $dbvar->Output = (0.37 * $dbvar->AvailableFabricRolls * 100) / $dbvar->AvailableFabricYards;
 
             } else if ($request["option"] == "Wash") {
-                $dbvar->Output = (1.089 * $dbvar->AvailableFabricRolls * 100) / $dbvar->AvailableFabricYards;
+                if ($dbvar->AvailableFabricYards != 0)
+                    $dbvar->Output = (1.089 * $dbvar->AvailableFabricRolls * 100) / $dbvar->AvailableFabricYards;
             }
 
             $dbvar->save();
