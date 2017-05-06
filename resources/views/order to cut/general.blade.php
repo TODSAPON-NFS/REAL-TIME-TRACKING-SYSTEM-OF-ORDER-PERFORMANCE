@@ -131,8 +131,8 @@
                             <td>Production Damage : {{$items["ProductionDamage"]}}%</td>
                         </tr>
                         <tr>
-                            <td>Cutting Mistake : {{$items["UnstableCut"]}}%</td>
-                            <td>Unusable Cut Pcs : {{$items["CuttingMistake"]}}%</td>
+                            <td>Cutting Mistake : {{$items["CuttingMistake"]}}%</td>
+                            <td>Unusable Cut Pcs : {{$items["UnstableCut"]}}%</td>
                         </tr>
                         <tr>
                             <td></td>

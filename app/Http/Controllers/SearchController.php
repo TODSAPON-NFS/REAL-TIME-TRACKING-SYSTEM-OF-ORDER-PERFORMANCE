@@ -89,7 +89,7 @@ class SearchController extends Controller
                 "FabricFault" => $dbvar4->FabricFault,
                 "RollShortage" => $dbvar4->RollShortage,
                 "ProductionDamage" => $dbvar4->ProductionDamage,
-                "UnstableCut" => $dbvar4->UnstableCut,
+                "UnstableCut" => $dbvar4->UnusableCutPcs,
                 "CuttingMistake" => $dbvar4->CuttingMistake,
                 "muOutput" => $dbvar4->Output
             ];
