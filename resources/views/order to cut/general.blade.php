@@ -1,7 +1,7 @@
 @extends('main')
 
 @section('title')
-    CAD
+    Order to cut Search Result
 @endsection
 
 @section('ContentOfBody')

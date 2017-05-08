@@ -20,7 +20,15 @@
                         <tbody>
                         <tr>
                             <td>Buyer :{{$items["buyer"]}}</td>
-                            <td>Shrinkage : {{$items["shrinkage"]}}%</td>
+                            <td>Shrinkage :
+                                @if($items["shrinkage"] > 0)
+                                    -{{$items["shrinkage"]}}
+                                @else
+                                    +<?php echo $items["shrinkage"] * -1; ?>
+                                @endif
+
+                                %
+                            </td>
                         </tr>
                         <tr>
                             <td>Order No. : {{$items["orderNo"]}}</td>
@@ -49,11 +57,11 @@
                         <div class="col-sm-4"></div>
                         <div class="col-sm-4">
                             <input type="text" class="form-control" id="input"
-                                   placeholder="Shrinkage" name = "shrinkage">
+                                   placeholder="Shrinkage" name="shrinkage">
                         </div>
                         <div class="col-sm-2">
-                            <button type="submit" name = "submit" class="btn btn-primary" value = "1">+</button>
-                            <button type="submit" name = "submit" class="btn btn-primary" value = "2">-</button>
+                            <button type="submit" name="submit" class="btn btn-primary" value="1">+</button>
+                            <button type="submit" name="submit" class="btn btn-primary" value="2">-</button>
                         </div>
                         <div class="col-sm-2">
 
@@ -65,16 +73,16 @@
             <!-- Fabric 2 input -->
             <div class="row">
                 <h4 align="center">Bowing input :</h4>
-                 <form class="form-horizontal" action="/recheck/fabric/bowling" method="post">
+                <form class="form-horizontal" action="/recheck/fabric/bowling" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="form-group">
                         <div class="col-sm-4"></div>
                         <div class="col-sm-4">
                             <input type="text" class="form-control" id="input"
-                                   placeholder="Bowling" name = "bowling">
+                                   placeholder="Bowling" name="bowling">
                         </div>
                         <div class="col-sm-2">
-                            <button type="submit" class="btn btn-primary">+</button>
+                            <button type="submit" class="btn btn-primary">-</button>
                         </div>
                         <div class="col-sm-2">
 
@@ -92,7 +100,7 @@
                         <div class="col-sm-4"></div>
                         <div class="col-sm-4">
                             <input type="text" class="form-control" id="input"
-                                   placeholder="Fabric with fault" name = "fault">
+                                   placeholder="Fabric with fault" name="fault">
                         </div>
                         <div class="col-sm-2">
                             <button type="submit" class="btn btn-primary">Save</button>
