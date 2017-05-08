@@ -49,6 +49,8 @@ class SearchController extends Controller
 
     public function searchRedirect(Request $request)
     {
+
+
         //show order to cut
         if ($request["orderToCut"]) {
             $id = $request->session()->get('id');
@@ -57,6 +59,7 @@ class SearchController extends Controller
             $dbvar2 = ordertocut_store::find($id);
             $dbvar3 = ordertocut::find($id);
             $dbvar4 = ordertocut_mu::find($id);
+
             $items = [
                 "id" => $id,
                 "OrderQuantity" => $dbvar->OrderQuantity,
@@ -73,7 +76,7 @@ class SearchController extends Controller
                 "ExtraLoading" => $dbvar1->ExtraLoading,
                 "RelaxingShrinkage" => $dbvar1->RelaxingShrinkage,
                 "WashingWastage" => $dbvar1->WashingWastage,
-                "output" => $dbvar1->Output,
+                "output" => $dbvar1->CuttingWastage + $dbvar1->ExtraLoading + $dbvar1->RelaxingShrinkage + $dbvar1->WashingWastage,
 
                 //store
                 "AvailableFabricYards" => $dbvar2->AvailableFabricYards,
@@ -82,7 +85,7 @@ class SearchController extends Controller
 
                 //extra fabric + excess monitoring
                 "extraFabric" => $dbvar1->Output - $dbvar->MockUpOutput - $dbvar2->Output,
-                "shortMonitoring" => $dbvar4->Output - ($dbvar1->Output - $dbvar->MockUpOutput - $dbvar2->Output),
+                "shortMonitoring" => ($dbvar1->Output - $dbvar->MockUpOutput - $dbvar2->Output) - $dbvar4->Output,
 
                 //mu
                 "IncreasedConsumption" => $dbvar4->IncreasedConsumption,

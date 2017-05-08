@@ -22,7 +22,7 @@
                             <td>order quantity : {{$items["OrderQuantity"]}}</td>
                         </tr>
                         <tr>
-                            <td>Order No. :  {{$items["orderNo"]}}</td>
+                            <td>Order No. : {{$items["orderNo"]}}</td>
                             <td>Fabric Need: {{$items["fabricNeed"]}}</td>
                         </tr>
                         <tr>
@@ -52,7 +52,7 @@
                                 <td>Cutting Wastage : {{$items["CuttingWastage"]}}%</td>
                             </tr>
                             <tr>
-                                <td>Order No. :  {{$items["orderNo"]}}</td>
+                                <td>Order No. : {{$items["orderNo"]}}</td>
                                 <td>Extra Loading : {{$items["ExtraLoading"]}}%</td>
                             </tr>
                             <tr>
@@ -102,10 +102,20 @@
                 <div class="col-sm-3"></div>
             </div>
             <div class="row">
-                <h4 align="center"><i>Extra Fabric : {{$items["extraFabric"]}}%</i></h4>
-                <h4 align="center"><i>Short / excess Monitoring : {{$items["shortMonitoring"]}}%</i></h4>
+                <h4 align="center"><i>Extra Fabric :
+                        @if($items["extraFabric"] > 0)
+                            +{{$items["extraFabric"]}}
+                        @else
+                            {{$items["extraFabric"]}}
+                        @endif%</i></h4>
+                <h4 align="center"><i>Short / excess Monitoring :
+                        @if($items["shortMonitoring"] > 0)
+                            +{{$items["shortMonitoring"]}}
+                        @else
+                            {{$items["shortMonitoring"]}}
+                        @endif%</i></h4>
             </div>
-    </div>
+        </div>
 
         <div class="row" style="padding-top: 20px">
             <h4 align="center"><i>MU inputs </i></h4>
@@ -136,7 +146,7 @@
                         </tr>
                         <tr>
                             <td></td>
-                            <td>Output : {{$items["muOutput"]}}%</td>
+                            <td>Found losses : {{$items["muOutput"]}}%</td>
                         </tr>
                         </tbody>
                     </table>
