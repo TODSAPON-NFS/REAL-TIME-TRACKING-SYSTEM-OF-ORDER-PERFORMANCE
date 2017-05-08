@@ -17,6 +17,11 @@ class RecheckCadController extends Controller
         $id = $request->session()->get('id');
         $dbvar = recheck_cad::where('id', '=', $id)->get();
 
+        //initial value. no need to showinoutput
+        /*if($dbvar[0]["MarkerPcs"] == 0)
+            $dbvar = "";*/
+
+
         $items = [
             "id" => $id,
             "buyer" => $request->session()->get('buyer'),

@@ -83,9 +83,9 @@ class rootController extends Controller
             $dbstore->id = $key;
             $dbstore->save();
 
-            $dbstore = new recheck_cad;
-            $dbstore->id = $key;
-            $dbstore->save();
+            //$dbstore = new recheck_cad;
+            // $dbstore->id = $key;
+            //$dbstore->save();
 
             //storing to session to access in every page
             $request->session()->put('id', $dbvar->id);
