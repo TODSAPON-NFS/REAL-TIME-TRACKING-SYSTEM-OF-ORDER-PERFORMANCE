@@ -73,14 +73,14 @@
 
                             $rf = $l * $markerPcs["Piles"];
 
-                            $ff = 0;
+                            $ff = $items["FabricFault"];
 
                             if ($rf != 0)
                                 $ff = 100 * $markerPcs["FabricFault"] / $rf;
 
                             $tf = $rf + $ff;
 
-                            $pc = $items["sumMp"] * $markerPcs["Piles"];
+                            $pc = $markerPcs["MarkerPcs"]  * $markerPcs["Piles"];
 
                             $sumTF += $tf;
 
