@@ -106,7 +106,7 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th>Marker pcs</th>
+                        <th>Sizes</th>
                         <th>Update Value</th>
                     </tr>
                     </thead>

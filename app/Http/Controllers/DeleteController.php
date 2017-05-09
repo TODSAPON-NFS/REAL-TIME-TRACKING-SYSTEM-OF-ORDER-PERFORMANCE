@@ -12,8 +12,13 @@ use Illuminate\Http\Request;
 
 class DeleteController extends Controller
 {
-    public function show()
+    public function show(Request $request)
     {
+        $dept = $request->session()->get('dept');
+
+        if ($dept != "ADMIN")
+            return redirect('/');
+
         $allData = ordertoship::all();
 
         return view('delete')->with('allData', $allData);
@@ -21,10 +26,7 @@ class DeleteController extends Controller
 
     public function delete(Request $request)
     {
-        $dept = $request->session()->get('dept');
 
-        if ($dept != "ADMIN")
-            return redirect('/');
 
         $id = $request["hiddenID"];
 

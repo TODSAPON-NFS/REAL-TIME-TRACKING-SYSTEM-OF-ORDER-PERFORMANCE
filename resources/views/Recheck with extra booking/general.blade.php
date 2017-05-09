@@ -73,10 +73,10 @@
 
                             $rf = $l * $markerPcs["Piles"];
 
-                            $ff = $items["FabricFault"];
+                            $ff = 0;
 
                             if ($rf != 0)
-                                $ff = 100 * $markerPcs["FabricFault"] / $rf;
+                                $ff = 100 * $items["FabricFault"] / $rf;
 
                             $tf = $rf + $ff;
 
@@ -95,6 +95,7 @@
                                     </a></td>';
                                     } 
                                 ?>
+                                </td>
                                 
                                 <td>{{$markerPcs["markerLengthInMeter"]}}</td>
                                 <td><?php echo $my; ?></td>
@@ -117,7 +118,7 @@
             </div>
 
             <div class="row">
-                <h4 align="center">Sum Mp : {{ $items["sumMp"]}}</h4>
+                <h4 align="center">Sum of Marker Pieces : {{ $items["sumMp"]}}</h4>
                 <h4 align="center">Extra Booking:
                     <?php
                     $extraBooking = 0;
