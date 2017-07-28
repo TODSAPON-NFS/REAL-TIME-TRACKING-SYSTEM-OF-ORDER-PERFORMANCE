@@ -29,7 +29,7 @@
                     <tbody>
                     {{-- showing marker pcs and marker length from database to update--}}
                     @foreach($allData  as $data)
-                        <form action="/deleteData" method="post"
+                        <form action="{{url('/deleteData')}}" method="post"
                               onsubmit="return confirm('Do you really want to delete the data?');">
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
 

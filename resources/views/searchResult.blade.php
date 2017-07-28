@@ -33,7 +33,7 @@
         <div class="row margin">
             <div class="col-sm-4"></div>
             <div class="col-sm-4">
-                <form action="search/result" method="post">
+                <form action="{{url('search/result')}}" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <button type="submit" class="btn btn-primary btn-block" name="orderToCut" value="orderToCut">
                         Order To Cut

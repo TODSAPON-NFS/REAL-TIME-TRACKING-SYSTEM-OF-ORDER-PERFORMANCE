@@ -15,7 +15,7 @@
         <div class="row">
             <div class="col-sm-4"></div>
             <div class="col-sm-4">
-                <form action="/login" method="post">
+                <form action="{{url('login')}}" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="form-group">
                         <select class="form-control" name="department">
@@ -40,7 +40,7 @@
                     <button type="submit" class="btn btn-primary btn-block">
                         Login
                     </button>
-                    <a href="/search" class="btn btn-primary btn-block" role="button">Search</a>
+                    <a href="{{url('search')}}" class="btn btn-primary btn-block" role="button">Search</a>
 
                 </form>
             </div>
