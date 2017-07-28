@@ -41,7 +41,7 @@
                 <div class="col-sm-6">
 
                     <!--first input -->
-                    <form class="form-horizontal" action="/order-to-cut/merchant/update" method="post">
+                    <form class="form-horizontal" action="{{url('order-to-cut/merchant/update')}}" method="post">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group">
                             <div class="col-sm-8">
@@ -58,7 +58,7 @@
                     </form>
 
                     <!--second input -->
-                    <form class="form-horizontal" method="post" action="/order-to-cut/merchant/update">
+                    <form class="form-horizontal" method="post" action="{{url('order-to-cut/merchant/update')}}">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group">
                             <div class="col-sm-8">
@@ -75,7 +75,7 @@
                     </form>
 
                     <!--third input -->
-                    <form class="form-horizontal" method="post" action="/order-to-cut/merchant/update">
+                    <form class="form-horizontal" method="post" action="{{url('order-to-cut/merchant/update')}}">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group">
                             <div class="col-sm-8">

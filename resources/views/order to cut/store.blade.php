@@ -38,7 +38,7 @@
                 <h4 align="center"><i>Input fields will create or update the data </i></h4>
                 <div class="col-sm-3"></div>
                 <div class="col-sm-6">
-                    <form action="/order-to-cut/store/update" method="post">
+                    <form action="{{url('order-to-cut/store/update')}}" method="post">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group">
                             <input type="text" class="form-control" name="AvailableFabricYards"

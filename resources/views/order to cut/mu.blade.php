@@ -49,7 +49,7 @@
                 <div class="col-sm-3"></div>
                 <div class="col-sm-6">
                     <!--first input -->
-                    <form class="form-horizontal" action='/mu/Consumption' method="post">
+                    <form class="form-horizontal" action="{{url('mu/Consumption')}}" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group">
                             <div class="col-sm-8">
@@ -68,7 +68,7 @@
                     </form>
 
                     <!--second input -->
-                    <form class="form-horizontal" action='/mu/FabricFault' method="post">
+                    <form class="form-horizontal" action="{{url('mu/FabricFault')}}" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group">
                             <div class="col-sm-8">
@@ -87,7 +87,7 @@
                     </form>
 
                     <!--third input -->
-                    <form class="form-horizontal" action='/mu/RollShortage' method="post">
+                    <form class="form-horizontal" action="{{url('mu/RollShortage')}}" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group">
                             <div class="col-sm-8">
@@ -106,7 +106,7 @@
                     </form>
 
                     <!--fourth input -->
-                    <form class="form-horizontal" action='/mu/ProductionDamage' method="post">
+                    <form class="form-horizontal" action="{{url('mu/ProductionDamage')}}" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group">
                             <div class="col-sm-8">
@@ -125,7 +125,7 @@
                     </form>
 
                     <!--fifth input -->
-                    <form class="form-horizontal" action='/mu/UnstableCut' method="post">
+                    <form class="form-horizontal" action="{{url('mu/UnstableCut')}}" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group">
                             <div class="col-sm-8">
@@ -144,7 +144,7 @@
                     </form>
 
                     <!--sixth input -->
-                    <form class="form-horizontal" action='/mu/CuttingMistake' method="post">
+                    <form class="form-horizontal" action="{{url('mu/CuttingMistake')}}" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group">
                             <div class="col-sm-8">

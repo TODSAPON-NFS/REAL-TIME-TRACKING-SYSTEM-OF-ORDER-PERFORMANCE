@@ -45,7 +45,7 @@
                 <h4 align="center"><i>Input fields will create or update the data </i></h4>
                 <div class="col-sm-3"></div>
                 <div class="col-sm-6">
-                    <form method="post" action="/input/CAD/update">
+                    <form method="post" action="{{url('/input/CAD/update')}}">
 
                          {{ csrf_field() }}
 
