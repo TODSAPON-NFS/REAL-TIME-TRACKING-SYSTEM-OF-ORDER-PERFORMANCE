@@ -51,7 +51,7 @@
             <!-- Fabric 1 input -->
             <div class="row">
                 <h4 align="center">Shrinkage input :</h4>
-                <form class="form-horizontal" action="/recheck/fabric/shrinkage" method="post">
+                <form class="form-horizontal" action="{{url('recheck/fabric/shrinkage')}}" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="form-group">
                         <div class="col-sm-4"></div>
@@ -73,7 +73,7 @@
             <!-- Fabric 2 input -->
             <div class="row">
                 <h4 align="center">Bowing input :</h4>
-                <form class="form-horizontal" action="/recheck/fabric/bowling" method="post">
+                <form class="form-horizontal" action="{{url('recheck/fabric/bowling')}}" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="form-group">
                         <div class="col-sm-4"></div>
@@ -94,7 +94,7 @@
             <!-- Fabric 3 input -->
             <div class="row">
                 <h4 align="center">Fabric with fault input :</h4>
-                <form class="form-horizontal" action="/recheck/fabric/fault" method="post">
+                <form class="form-horizontal" action="{{url('recheck/fabric/fault')}}" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="form-group">
                         <div class="col-sm-4"></div>

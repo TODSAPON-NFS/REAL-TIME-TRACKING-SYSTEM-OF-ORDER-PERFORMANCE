@@ -37,7 +37,7 @@
             <div class="row">
                 <h4 align="center"> Marker pcs input :</h4>
 
-                <form class="form-horizontal" action="/recheck/cad/addMarker" method="post">
+                <form class="form-horizontal" action="{{url('recheck/cad/addMarker')}}" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="form-group">
                         <div class="col-sm-4"></div>
@@ -57,7 +57,7 @@
                 <!-- CAD 1 input -->
                 <div class="row">
                     <h4 align="center"><i>Upload File: </i></h4>
-                    <form class="form-horizontal" action="/recheck/cad/uploadFile" method="post"
+                    <form class="form-horizontal" action="{{url('/recheck/cad/uploadFile')}}" method="post"
                           enctype="multipart/form-data">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group">
@@ -114,7 +114,7 @@
 
                             {{-- showing marker pcs and marker length from database to update--}}
                             @foreach($db  as $markerPcs)
-                                <form action="/recheck/cad/updateMarkerLength" method="post">
+                                <form action="{{url('recheck/cad/updateMarkerLength')}}" method="post">
                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
 
                                     <tr>
@@ -157,7 +157,7 @@
 
                             {{--showing marker pcs and piles from database to update--}}
                             @foreach($db  as $markerPcs)
-                                <form action="/recheck/cad/updatePiles" method="post">
+                                <form action="{{url('recheck/cad/updatePiles')}}" method="post">
                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                                     <tr>
                                         <td>{{$markerPcs["MarkerPcs"]}}</td>
@@ -200,7 +200,7 @@
 
                             {{--showing marker pcs and marker length from database to update--}}
                             @foreach($db  as $markerPcs)
-                                <form action="/recheck/cad/updateMarkerPcs" method="post"
+                                <form action="{{url('recheck/cad/updateMarkerPcs')}}" method="post"
                                       onsubmit="return confirm('Do you really want to delete the data?');">
                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                                     <tr>
