@@ -36,7 +36,7 @@
         <div class="row">
             <h4 align="center"> Size input :</h4>
 
-            <form class="form-horizontal" action="/order-to-ship/sizeInput" method="post">
+            <form class="form-horizontal" action="{{url('order-to-ship/sizeInput')}}" method="post">
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
                 <div class="form-group">
                     <div class="col-sm-4"></div>
@@ -70,7 +70,7 @@
                     <tbody>
                     {{-- showing marker pcs and marker length from database to update--}}
                     @foreach($db  as $sizes)
-                        <form action="/order-to-ship/updateMerchantOrderQuantity" method="post">
+                        <form action="{{url('order-to-ship/updateMerchantOrderQuantity')}}" method="post">
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
 
                             <tr>
@@ -113,7 +113,7 @@
                     <tbody>
                     {{--showing Sizes from database to update--}}
                     @foreach($db  as $sizes)
-                        <form action="/order-to-ship/merchantUpdateSize" method="post"
+                        <form action="{{url('order-to-ship/merchantUpdateSize')}}" method="post"
                               onsubmit="return confirm('Do you really want to update/delete the data?');">
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
                             <tr>

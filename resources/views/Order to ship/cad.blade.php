@@ -42,7 +42,7 @@
         <div class="row">
             <h4 align="center">Cut Plan input :</h4>
 
-            <form class="form-horizontal" action="/order-to-ship/cadCutInput" method="post">
+            <form class="form-horizontal" action="{{url('order-to-ship/cadCutInput')}}" method="post">
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
                 <div class="form-group">
                     <div class="col-sm-4"></div>
@@ -62,7 +62,7 @@
         <div class="row">
             <h4 align="center">Fabric Allocation input :</h4>
 
-            <form class="form-horizontal" action="/order-to-ship/cadFabricInput" method="post">
+            <form class="form-horizontal" action="{{url('order-to-ship/cadFabricInput')}}" method="post">
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
                 <div class="form-group">
                     <div class="col-sm-4"></div>

@@ -47,7 +47,7 @@
                     {{--showing marker pcs and marker length from database to update--}}
 
                     @foreach($db  as $packingReceive)
-                        <form action="/order-to-ship/updatePackingReceive" method="post">
+                        <form action="{{url('order-to-ship/updatePackingReceive')}}" method="post">
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
 
                             <tr>
@@ -77,7 +77,7 @@
         <div class="row">
             <h4 align="center">Country input :</h4>
 
-            <form class="form-horizontal" action="/order-to-ship/PackingAddCountry" method="post">
+            <form class="form-horizontal" action="{{url('order-to-ship/PackingAddCountry')}}" method="post">
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
                 <div class="form-group">
                     <div class="col-sm-3"></div>
@@ -103,7 +103,7 @@
                 <h3 align="center">Country : {{$country["CountryName"]}}</h3>
                 <h4 align="center">Shipment Date : {{$country["ShipmentDate"]}}</h4>
 
-                <form class="form-horizontal" action="/order-to-ship/PackingAddCountryValue" method="post">
+                <form class="form-horizontal" action="{{url('order-to-ship/PackingAddCountryValue')}}" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <input type="hidden" name="HiddenCountryNameID" value="{{$country["country_name_id"]}}">
 
@@ -143,7 +143,7 @@
                             @endif
 
 
-                            <form action="/order-to-ship/PackingUpdateCountryValue" method="post">
+                            <form action="{{url('order-to-ship/PackingUpdateCountryValue')}}" method="post">
                                 <input type="hidden" name="_token" value="{{csrf_token()}}">
 
                                 <tr>
@@ -194,7 +194,7 @@
                     <tbody>
                     {{--showing country names from database to update--}}
                     @foreach($countries as $country)
-                        <form action="/order-to-ship/PackingUpdateCountryName" method="post"
+                        <form action="{{url('order-to-ship/PackingUpdateCountryName')}}" method="post"
                               onsubmit="return confirm('Do you really want to delete the data?');">
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
                             <tr>

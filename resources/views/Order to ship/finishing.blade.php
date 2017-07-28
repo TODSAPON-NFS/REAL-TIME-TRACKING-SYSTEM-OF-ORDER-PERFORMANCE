@@ -46,7 +46,7 @@
                     </thead>
                     <tbody>
                     @foreach($db  as $sizes)
-                        <form action="/order-to-ship/finishing/update" method="post">
+                        <form action="{{url('order-to-ship/finishing/update')}}" method="post">
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
                             <tr>
                                 <td>{{$sizes["Size"]}}</td>
