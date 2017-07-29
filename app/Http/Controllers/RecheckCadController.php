@@ -100,10 +100,12 @@ class RecheckCadController extends Controller
         $destinationPath = 'files';
         $id = $request->session()->get('id');
 
+       // return $file;
+
         if ($sel1 != "" && $request->hasFile('userFile') && $request->file('userFile')->isValid()) {
             # code...
             $fileType = $file->getClientOriginalExtension();
-            if ($fileType == 'xlsx') {
+            //if ($fileType == 'xlsx') {
                 $fileName = $id . $sel1 . '.' . $file->getClientOriginalExtension();
                 $uploadSuccess = $file->move($destinationPath, $fileName);
                 if ($uploadSuccess) {
@@ -113,9 +115,11 @@ class RecheckCadController extends Controller
                 } else {
                     return "OPPS!!!Something Is Going TO wrong Please Try letter";
                 }
-            } else {
-                return "OPPS!!! Invalid File Type.";
-            }
+
+           // } else {
+           //     return "OPPS!!! Invalid File Type.";
+           // }
+
         } else {
             return "Fill All Info Correctly.";
         }

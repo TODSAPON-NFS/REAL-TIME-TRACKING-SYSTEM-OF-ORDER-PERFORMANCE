@@ -84,7 +84,7 @@
                                 <div class="col-sm-4">
                                     <label class="btn btn-default btn-file"> <input type="file" hidden name="userFile"
                                                                                     id="userFile"
-                                                                                    accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+                                                                                    {{-- accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" --}}>
                                     </label>
                                 </div>
                                 <div class="col-sm-3">
