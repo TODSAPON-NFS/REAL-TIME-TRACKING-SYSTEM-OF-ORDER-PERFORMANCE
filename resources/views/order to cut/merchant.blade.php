@@ -24,7 +24,7 @@
                         </tr>
                         <tr>
                             <td>Color : {{$items["color"]}}</td>
-                            <td>Mock up Input: {{$items["mockUpInput"]}}%</td>
+                            <td>Mock up Input: {{$items["mockUpInput"]}} Yds</td>
                         </tr>
                         <tr>
                             <td>Item : {{$items["item"]}}</td>
