@@ -55,7 +55,7 @@
                         </thead>
                         <tbody>
 
-                        <?php $sumTF = 0;?>
+                        <?php $sumTF = 0; $sumPC = 0?>
 
                         {{--showing marker pcs and marker length from database to update--}}
                         @foreach($db  as $markerPcs)
@@ -83,6 +83,7 @@
                             $pc = $markerPcs["MarkerPcs"]  * $markerPcs["Piles"];
 
                             $sumTF += $tf;
+                            $sumPC += $pc;
 
                             ?>
 
@@ -118,7 +119,7 @@
             </div>
 
             <div class="row">
-                <h4 align="center">Sum of Marker Pieces : {{ $items["sumMp"]}}</h4>
+                <h4 align="center">Sum of Gmt Pieces : <?php echo $sumPC; ?></h4>
                 <h4 align="center">Extra Booking:
                     <?php
                     $extraBooking = 0;
