@@ -53,8 +53,8 @@ class RecheckCadController extends Controller
 
         $id = $request->session()->get('id');
 
-        if ($request["hiddenMarkerLength"] != "" && $request["hiddenMarkerPcs"] != "" && $request["updateMarkerLength"] != "") {
-            recheck_cad::where('id', '=', $id)->where('MarkerPcs', '=', $request["hiddenMarkerPcs"])->update(['markerLengthInMeter' => $request["updateMarkerLength"]]);
+        if ($request["hiddenMarkerLength"] != "" && $request["hiddenMarkerID"] != "" && $request["hiddenMarkerPcs"] != "" && $request["updateMarkerLength"] != "") {
+            recheck_cad::where('id', '=', $id)->where('MarkerID', '=', $request["hiddenMarkerID"])->update(['markerLengthInMeter' => $request["updateMarkerLength"]]);
 
         }
         //echo $request["markerLengthInMeter"] . " " . $request["MarkerPcs"] . " " . $request["updateMarkerLength"];
@@ -65,8 +65,8 @@ class RecheckCadController extends Controller
     {
         $id = $request->session()->get('id');
 
-        if ($request["pilesHiddenMarkerPcs"] != "" && $request["hiddenMarkerpiles"] != "" && $request["updatePiles"] != "") {
-            recheck_cad::where('id', '=', $id)->where('MarkerPcs', '=', $request["pilesHiddenMarkerPcs"])->update(['Piles' => $request["updatePiles"]]);
+        if ($request["pilesHiddenMarkerPcs"] != "" && $request["hiddenMarkerID"] != "" && $request["hiddenMarkerpiles"] != "" && $request["updatePiles"] != "") {
+            recheck_cad::where('id', '=', $id)->where('MarkerID', '=', $request["hiddenMarkerID"])->update(['Piles' => $request["updatePiles"]]);
 
         }
 
@@ -79,11 +79,11 @@ class RecheckCadController extends Controller
     {
         $id = $request->session()->get('id');
 
-        if ($request["updateHiddenMarkerPcs"] != "" && $request["updateMarkerPcs"] != "" && $request["submit"] == "update") {
-            recheck_cad::where('id', '=', $id)->where('MarkerPcs', '=', $request["updateHiddenMarkerPcs"])->update(['MarkerPcs' => $request["updateMarkerPcs"]]);
+        if ($request["updateHiddenMarkerPcs"] != "" && $request["hiddenMarkerID"] != "" && $request["updateMarkerPcs"] != "" && $request["submit"] == "update") {
+            recheck_cad::where('id', '=', $id)->where('MarkerID', '=', $request["hiddenMarkerID"])->update(['MarkerPcs' => $request["updateMarkerPcs"]]);
 
-        } else if ($request["updateHiddenMarkerPcs"] != "" && $request["submit"] == "delete") {
-            recheck_cad::where('id', '=', $id)->where('MarkerPcs', '=', $request["updateHiddenMarkerPcs"])->delete();
+        } else if ($request["hiddenMarkerID"] != "" && $request["submit"] == "delete") {
+            recheck_cad::where('id', '=', $id)->where('MarkerID', '=', $request["hiddenMarkerID"])->delete();
         }
 
         // echo $request["updateHiddenMarkerPcs"] . " " . $request["updateMarkerPcs"];

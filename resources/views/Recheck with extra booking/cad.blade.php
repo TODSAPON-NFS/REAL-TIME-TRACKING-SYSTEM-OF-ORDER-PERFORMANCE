@@ -121,6 +121,7 @@
                                         <td>{{$markerPcs["MarkerPcs"]}}</td>
                                         <td>{{$markerPcs["markerLengthInMeter"]}}</td>
                                         <input type="hidden" name="hiddenMarkerPcs" value={{$markerPcs["MarkerPcs"]}}>
+                                        <input type="hidden" name="hiddenMarkerID" value={{$markerPcs["MarkerID"]}}>
                                         <input type="hidden" name="hiddenMarkerLength"
                                                value={{$markerPcs["markerLengthInMeter"]}}>
                                         <td><input type="text" class="form-control" name="updateMarkerLength"
@@ -167,6 +168,7 @@
                                                value={{$markerPcs["MarkerPcs"]}}>
                                         <input type="hidden" name="hiddenMarkerpiles"
                                                value={{$markerPcs["Piles"]}}>
+                                        <input type="hidden" name="hiddenMarkerID" value={{$markerPcs["MarkerID"]}}>
 
                                         <td><input type="text" class="form-control" name="updatePiles"
                                                    placeholder=""></td>
@@ -201,12 +203,13 @@
                             {{--showing marker pcs and marker length from database to update--}}
                             @foreach($db  as $markerPcs)
                                 <form action="{{url('recheck/cad/updateMarkerPcs')}}" method="post"
-                                      onsubmit="return confirm('Do you really want to delete the data?');">
+                                      onsubmit="return confirm('Do you really want to update/delete the data?');">
                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                                     <tr>
                                         <td>{{$markerPcs["MarkerPcs"]}}</td>
                                         <input type="hidden" name="updateHiddenMarkerPcs"
                                                value={{$markerPcs["MarkerPcs"]}}>
+                                        <input type="hidden" name="hiddenMarkerID" value={{$markerPcs["MarkerID"]}}>
                                         <td><input type="text" class="form-control" name="updateMarkerPcs"
                                                    placeholder=""></td>
                                         <td>
