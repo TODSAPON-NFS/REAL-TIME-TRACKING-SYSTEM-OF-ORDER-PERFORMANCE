@@ -76,7 +76,7 @@
                             $ff = 0;
 
                             if ($rf != 0)
-                                $ff = 100 * $items["FabricFault"] / $rf;
+                                $ff = $rf * $items["FabricFault"] / 100;
 
                             $tf = $rf + $ff;
 
