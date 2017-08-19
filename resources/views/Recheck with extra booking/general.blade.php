@@ -62,7 +62,7 @@
                             <?php $my = $markerPcs["markerLengthInMeter"] * 1.09361;
                             $s = 0;
                             if ($my != 0)
-                                $s = (100 * $items["Shrinkage"]) / $my;
+                                $s = ($my * $items["Shrinkage"]) / 100;
 
                             $b = 0;
 
