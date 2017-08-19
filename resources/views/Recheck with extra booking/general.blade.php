@@ -67,7 +67,7 @@
                             $b = 0;
 
                             if ($my != 0)
-                                $b = (100 * $items["Bowling"]) / ($my * 5);
+                                $b = ($my * $items["Bowling"]) / 100;
 
                             $l = $my + $s + $b + 0.0218723;
 
